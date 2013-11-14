@@ -21,31 +21,68 @@
 	display: block;
 	font-family: 'Open Sans', sans-serif;
 }
-.moreInfo {
+.green {
+	color: #85B200;
+}
+
+#moreInfo {
 	background: #fff;
 	background: rgba(255,255,255,0.95);
-	width: 100%;
 	position: absolute;
-	top: 0;
+	top: -300px;
+	display: block;
+	overflow: hidden;
 	left: 0;
+	right: 0;
 	height: 468px;
-	padding: 10% 3%;
+	opacity: 0;
+	transition: all 0.4s ease-out;
+}
+#moreInfo.open{
+	opacity: 1;
+	top: 0;
+}
+#moreInfo .content{
+	padding: 10% 7% 10% 50%;
+	float: right;
+	background: url(gfx/paywall/moreinfo_bg.png) no-repeat #fff left center;
+	background-size: 1024px;
+	height: 100%;
 	box-sizing:border-box;
 	-moz-box-sizing:border-box; /* Firefox */
 }
-.moreInfo .content{
-	width: 50%;
-	float: right;
+#moreInfo .close-more-info {
+	text-align: right;
+	color: #333;
+	padding: 20px;
+	margin: auto;
+	display: block;
+	position: absolute;
+	bottom: 0;
+	margin-left: -70px;
+	right: 0;
+	font-weight: 400;
+	color: #333;
 }
 .paywall-inner {
     position: absolute;
     color: #fff;
     text-align: center;
-    bottom: 0;
+    bottom: -200px;
     left: 0;
+    opacity:0;
     width: 100%;
     background: rgba(0,0,0,0.8);
     height: 300px;
+	transition: all 0.4s ease-out;
+}
+.paywall-inner.showPaywall {
+	bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+	opacity: 1;
+	display: block;
 }
 .paywall-inner:after {
 	position: absolute;
@@ -60,16 +97,30 @@
 .paywall nav {
 	border-bottom: 1px solid rgba(255,255,255,0.2);
 	display: block;
-	padding: 15px;
+	position: relative;
 }
-.paywall nav a{
+.paywall nav div{
 	padding: 15px 0;
 	margin: 0 20px;
 	border: none;
 	color: #fff;
 	font-weight: bold;
+	display: inline-block;
 }
-.paywall nav a.open{
+.paywall nav div.more-info-trigger{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 100%;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #85B200;
+	position: absolute;
+	right: 20px;
+	top: 50%;
+	margin-top: -15px;
+}
+.paywall nav div.open{
 	border-bottom: 3px solid #fff;
 }
 .paywall-tab {
@@ -132,7 +183,6 @@
 	padding: 12px 15px;
 	color: #fff;
 	margin: 0;
-	transition: border 1s ease;
 	font-size: 15px;
 	-webkit-appearance: none;
 	-webkit-border-radius:0;
@@ -146,11 +196,9 @@
 }
 .paywall input::-webkit-input-placeholder {
 	color: #fff;
-	color: rgba(255,255,255,0.8);
 }
 .paywall input:-moz-placeholder {
 	color: #fff;
-	color: rgba(255,255,255,0.8);
 }
 .paywall input:focus {
 	border-color: #fff;

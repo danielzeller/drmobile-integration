@@ -29,20 +29,21 @@
 
 	<div class="alf-layer layer-fullscreen is-hidden" id="alf-layer-fullscreen"></div>
 	<div class="paywall" id="purchase-with-products-wall">
-		<div class="moreInfo">
+		<div id="moreInfo" class="">
 			<div class="content">
 				<h1>Velkommen til aftenposten</h1>
 				<p>Aftenposten for iPad er et abonnementsprodukt som er tilgjengelig for kjøp både gjennom App Store og direkte fra Aftenposten.</p>
 	
 	<p>På Aftenpostens kundesider <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder.</p>
 			</div>
+			<div target="#moreInfo" class="close-more-info">Lukk</div>
 		</div>
 			
-		<div class="paywall-inner">
+		<div id="paywallInner" class="paywall-inner">
 			<nav>
-				<a href="#paywall-login" class="paywall-trigger open">Kunde hos Aftenposten?</a>
-				<a href="#paywall-products" class="paywall-trigger">Bli abonnent i dag</a>
-				<a href="#moreInfo" class="moreInfo-trigger">i</a>
+				<div target="#paywall-login" class="paywall-trigger open">Kunde hos Aftenposten?</div>
+				<div target="#paywall-products" class="paywall-trigger">Bli abonnent i dag</div>
+				<div target="#moreInfo" class="more-info-trigger">i</div>
 			</nav>
 		    <div id="paywall-login" class="paywall-tab open">
 				<header class="paywallHeader">
@@ -61,7 +62,7 @@
 	
 		    <div id="paywall-products" class="products paywall-tab">
 				<header class="paywallHeader">
-	                <p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <a href="#moreInfo">Les mer ›</a></p>
+	                <p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <b target="#moreInfo" class="green more-info-trigger">Les mer ›</b></p>
 	        	</header>
 		        <a href="#buyweekly" class="paywall-buy-product" pid="no.vg.pluss.subscription.basic.weekly">
 		            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>

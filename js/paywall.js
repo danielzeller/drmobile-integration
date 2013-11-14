@@ -72,20 +72,29 @@ require(['pluss', 'alf', 'hub/display'], function (pluss, Alf, eventDisplay) {
 			pluss.bridge.trigger('closedBrowser', { url: url });
 		});
 							
-		$("a.paywall-trigger").bind('click', function(e){
+		$(".paywall-trigger").bind('click', function(e){
 		    e.preventDefault();
-		    var toShow = $(this).attr('href');
-		    console.log('clicked on trigger ' + toShow);
+		    var toShow = $(this).attr('target');
 		    $('.paywall-tab').toggleClass('open');
 		    $('.paywall-trigger').toggleClass('open');
 		});
 		
-		$("a.moreInfo").bind('click', function(e){
-		    e.preventDefault();
-		    var toShow = $(this).attr('href');
+		$(".more-info-trigger").bind('click', function(e){
+		    var toShow = $(this).attr('target');
 		    $(toShow).toggleClass('open');
-		    alert('Ved kjøp av Appstore får du kun tilgang til Aftenposten på iPad og kan ikke utvide abonnementet med andre digitale produkter fra Aftenposten, for eksempel A-magasinet på iPad, eAvis og Arkivet.På ap.no/produkter finner du en oversikt over tilgjengelige produktpakker.');
+		    e.preventDefault();
 		});
+		$(".more-info-trigger").bind('click', function(e){
+		    var toShow = $(this).attr('target');
+		    $(toShow).addClass('open');
+		    e.preventDefault();
+		});
+		$(".close-more-info").bind('click', function(e){
+		    var toShow = $(this).attr('target');
+		    $(toShow).removeClass('open');
+		    e.preventDefault();
+		});
+
 
 		$('body').on('touchend', 'a', function(event) {
 			event.stopPropagation();
