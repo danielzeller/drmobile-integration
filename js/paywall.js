@@ -30,7 +30,7 @@ define('paywall', ['main'], function (app) {
 	app.event.on('hidePaywall', function (animated) {
 
 		$('#paywallInner').removeClass('showPaywall');
-		
+
 		console.log('Hiding paywall');
 		
 		paywall.shouldPreventTouch = false;		
@@ -82,12 +82,6 @@ define('paywall', ['main'], function (app) {
 	    var toShow = $(this).attr('target');
 	    $('.paywall-tab').toggleClass('open');
 	    $('.paywall-trigger').toggleClass('open');
-	});
-	 
-	$(".more-info-trigger").bind('click', function(e){
-	    var toShow = $(this).attr('target');
-	    $(toShow).toggleClass('open');
-	    e.preventDefault();
 	});
 
 	$(".more-info-trigger").bind('click', function(e){
