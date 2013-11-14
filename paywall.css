@@ -68,7 +68,7 @@
 .paywall .paywallHeader {
     padding: 0 20px;
     width: 60%;
-    margin: 30px auto;
+    margin: 25px auto;
 }
 .paywall h1 {
     font-size: 30px;
@@ -116,7 +116,7 @@
 	padding: 12px 15px;
 	color: #fff;
 	margin: 0;
-	transition: all 1s ease;
+	transition: border 1s ease;
 	font-size: 15px;
 	-webkit-appearance: none;
 	-webkit-border-radius:0;
@@ -130,14 +130,19 @@
 }
 .paywall input::-webkit-input-placeholder {
 	color: #fff;
+	color: rgba(255,255,255,0.8);
 }
 .paywall input:-moz-placeholder {
-  color: #fff;
+	color: #fff;
+	color: rgba(255,255,255,0.8);
 }
 .paywall input:focus {
 	border-color: #fff;
 	color: #fff;
 	outline-width: 0;
+}
+.paywall input:focus::-webkit-input-placeholder {
+	color: #fff;
 }
 .paywall footer{
 	padding: 20px;
@@ -148,7 +153,9 @@
 	margin: 10px 5px;
 	font-weight: 500;
 	font-style: italic;
-	line-height: 2em;
+}
+.paywall footer p{
+	line-height: 1em;
 }
 
 .paywall.android-beta .products .paywall-buy-product {
