@@ -19,12 +19,28 @@
 	opacity: 1;
 	overflow: hidden;
 	display: block;
+	font-family: 'Open Sans', sans-serif;
+}
+.moreInfo {
+	background: #fff;
+	background: rgba(255,255,255,0.95);
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 468px;
+	padding: 10% 3%;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box; /* Firefox */
+}
+.moreInfo .content{
+	width: 50%;
+	float: right;
 }
 .paywall-inner {
     position: absolute;
     color: #fff;
     text-align: center;
-	font-family: 'Open Sans', sans-serif;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -34,7 +50,7 @@
 .paywall-inner:after {
 	position: absolute;
 	content: '';
-	height: 2px;
+	height: 4px;
 	width: 100%;
 	left: 0;
 	top: -2px;
