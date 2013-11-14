@@ -29,18 +29,19 @@
 	background: #fff;
 	background: rgba(255,255,255,0.95);
 	position: absolute;
-	top: -300px;
+	top: -468px;
 	display: block;
 	overflow: hidden;
 	left: 0;
 	right: 0;
 	height: 468px;
 	opacity: 0;
-	transition: all 0.4s ease-out;
+	transition: all 0.3s ease-out;
 }
 #moreInfo.open{
 	opacity: 1;
-	top: 0;
+	transform:translateY(468px);
+	-webkit-transform:translateY(468px);
 }
 #moreInfo .content{
 	padding: 10% 7% 10% 50%;
@@ -49,7 +50,7 @@
 	background-size: 1024px;
 	height: 100%;
 	box-sizing:border-box;
-	-moz-box-sizing:border-box; /* Firefox */
+	-moz-box-sizing:border-box;
 }
 #moreInfo .close-more-info {
 	text-align: right;
@@ -68,21 +69,19 @@
     position: absolute;
     color: #fff;
     text-align: center;
-    bottom: -200px;
+    bottom: -300px;
     left: 0;
+    right: 0;
     opacity:0;
     width: 100%;
     background: rgba(0,0,0,0.8);
     height: 300px;
-	transition: all 0.4s ease-out;
+	transition: all 0.3s ease-out;
 }
 .paywall-inner.showPaywall {
-	bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
+	transform:translateY(-300px);
+	-webkit-transform:translateY(-300px);
 	opacity: 1;
-	display: block;
 }
 .paywall-inner:after {
 	position: absolute;

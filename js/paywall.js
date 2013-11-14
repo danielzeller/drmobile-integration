@@ -95,7 +95,6 @@ require(['pluss', 'alf', 'hub/display'], function (pluss, Alf, eventDisplay) {
 		    e.preventDefault();
 		});
 
-
 		$('body').on('touchend', 'a', function(event) {
 			event.stopPropagation();
 			event.preventDefault();
