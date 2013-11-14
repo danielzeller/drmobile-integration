@@ -1,0 +1,165 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300);
+
+.chrome {
+  width: 1024px;
+  height: 768px;
+}
+.overflowHidden {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+.paywall {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	top: 0;
+	z-index: 2147483647; /*Appears on top of everything*/
+	opacity: 1;
+	overflow: hidden;
+	display: block;
+}
+.paywall-inner {
+    position: absolute;
+    color: #fff;
+    text-align: center;
+	font-family: 'Open Sans', sans-serif;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    height: 300px;
+}
+.paywall-inner:after {
+	position: absolute;
+	content: '';
+	height: 2px;
+	width: 100%;
+	left: 0;
+	top: -2px;
+	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
+	background-size: 100%;
+}
+.paywall nav {
+	border-bottom: 1px solid rgba(255,255,255,0.2);
+	display: block;
+	padding: 15px;
+}
+.paywall nav a{
+	padding: 15px 0;
+	margin: 0 20px;
+	border: none;
+	color: #fff;
+	font-weight: bold;
+}
+.paywall nav a.open{
+	border-bottom: 3px solid #fff;
+}
+.paywall-tab {
+	display: none;
+}
+.paywall-login {
+	display: block;
+}
+.paywall-tab.open {
+	display: block;
+}
+.paywall .paywallHeader {
+    padding: 0 20px;
+    width: 60%;
+    margin: 30px auto;
+}
+.paywall h1 {
+    font-size: 30px;
+    margin: 0;
+}
+.paywall p {
+    font-size: 16px;
+    line-height: 1.5em;
+    font-weight: 100;
+
+}
+.paywall a {
+	color: #fff;
+
+}
+.paywall .products {
+}
+.paywall .products .paywall-buy-product {
+    display: inline-block;
+    margin: auto 5px;
+}
+.paywall .green-button {
+    background: #85B200;
+	padding: 12px 15px;
+    display: inline-block;
+	font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+	font-size: 15px;
+	border: 1px solid #85B200;
+}
+.paywall a:active .green-button,
+.paywall a.green-button:active {
+    background: #3f9207;
+    border: 1px solid #3f9207;
+
+}
+.paywall a {
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.paywall input {
+	background: none;
+	border: 1px solid rgba(255,255,255,0.5);
+	padding: 12px 15px;
+	color: #fff;
+	margin: 0;
+	transition: all 1s ease;
+	font-size: 15px;
+	-webkit-appearance: none;
+	-webkit-border-radius:0;
+	font-weight: 700;
+	font-family: 'Open Sans', sans-serif;
+}
+.paywall input[type="submit"] {
+	background: #85B200;
+	border: 1px solid #85B200;
+	font-weight: bold;
+}
+.paywall input::-webkit-input-placeholder {
+	color: #fff;
+}
+.paywall input:-moz-placeholder {
+  color: #fff;
+}
+.paywall input:focus {
+	border-color: #fff;
+	color: #fff;
+	outline-width: 0;
+}
+.paywall footer{
+	padding: 20px;
+	clear: both;
+}
+.paywall footer a{
+	font-size: inherit;
+	margin: 10px 5px;
+	font-weight: 500;
+	font-style: italic;
+	line-height: 2em;
+}
+
+.paywall.android-beta .products .paywall-buy-product {
+    float: none;
+    width: inherit;
+}
+
+.paywall.android-beta h1{
+	font-size: 28px;
+}
+
+@media only screen and (min-width: 768px) {
+}
+
