@@ -48,6 +48,7 @@ define('paywall', ['main'], function (app) {
 
 	$('.paywall-buy-product').click(function() {
 		var productIdentifier = $(this).attr('productIdentifier');
+		productIdentifier = "com.ivyengine.aftenpostenmonthly";
 		console.log('User wants access - buy - ' + productIdentifier);
 		app.bridge.trigger('userWantsAccess', 'buy', productIdentifier);
 	    e.preventDefault();
@@ -77,8 +78,8 @@ define('paywall', ['main'], function (app) {
 
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
-		var username = "hfossli";
-	    var password = "jabbadu";
+		var username = $(this).find('input[name="username"]').val();
+	    var password = $(this).find('input[name="password"]').val()
 		app.bridge.trigger('userWantsAccess', 'login', username, password);
 	    e.preventDefault();
 		return false;
