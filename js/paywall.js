@@ -50,30 +50,37 @@ define('paywall', ['main'], function (app) {
 		var productIdentifier = $(this).attr('productIdentifier');
 		console.log('User wants access - buy - ' + productIdentifier);
 		app.bridge.trigger('userWantsAccess', 'buy', productIdentifier);
+	    e.preventDefault();
 		return false;
 	});
 
 	$('.paywall-restore').click(function() {
 		console.log('User wants access - restore');
 		app.bridge.trigger('userWantsAccess', 'restore');
+	    e.preventDefault();
 		return false;
 	});
 
 	$('.paywall-subscribe').click(function() {
 		console.log('User wants access - subscribe');
 		app.bridge.trigger('userWantsAccess', 'subscribe');
-		return false;
-	});
-
-	$('.paywall-console.login').click(function() {
-		console.log('User wants access - login');
-		app.bridge.trigger('userWantsAccess', 'login');
+	    e.preventDefault();
 		return false;
 	});
 	
 	$('.show-user-profile').click(function() {
 		console.log('User wants to open - user profile');
 		app.bridge.trigger('showUserProfile');
+	    e.preventDefault();
+		return false;
+	});
+
+	$('#paywall-login form').bind('submit', function(e) {
+		console.log('User wants access - login');
+		var username = "hfossli";
+	    var password = "jabbadu";
+		app.bridge.trigger('userWantsAccess', 'login', username, password);
+	    e.preventDefault();
 		return false;
 	});
 	                     
@@ -82,18 +89,22 @@ define('paywall', ['main'], function (app) {
 	    var toShow = $(this).attr('target');
 	    $('.paywall-tab').toggleClass('open');
 	    $('.paywall-trigger').toggleClass('open');
+	    e.preventDefault();
+		return false;
 	});
 
 	$(".more-info-trigger").bind('click', function(e){
 	    var toShow = $(this).attr('target');
 	    $(toShow).addClass('open');
 	    e.preventDefault();
+		return false;
 	});
 
 	$(".close-more-info").bind('click', function(e){
 	    var toShow = $(this).attr('target');
 	    $(toShow).removeClass('open');
 	    e.preventDefault();
+		return false;
 	});
  
 	return paywall;
