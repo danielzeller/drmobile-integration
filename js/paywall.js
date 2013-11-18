@@ -75,7 +75,15 @@ define('paywall', ['main'], function (app) {
 	    e.preventDefault();
 		return false;
 	});
-
+	
+	$('.paywall-logout').click(function() {
+		console.log('User wants to logout - logout');
+		app.bridge.trigger('logoutUser', 'logout');
+	    e.preventDefault();
+		return false;
+	});
+	
+	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
 		var username = $(this).find('input[name="username"]').val();
@@ -84,12 +92,22 @@ define('paywall', ['main'], function (app) {
 	    e.preventDefault();
 		return false;
 	});
-	                     
-	$(".paywall-trigger").bind('click', function(e){
+	
+	$('#paywall-forgot-password form').bind('submit', function(e) {
+		console.log('User wants password - forgotPassword');
+		var username = $(this).find('input[name="username"]').val();
+		app.bridge.trigger('userWantsPassword', 'login', username, password);
 	    e.preventDefault();
+		return false;
+	});
+	                     
+	$(".paywall-tab-trigger").bind('click', function(e){
 	    var toShow = $(this).attr('target');
-	    $('.paywall-tab').toggleClass('open');
-	    $('.paywall-trigger').toggleClass('open');
+	    console.log('open ' + toShow);
+	    $(".paywall-tab.open").removeClass('open');
+		$(".paywall-tab-trigger.open").removeClass('open');
+	    $(toShow).addClass('open');
+	    $(this).addClass('open');
 	    e.preventDefault();
 		return false;
 	});
@@ -107,6 +125,8 @@ define('paywall', ['main'], function (app) {
 	    e.preventDefault();
 		return false;
 	});
+	
+
  
 	return paywall;
 });

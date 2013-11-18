@@ -1,9 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300);
 
-.chrome {
-  width: 1024px;
-  height: 768px;
-}
 .overflowHidden {
 	overflow: hidden;
 	height: 100%;
@@ -25,32 +21,45 @@
 	color: #85B200;
 }
 
+#moreInfoContainer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
 #moreInfo {
 	background: #fff;
 	background: rgba(255,255,255,0.95);
 	position: absolute;
-	top: -468px;
-	display: block;
 	overflow: hidden;
 	left: 0;
+	width: 100%;
 	right: 0;
-	height: 468px;
 	opacity: 0;
+	height: 65%;
+	display: table;
 	transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
 }
+
 #moreInfo.open{
-	opacity: 1;
-	transform:translateY(468px);
-	-webkit-transform:translateY(468px);
+	transform:translateY(100%);
+	-webkit-transform:translateY(100%);
+    opacity: 1;
 }
+
 #moreInfo .content{
-	padding: 10% 7% 10% 50%;
-	float: right;
 	background: url(gfx/paywall/moreinfo_bg.png) no-repeat #fff left center;
-	background-size: 1024px;
+	background-size: 100%;
 	height: 100%;
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
+	display: table-cell; 
+	vertical-align: middle;
+	padding-left: 50%;
+	padding-right: 10%;
 }
 #moreInfo .close-more-info {
 	text-align: right;
@@ -69,18 +78,20 @@
     position: absolute;
     color: #fff;
     text-align: center;
-    bottom: -300px;
+    bottom: -35%;
     left: 0;
     right: 0;
     opacity:0;
     width: 100%;
+	height: 35%;	
+    display: block;
     background: rgba(0,0,0,0.8);
-    height: 300px;
 	transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
 }
 .paywall-inner.showPaywall {
-	transform:translateY(-300px);
-	-webkit-transform:translateY(-300px);
+	transform:translateY(-100%);
+	-webkit-transform:translateY(-100%);
 	opacity: 1;
 }
 .paywall-inner:after {
@@ -144,15 +155,14 @@
     font-size: 16px;
     line-height: 1.5em;
     font-weight: 100;
-
 }
 .paywall a {
 	color: #fff;
 
 }
-.paywall .products {
+#paywall-products {
 }
-.paywall .products .paywall-buy-product {
+#paywall-products .paywall-buy-product {
     display: inline-block;
     margin: auto 5px;
 }
@@ -195,9 +205,11 @@
 }
 .paywall input::-webkit-input-placeholder {
 	color: #fff;
+	font-weight: 100;
 }
 .paywall input:-moz-placeholder {
 	color: #fff;
+	font-weight: 400;
 }
 .paywall input:focus {
 	border-color: #fff;
@@ -229,7 +241,101 @@
 .paywall.android-beta h1{
 	font-size: 28px;
 }
-
 @media only screen and (min-width: 768px) {
+	#moreInfo {
+		top: -65%;
+	}
 }
 
+@media only screen and (max-width: 768px) {
+	.paywall .paywallHeader {
+		width: 90%;
+		padding: 0;
+		margin: 10px auto;
+	}
+	#moreInfo {
+		bottom: -404px;
+		left: 0;
+		right: 0;
+		height: auto;
+		opacity: 0;
+		z-index: 1;
+		height: 404px;
+	}
+	#moreInfo.open{
+		transform:translateY(-100%);
+		-webkit-transform:translateY(-100%);
+	    opacity: 1;
+	}
+	.paywall-inner {
+		height: 400px;
+		bottom: -400px;
+	}
+	.paywall .paywallHeader {
+		width: 100%;
+		padding: 0 20px;
+		margin: auto;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+	}
+	.paywall p {
+		font-size: 14px;
+		text-align: left;
+	}
+	.paywall footer p {
+		text-align: center;
+	}
+	.paywall input {
+		padding: 7px 20px;
+		width: 90%;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+		border-left: none;
+		border-right: none;
+		margin-top: -1px;
+		float: left;
+	}
+	#paywall-products .paywall-buy-product {
+		margin: 5px auto 0;
+		width: 90%;
+	}
+	.paywall .green-button {
+		margin: auto;
+		padding: 7px 20px;
+		width: 100%;
+		box-sizing:border-box;
+		-moz-box-sizing:border-box;
+	}
+	.paywall input[type="submit"] {
+		background: #85B200;
+		border: 1px solid #85B200;
+		font-weight: bold;
+		width: 10%;
+		padding: 0;
+		float: left;
+		height: 72px;
+		margin-top: -36px;
+	}
+	.paywall nav {
+		position: static;
+	}
+	.paywall nav div {
+		padding: 10px 0;
+		margin: 0 10px;
+		
+	}
+	.paywall nav div.more-info-trigger {
+		bottom: 10px;
+		right: 10px;
+		top: inherit;
+	}
+
+	
+	#moreInfo .content {
+		padding: 10% 7%;
+		background: none;
+	}
+	.paywall footer {
+		padding: 10px 20px;
+	}
+}
