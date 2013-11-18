@@ -1,5 +1,16 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,600,700,300);
 
+::selection { background: transparent; }
+::-moz-selection { background: transparent; }
+
+.paywall * {
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none; 
+}
+
 .overflowHidden {
 	overflow: hidden;
 	height: 100%;
@@ -130,6 +141,9 @@
 	top: 50%;
 	margin-top: -15px;
 }
+.paywall nav div.more-info-trigger:active{
+	background: #85B200;
+}
 .paywall nav div.open{
 	border-bottom: 3px solid #fff;
 }
@@ -155,6 +169,11 @@
     font-size: 16px;
     line-height: 1.5em;
     font-weight: 100;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    user-select: text;
 }
 .paywall a {
 	color: #fff;
@@ -177,13 +196,13 @@
 }
 .paywall a:active .green-button,
 .paywall a.green-button:active {
-    background: #3f9207;
-    border: 1px solid #3f9207;
+    background: #85B200;
+    border: 1px solid #85B200;
 
 }
 .paywall a {
     text-decoration: none;
-    font-weight: 100;
+    font-weight: 100 !important;
 }
 
 .paywall input {
@@ -197,11 +216,20 @@
 	-webkit-border-radius:0;
 	font-weight: 700;
 	font-family: 'Open Sans', sans-serif;
+    -webkit-user-select: text;
+    -khtml-user-select: text;
+    -moz-user-select: text;
+    -o-user-select: text;
+    user-select: text;
 }
 .paywall input[type="submit"] {
 	background: #85B200;
 	border: 1px solid #85B200;
 	font-weight: bold;
+}
+.paywall input[type="submit"]:focus {
+	background: none;
+	border: 1px solid #85B200;
 }
 .paywall input::-webkit-input-placeholder {
 	color: #fff;
@@ -225,9 +253,12 @@
 }
 .paywall footer a{
 	font-size: inherit;
-	margin: 10px 5px;
-	font-weight: 500;
-	font-style: italic;
+	margin: 10px 5px !important;
+	font-weight: 500 !important;
+	font-style: italic !important;
+}
+.paywall footer a:active{
+	color: #85B200 !important;
 }
 .paywall footer p{
 	line-height: 1em;

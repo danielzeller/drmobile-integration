@@ -83,7 +83,6 @@ define('paywall', ['main'], function (app) {
 		return false;
 	});
 	
-	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
 		var username = $(this).find('input[name="username"]').val();
