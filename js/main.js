@@ -185,6 +185,9 @@ define('main', ['alf', 'js/widgets/disqus'], function (Alf, disqus) {
 	app.event.on('renderPage', function(deskedPage, assetsBaseUrl, contextHash, onRenderCompleted, onReadyForDisplay) {
 		var pageContentEl = $('#alf-layer-content');
 
+		onRenderCompleted = "onRenderCompleted";
+		onReadyForDisplay = "readyForDisplay";
+
 		window.scrollTo(0);
 		app.renderPage(pageContentEl, deskedPage, assetsBaseUrl, function() {
 			if(onReadyForDisplay) {
