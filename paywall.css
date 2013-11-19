@@ -177,6 +177,8 @@
 }
 .paywall a {
 	color: #fff !important;
+    text-decoration: none !important;
+    font-weight: 100 !important;
 }
 
 #paywall-products .paywall-buy-product {
@@ -198,11 +200,6 @@
     border: 1px solid #85B200;
 
 }
-.paywall a {
-    text-decoration: none;
-    font-weight: 100 !important;
-}
-
 .paywall input {
 	background: none;
 	border: 1px solid rgba(255,255,255,0.5);
