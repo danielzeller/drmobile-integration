@@ -20,7 +20,7 @@ define('paywall', ['main'], function (app) {
 			});
 		}
 
-		$('#paywallInner').addClass('showPaywall');
+		$('#purchase-with-products-wall').addClass('showPaywall');
 
 		console.log('Displaying paywall');
 		
@@ -117,8 +117,6 @@ define('paywall', ['main'], function (app) {
 	    e.preventDefault();
 		return false;
 	});
-	
-
  
 	return paywall;
 });

@@ -27,6 +27,10 @@
 	overflow: hidden;
 	display: block;
 	font-family: 'Open Sans', sans-serif;
+	pointer-events: none;
+}
+.paywall.showPaywall {
+	pointer-events: inherit;
 }
 .green {
 	color: #85B200;
@@ -38,6 +42,16 @@
 	left: 0;
 	right: 0;
 	top: 0;
+}
+.aftenposten-logo {
+	position: absolute;
+	bottom: 25px;
+	width: 47px;
+	height: 47px;
+	left: 50%;
+	margin-left: -24px;
+	background: url(gfx/paywall-sprite@2x.png) no-repeat center -42px;
+	background-size: 47px;
 }
 
 #moreInfo {
@@ -100,7 +114,7 @@
 	transition: all 0.3s ease-out;
 	-webkit-transition: all 0.3s ease-out;
 }
-.paywall-inner.showPaywall {
+.showPaywall .paywall-inner {
 	transform:translateY(-100%);
 	-webkit-transform:translateY(-100%);
 	opacity: 1;
@@ -148,13 +162,18 @@
 	border-bottom: 3px solid #fff;
 }
 .paywall-tab {
-	display: none;
-}
-.paywall-login {
-	display: block;
+	transition: all 0.3s ease-out;
+	-webkit-transition: all 0.3s ease-out;
+	opacity: 0;
+	position: absolute;
+	width: 100%;
+	left: 25%;
+	pointer-events: none;
 }
 .paywall-tab.open {
-	display: block;
+	opacity: 1;
+	left: 0;
+	pointer-events: inherit;
 }
 .paywall .paywallHeader {
     padding: 0 20px;
@@ -257,6 +276,10 @@
 	color: #85B200 !important;
 }
 
+.paywall footer a:active{
+	color: #85B200 !important;
+}
+
 .paywall a.icon {
 	position: relative;
 	padding-left: 36px;
@@ -275,6 +298,16 @@
 .paywall a.icon.paywall-logout:before {
 	background: url(gfx/paywall-sprite@2x.png) no-repeat -25px -19px;
 	background-size: 47px;
+}
+.paywall a.spid-logo{
+	position: relative;
+	background: url(gfx/paywall-sprite@2x.png) no-repeat left top;
+	background-size: 53px;
+	width: 50px;
+	display: inline-block;
+	height: 20px;
+	padding: 0;
+	margin: 0 0 -4px !important;
 }
 
 
@@ -302,6 +335,9 @@
 		padding: 0;
 		margin: 10px auto;
 	}
+	.paywall h1 {
+		font-size: 20px;
+	}
 	#moreInfo {
 		bottom: -404px;
 		left: 0;
@@ -310,6 +346,11 @@
 		opacity: 0;
 		z-index: 1;
 		height: 404px;
+	}
+	#moreInfo .content {
+		padding: 10% 7%;
+		background: none;
+		display: block;
 	}
 	#moreInfo.open{
 		transform:translateY(-100%);
@@ -335,16 +376,16 @@
 		text-align: center;
 	}
 	.paywall input {
-		padding: 7px 20px;
+		padding: 7px 10px;
 		width: 90%;
 		box-sizing:border-box;
 		-moz-box-sizing:border-box;
-		border-left: none;
 		border-right: none;
 		margin-top: -1px;
 		float: left;
 	}
-	#paywall-products .paywall-buy-product {
+	#paywall-products .paywall-buy-product,
+	.paywall form {
 		margin: 5px auto 0;
 		width: 90%;
 	}
@@ -380,10 +421,7 @@
 	}
 
 	
-	#moreInfo .content {
-		padding: 10% 7%;
-		background: none;
-	}
+
 	.paywall footer {
 		padding: 10px 20px;
 	}
