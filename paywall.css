@@ -196,7 +196,7 @@
 }
 .paywall a:active .green-button,
 .paywall a.green-button:active {
-    background: #85B200;
+    background: transparent;
     border: 1px solid #85B200;
 
 }
@@ -257,9 +257,32 @@
 	font-weight: 500 !important;
 	font-style: italic !important;
 }
+
 .paywall footer a:active{
 	color: #85B200 !important;
 }
+
+.paywall a.icon {
+	position: relative;
+	padding-left: 36px;
+	margin-left: 10px !important;
+}
+.paywall a.icon:before {
+	content: '';
+	height: 21px;
+	width: 21px;
+	background: url(gfx/paywall-sprite@2x.png) no-repeat left -19px;
+	background-size: 47px;
+	position: absolute;
+	left: 8px;
+}
+
+.paywall a.icon.paywall-logout:before {
+	background: url(gfx/paywall-sprite@2x.png) no-repeat -25px -19px;
+	background-size: 47px;
+}
+
+
 .paywall footer p{
 	line-height: 1em;
 }
