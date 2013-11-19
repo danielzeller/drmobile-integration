@@ -176,11 +176,9 @@
     user-select: text;
 }
 .paywall a {
-	color: #fff;
+	color: #fff !important;
+}
 
-}
-#paywall-products {
-}
 #paywall-products .paywall-buy-product {
     display: inline-block;
     margin: auto 5px;
