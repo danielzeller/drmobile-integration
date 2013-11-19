@@ -50,28 +50,21 @@ define('paywall', ['main'], function (app) {
 		var productIdentifier = $(this).attr('productIdentifier');
 		productIdentifier = "com.ivyengine.aftenpostenmonthly";
 		console.log('User wants access - buy - ' + productIdentifier);
-		app.bridge.trigger('userWantsAccess', 'buy', productIdentifier);
+		app.bridge.trigger('buy', null, productIdentifier);
 	    e.preventDefault();
 		return false;
 	});
 
 	$('.paywall-restore').click(function() {
 		console.log('User wants access - restore');
-		app.bridge.trigger('userWantsAccess', 'restore');
+		app.bridge.trigger('login', null, null, null);
 	    e.preventDefault();
 		return false;
 	});
 
 	$('.paywall-subscribe').click(function() {
-		console.log('User wants access - subscribe');
-		app.bridge.trigger('userWantsAccess', 'subscribe');
-	    e.preventDefault();
-		return false;
-	});
-	
-	$('.show-user-profile').click(function() {
-		console.log('User wants to open - user profile');
-		app.bridge.trigger('showUserProfile');
+		console.log('User wants access - register');
+		app.bridge.trigger('register', null);
 	    e.preventDefault();
 		return false;
 	});
@@ -87,7 +80,7 @@ define('paywall', ['main'], function (app) {
 		console.log('User wants access - login');
 		var username = $(this).find('input[name="username"]').val();
 	    var password = $(this).find('input[name="password"]').val()
-		app.bridge.trigger('userWantsAccess', 'login', username, password);
+		app.bridge.trigger('login', null, username, password);
 	    e.preventDefault();
 		return false;
 	});
