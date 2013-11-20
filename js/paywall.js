@@ -20,7 +20,7 @@ define('paywall', ['main'], function (app) {
 			});
 		}
 
-		$('#purchase-with-products-wall').addClass('showPaywall');
+		$('.paywall').addClass('showPaywall');
 
 		console.log('Displaying paywall');
 		
@@ -29,7 +29,7 @@ define('paywall', ['main'], function (app) {
 
 	app.event.on('hidePaywall', function (animated) {
 
-		$('#paywallInner').removeClass('showPaywall');
+		$('.paywall').removeClass('showPaywall');
 
 		console.log('Hiding paywall');
 		
