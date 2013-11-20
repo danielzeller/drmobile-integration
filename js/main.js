@@ -31,7 +31,10 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner'], function (Alf,
 		},
 
 		logToApp: function(data) {
-			this.bridge.trigger('log', data);
+			this.bridge.trigger('log', {
+				"message": data,
+				"level": 1
+			});
 		},
 
 		logToConsole: function(data) {
@@ -163,61 +166,60 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner'], function (Alf,
 	window.onerror = function(message, url, linenumber) {
 		var error = url + ':' + linenumber + ' - ' + message;
 		app.logToConsole(error);
-		app.bridge.trigger('error', error);
+		app.bridge.trigger('error', { 
+			"reason": error
+		});
 	}
 
 
 	Alf.hub.on('fullscreenWillAppear', function () {
-		app.bridge.trigger('displayState', {event:'fullscreenWillAppear'});
+		app.bridge.trigger('displayState', {"event":'fullscreenWillAppear'});
 	}, this);
 
 	Alf.hub.on('fullscreenWillDisappear', function () {
-		app.bridge.trigger('displayState', {event:'fullscreenWillDisappear'});
+		app.bridge.trigger('displayState', {"event":'fullscreenWillDisappear'});
 	}, this);
 
 	Alf.hub.on('fullscreenDidAppear', function() {
-		app.bridge.trigger('displayState', {event:'fullscreenDidAppear'});
+		app.bridge.trigger('displayState', {"event":'fullscreenDidAppear'});
 	});
 
 	Alf.hub.on('fullscreenDidDisappear', function() {
-		app.bridge.trigger('displayState', {event:'fullscreenDidDisappear'});
+		app.bridge.trigger('displayState', {"event":'fullscreenDidDisappear'});
 	});
 
-	app.event.on('renderPage', function(deskedPage, assetsBaseUrl, contextHash, onRenderCompleted, onReadyForDisplay) {
+	app.event.on('renderPage', function(args) {
 		var pageContentEl = $('#alf-layer-content');
 
-		onRenderCompleted = "onRenderCompleted";
-		onReadyForDisplay = "readyForDisplay";
-
 		window.scrollTo(0);
-		app.renderPage(pageContentEl, deskedPage, assetsBaseUrl, function() {
-			if(onReadyForDisplay) {
-				app.bridge.trigger(onReadyForDisplay, contextHash);
+		app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {
+			if(args.onReadyForDisplay) {
+				app.bridge.trigger(args.onReadyForDisplay, {
+					"contextHash": args.contextHash
+				});
 			}
 		});
-		if(onRenderCompleted) {
-			app.bridge.trigger(onRenderCompleted, contextHash);
+		if(args.onRenderCompleted) {
+			app.bridge.trigger(args.onRenderCompleted, {
+				"contextHash": args.contextHash
+			});
 		}
 	});
 
 	app.event.on('applicationInfo', function (info) {
-		//app.logToAll('Got applicationInfo:');
+		app.logToAll('Got applicationInfo:');
 	});
 
-	app.event.on('visibillity', function(state) {
-		//app.logToAll('Got visibillity state: ' + state);
+	app.event.on('networkReachability', function (state) {
+		app.logToAll('Got applicationInfo:');
 	});
 
-	app.event.on('focus', function(state) {
-		//app.logToAll('Got focus state: ' + state);
-	});
-
-	app.event.on('appstate', function(state) {
-		//app.logToAll('Got appstate: ' + state);
+	app.event.on('applicationState', function(state) {
+		app.logToAll('Got appstate: ' + state);
 	});
 
 	$(document).ready(function () {
-		app.bridge.trigger('integrationLoaded');
+		app.bridge.trigger('integrationLoaded', {});
 	});
 
 	return app;
