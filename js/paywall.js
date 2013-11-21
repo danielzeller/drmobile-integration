@@ -51,37 +51,32 @@ define('paywall', ['main'], function (app) {
 		productIdentifier = "com.ivyengine.aftenpostenmonthly";
 		console.log('User wants access - buy - ' + productIdentifier);
 		app.bridge.trigger('buy', null, productIdentifier);
-	    e.preventDefault();
 		return false;
 	});
 
 	$('.paywall-restore').click(function() {
 		console.log('User wants access - restore');
 		app.bridge.trigger('login', null, null, null);
-	    e.preventDefault();
 		return false;
 	});
 
 	$('.paywall-subscribe').click(function() {
 		console.log('User wants access - register');
 		app.bridge.trigger('register', null);
-	    e.preventDefault();
 		return false;
 	});
 	
 	$('.paywall-logout').click(function() {
 		console.log('User wants to logout - logout');
 		app.bridge.trigger('logout', null);
-	    e.preventDefault();
 		return false;
 	});
 	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
 		var username = $(this).find('input[name="username"]').val();
-	    var password = $(this).find('input[name="password"]').val()
+	    var password = $(this).find('input[name="password"]').val();
 		app.bridge.trigger('login', null, username, password);
-	    e.preventDefault();
 		return false;
 	});
 	
@@ -89,7 +84,6 @@ define('paywall', ['main'], function (app) {
 		console.log('User wants password - forgotPassword');
 		var username = $(this).find('input[name="username"]').val();
 		app.bridge.trigger('forgotPassword', null, username);
-	    e.preventDefault();
 		return false;
 	});
 	                     
@@ -100,21 +94,18 @@ define('paywall', ['main'], function (app) {
 		$(".paywall-tab-trigger.open").removeClass('open');
 	    $(toShow).addClass('open');
 	    $(this).addClass('open');
-	    e.preventDefault();
 		return false;
 	});
 
 	$(".more-info-trigger").bind('click', function(e){
 	    var toShow = $(this).attr('target');
 	    $(toShow).addClass('open');
-	    e.preventDefault();
 		return false;
 	});
 
 	$(".close-more-info").bind('click', function(e){
 	    var toShow = $(this).attr('target');
 	    $(toShow).removeClass('open');
-	    e.preventDefault();
 		return false;
 	});
  
