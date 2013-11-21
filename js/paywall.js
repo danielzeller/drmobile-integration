@@ -88,7 +88,7 @@ define('paywall', ['main'], function (app) {
 	$('#paywall-forgot-password form').bind('submit', function(e) {
 		console.log('User wants password - forgotPassword');
 		var username = $(this).find('input[name="username"]').val();
-		app.bridge.trigger('userWantsPassword', 'login', username, password);
+		app.bridge.trigger('forgotPassword', username);
 	    e.preventDefault();
 		return false;
 	});
