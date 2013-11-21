@@ -71,7 +71,7 @@ define('paywall', ['main'], function (app) {
 	
 	$('.paywall-logout').click(function() {
 		console.log('User wants to logout - logout');
-		app.bridge.trigger('logoutUser', 'logout');
+		app.bridge.trigger('logout', null);
 	    e.preventDefault();
 		return false;
 	});
@@ -88,7 +88,7 @@ define('paywall', ['main'], function (app) {
 	$('#paywall-forgot-password form').bind('submit', function(e) {
 		console.log('User wants password - forgotPassword');
 		var username = $(this).find('input[name="username"]').val();
-		app.bridge.trigger('forgotPassword', username);
+		app.bridge.trigger('forgotPassword', null, username);
 	    e.preventDefault();
 		return false;
 	});
