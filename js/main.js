@@ -169,7 +169,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner'], function (Alf,
 		app.bridge.trigger('error', { 
 			"reason": error
 		});
-	}
+	};
 
 
 	Alf.hub.on('fullscreenWillAppear', function () {
