@@ -154,9 +154,13 @@
 	right: 20px;
 	top: 50%;
 	margin-top: -15px;
+	cursor: pointer;
 }
 .paywall nav div.more-info-trigger:active{
 	background: #85B200;
+}
+.paywall nav div{
+	border-bottom: 3px solid transparent;
 }
 .paywall nav div.open{
 	border-bottom: 3px solid #fff;
@@ -308,7 +312,7 @@
 	display: inline-block;
 	height: 20px;
 	padding: 0;
-	margin: 0 0 -4px !important;
+	margin: 0 20px -4px 0 !important;
 }
 
 
@@ -320,6 +324,20 @@
     float: none;
     width: inherit;
 }
+
+.paywall .halfWidth {
+	width: 45%;
+	float: right;
+	text-align: left;
+}
+.paywall .halfWidth:first-child {
+	float: left;
+}
+.paywall #paywall-buy .paywallHeader:first-child {
+	width: 80%;
+	margin: 10px auto;
+}
+
 
 .paywall.android-beta h1{
 	font-size: 28px;

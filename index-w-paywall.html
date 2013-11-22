@@ -52,16 +52,16 @@
 			<nav>
 				<div target="#paywall-login" class="paywall-tab-trigger open">Allerede abonnent?</div>
 <!-- 				<div target="#paywall-logged-in" class="paywall-tab-trigger">Pålogget uten bruker</div> -->
-				<div target="#paywall-products" class="paywall-tab-trigger">Bli abonnent</div>
+				<div target="#paywall-buy" class="paywall-tab-trigger">Bli abonnent</div>
 				<div target="#moreInfo" class="more-info-trigger">i</div>
 			</nav>
 		    <div id="paywall-login" class="paywall-tab open">
 				<header class="paywallHeader">
-	                <p>Jeg er Aftenposten-kunde og har kjøpt tilgang til aftenposten på iPad, eller en produktpakke som innholder aftenposten på iPad.</p>
+	                <p><b>Kunde hos aftenposten?</b><br>Logg inn med din SPiD-bruker:</p>
 	        	</header>
 				<form action="">
-					<input type="text" name="username" placeholder="SPiD-brukernavn">
-					<input type="password" name="password" placeholder="SPiD-passord">
+					<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off">
+					<input type="password" name="password" value="paywall12" placeholder="SPiD-passord" autocomplete="off">
 					<input type="submit" value=" › ">
 				</form>
 				<footer class="paywallFooter">
@@ -75,7 +75,7 @@
 	                <p>Skriv inn din SPiD-brukernavn for å få tilsendt glemt SPiD-passord.</p>
 	        	</header>
 				<form action="">
-					<input type="text" name="username" placeholder="SPiD-brukernavn">
+					<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off">
 					<input type="submit" value=" › ">
 				</form>
 				<footer class="paywallFooter">
@@ -85,9 +85,8 @@
 		    </div>
 		    <div id="paywall-logged-in" class="paywall-tab">
 				<header class="paywallHeader">
-	                <p>Hei <b>Arild Langtind</b>, du er logget på med en SPiD-bruker uten tilgang.
-Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
-
+                	<p>Hei <b>Arild Langtind</b>, du er logget på med en SPiD-bruker uten tilgang. Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
+                	
 					<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <b target="#moreInfo" class="green more-info-trigger">Les mer ›</b></p>
 	        	</header>
 				<footer class="paywallFooter">
@@ -95,9 +94,24 @@ Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
 					<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
 				</footer>
 		    </div>
+		    <div id="paywall-buy" class="paywall-tab">
+				<header class="paywallHeader">
+	                <div class="halfWidth">
+		                <p><b>Kjøp abonnement hos Aftenposten</b><br>
+Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<b target="#moreInfo" class="green more-info-trigger"> Les mer her ›</b></p>
+	                </div>
+	                <div class="halfWidth">
+		                <p><b>Kjøp abonnement via iTunes App Store</b><br>
+Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du gjennom din iTunes konto.<b target="#paywall-products" class="green paywall-tab-trigger"> Kjøp tilgang her ›</b></p>
+	                </div>
+	        	</header>
+				<footer class="paywallFooter">
+					<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+				</footer>
+		    </div>
 		    <div id="paywall-products" class="paywall-tab">
 				<header class="paywallHeader">
-	                <p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <b target="#moreInfo" class="green more-info-trigger">Les mer ›</b></p>
+	                <p>Kjøp abonnement på appen via iTunes</p>
 	        	</header>
 		        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
 		            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
@@ -106,8 +120,10 @@ Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
 		            <div class="green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
 		        </a>
 				<footer class="paywallFooter">
+					<span target="#paywall-buy" class="green paywall-tab-trigger">« Gå tilbake</span>
+
 					<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
-					<p><small>*Ditt abonnement løper til det sies opp og kan når som helst avsluttes i iTunes.</small></p>
+					<p><small>*Du administrerer ditt abonnement via din iTunes konto.</small></p>
 				</footer>
 		    </div>
 		</div>
