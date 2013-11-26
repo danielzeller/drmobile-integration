@@ -13,7 +13,7 @@ define('paywall', ['main'], function (app) {
 		var animDuration = args.animated ? 300 : 0;
 		if(gotProducts)
 		{
-			$.each(products, function(i, p) {
+			$.each(args.products, function(i, p) {
 				var productEl = $('[pid="'+p.productIdentifier+'"]');
 				var productPriceEl = productEl.find('.paywall-product-price');
 				productPriceEl.text(p.price + ',-');
