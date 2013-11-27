@@ -36,24 +36,31 @@
 	overflow: hidden;
 	display: block;
 	font-family: 'Open Sans', sans-serif;
-	pointer-events: none;
-	position: relative;
-}
-.paywall.showPaywall {
 	pointer-events: inherit;
+	position: relative;
 }
 .green {
 	color: #85B200;
 }
 
-#moreInfoContainer {
+.paywall nav div.more-info-trigger{
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 100%;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #85B200;
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	top: 0;
-	display: none;
+	right: 20px;
+	top: 50%;
+	margin-top: -15px;
+	cursor: pointer;
 }
+.paywall nav div.more-info-trigger:active{
+	background: #85B200;
+}
+
 .aftenposten-logo {
 	position: absolute;
 	bottom: 25px;
@@ -65,64 +72,12 @@
 	background-size: 47px;
 }
 
-#moreInfo {
-	background: #fff;
-	background: rgba(255,255,255,0.95);
-	position: absolute;
-	overflow: hidden;
-	left: 0;
-	width: 100%;
-	right: 0;
-	opacity: 0;
-	height: 65%;
-	display: table;
-	transition: all 0.3s ease-out;
-	-webkit-transition: all 0.3s ease-out;
-}
-
-#moreInfo.open{
-	transform:translateY(100%);
-	-webkit-transform:translateY(100%);
-    opacity: 1;
-}
-
-#moreInfo .content{
-	background: url(gfx/paywall/moreinfo_bg.png) no-repeat #fff left center;
-	background-size: 100%;
-	height: 100%;
-	box-sizing:border-box;
-	-moz-box-sizing:border-box;
-	display: table-cell; 
-	vertical-align: middle;
-	padding-left: 50%;
-	padding-right: 10%;
-}
-#moreInfo .close-more-info {
-	text-align: right;
-	color: #333;
-	padding: 20px;
-	margin: auto;
-	display: block;
-	bottom: 0;
-	margin-left: -70px;
-	right: 0;
-	font-weight: 400;
-	color: #333;
-}
 .paywall-inner {
     color: #fff;
     text-align: center;
-    opacity:0;
+    opacity:1;
     display: block;
     background: rgba(0,0,0,0.8);
-/*
-	transition: all 0.3s ease-out;
-	-webkit-transition: all 0.3s ease-out;
-*/
-}
-
-.showPaywall .paywall-inner {
-	opacity: 1;
 }
 .paywall-inner:before {
 	position: absolute;
@@ -147,23 +102,7 @@
 	font-weight: bold;
 	display: inline-block;
 }
-.paywall nav div.more-info-trigger{
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	border-radius: 100%;
-	padding: 0;
-	margin: 0;
-	border: 1px solid #85B200;
-	position: absolute;
-	right: 20px;
-	top: 50%;
-	margin-top: -15px;
-	cursor: pointer;
-}
-.paywall nav div.more-info-trigger:active{
-	background: #85B200;
-}
+
 .paywall nav div{
 	border-bottom: 3px solid transparent;
 }
@@ -351,13 +290,17 @@
 .paywall.android-beta h1{
 	font-size: 28px;
 }
-@media only screen and (min-width: 768px) {
-	#moreInfo {
-		top: -65%;
-	}
-}
-
 @media only screen and (max-width: 768px) {
+	.paywall .halfWidth {
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	.paywall #paywall-buy .paywallHeader:first-child {
+		width: 100%;
+		margin: 0 auto;
+	}
+
 	.paywall .paywallHeader {
 		width: 90%;
 		padding: 0;
@@ -366,28 +309,7 @@
 	.paywall h1 {
 		font-size: 20px;
 	}
-	#moreInfo {
-		bottom: -404px;
-		left: 0;
-		right: 0;
-		height: auto;
-		opacity: 0;
-		z-index: 1;
-		height: 404px;
-	}
-	#moreInfo .content {
-		padding: 10% 7%;
-		background: none;
-		display: block;
-	}
-	#moreInfo.open{
-		transform:translateY(-100%);
-		-webkit-transform:translateY(-100%);
-	    opacity: 1;
-	}
 	.paywall-inner {
-		height: 400px;
-		bottom: -400px;
 	}
 	.paywall .paywallHeader {
 		width: 100%;
@@ -447,7 +369,6 @@
 		right: 10px;
 		top: inherit;
 	}
-
 	
 
 	.paywall footer {

@@ -33,25 +33,13 @@
 
 
 <div class="chrome" id="chrome">
-	<div id="purchase-with-products-wall" class="paywall showPaywall">
-		<div id="moreInfoContainer">
-			<div id="moreInfo" class="">
-				<div class="content">
-					<h1>Velkommen til aftenposten</h1>
-					<p>Aftenposten for iPad er et abonnementsprodukt som er tilgjengelig for kjøp både gjennom App Store og direkte fra Aftenposten.</p>
-		
-		<p>På Aftenpostens kundesider <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder.</p>
-				</div>
-				<div target="#moreInfo" class="close-more-info">Lukk</div>
-				<div target="#moreInfo" class="aftenposten-logo"></div>
-			</div>
-		</div>
+	<div id="purchase-with-products-wall" class="paywall">
 		<div id="paywallInner" class="paywall-inner clearfix">
 			<nav>
 				<div target="#paywall-login" class="paywall-tab-trigger open">Allerede abonnent?</div>
-				<div target="#paywall-logged-in" class="paywall-tab-trigger">Pålogget uten bruker</div>
+<!-- 				<div target="#paywall-logged-in" class="paywall-tab-trigger">Pålogget uten bruker</div> -->
 				<div target="#paywall-buy" class="paywall-tab-trigger">Bli abonnent</div>
-				<div target="#moreInfo" class="more-info-trigger">i</div>
+				<div target="#guide" class="more-info-trigger">i</div>
 			</nav>
 		    <div id="paywall-login" class="paywall-tab open">
 				<header class="paywallHeader">
@@ -63,7 +51,7 @@
 					<input type="submit" value=" › ">
 				</form>
 				<footer class="paywallFooter">
-					<a target="#moreInfo" class="spid-logo more-info-trigger"></a>
+					<a target="#guide" class="spid-logo more-info-trigger"></a>
 					<a target="#paywall-forgot-password" class="paywall-tab-trigger forgotPassword">Glemt passord?</a>
 					<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
 				</footer>
@@ -77,7 +65,7 @@
 					<input type="submit" value=" › ">
 				</form>
 				<footer class="paywallFooter">
-					<a target="#moreInfo" class="spid-logo more-info-trigger"></a>
+					<a target="#guide" class="spid-logo more-info-trigger"></a>
 					<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
 				</footer>
 		    </div>
@@ -85,7 +73,7 @@
 				<header class="paywallHeader">
                 	<p>Hei <b>Arild Langtind</b>, du er logget på med en SPiD-bruker uten tilgang. Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
                 	
-					<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <b target="#moreInfo" class="green more-info-trigger">Les mer ›</b></p>
+					<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <b target="#guide" class="green more-info-trigger">Les mer ›</b></p>
 	        	</header>
 				<footer class="paywallFooter">
 					<a href="#" class="paywall-logout icon">Logg ut Arild Langtind</a>
@@ -96,7 +84,7 @@
 				<header class="paywallHeader">
 	                <div class="halfWidth">
 		                <p><b>Kjøp abonnement hos Aftenposten</b><br>
-Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<b target="#moreInfo" class="green more-info-trigger"> Les mer her ›</b></p>
+Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<b target="#guide" class="green more-info-trigger"> Les mer her ›</b></p>
 	                </div>
 	                <div class="halfWidth">
 		                <p><b>Kjøp abonnement via iTunes App Store</b><br>
@@ -145,14 +133,6 @@ require(['main', 'paywall'], function(app, paywall){
   //runs main(app) just by referencing it
 });
 
-window.onload = function() {
-	var paywallHeight = $('#paywallInner').height();
-	
-	console.log('paywallLoaded ' + paywallHeight);
-    app.bridge.trigger('paywallLoaded', {
-        "height": paywallHeight
-    });
-};
 </script>
 </body>
 </html>

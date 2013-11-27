@@ -1,6 +1,14 @@
 define('paywall', ['main'], function (app) {
 	"use strict";
 
+	$( document ).ready(function() {
+		var paywallHeight = $('#paywallInner').height();
+		
+		console.log('paywallLoaded ' + paywallHeight);
+	    app.bridge.trigger('paywallLoaded', {
+	        "height": paywallHeight
+	    });
+	});
 
 	
 	// PAYWALL 
@@ -23,12 +31,7 @@ define('paywall', ['main'], function (app) {
 			});
 		}
 
-		$('.paywall').addClass('showPaywall');
-
-		console.log('Displaying paywall');
-
-		console.log('paywallLoaded ' + paywallHeight);
-		
+		console.log('Updated paywall');		
 	});
 
 
