@@ -6,14 +6,14 @@ define('paywall', ['main'], function (app) {
 	var paywall = {};
 	paywall.shouldPreventTouch = true;
 
-	app.event.on('showPaywall', function (animated, products) {
-		var gotProducts = typeof(products) != "undefined" && products.length > 0;
+	app.event.on('showPaywall', function (args) {
+		var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
 		var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
-		var animDuration = animated ? 300 : 0;
+		var animDuration = args.animated ? 300 : 0;
 		if(gotProducts)
 		{
-			$.each(products, function(i, p) {
+			$.each(args.products, function(i, p) {
 				var productEl = $('[pid="'+p.productIdentifier+'"]');
 				var productPriceEl = productEl.find('.paywall-product-price');
 				productPriceEl.text(p.price + ',-');
@@ -27,7 +27,7 @@ define('paywall', ['main'], function (app) {
 		paywall.shouldPreventTouch = true;
 	});
 
-	app.event.on('hidePaywall', function (animated) {
+	app.event.on('hidePaywall', function (args) {
 
 		$('.paywall').removeClass('showPaywall');
 
@@ -50,40 +50,54 @@ define('paywall', ['main'], function (app) {
 		var productIdentifier = $(this).attr('productIdentifier');
 		productIdentifier = "com.ivyengine.aftenpostenmonthly";
 		console.log('User wants access - buy - ' + productIdentifier);
-		app.bridge.trigger('buy', null, productIdentifier);
+		app.bridge.trigger('buy', {
+			"provider": null,
+			"productIdentifier": productIdentifier
+		});
 		return false;
 	});
 
 	$('.paywall-restore').click(function() {
 		console.log('User wants access - restore');
-		app.bridge.trigger('login', null, null, null);
+		app.bridge.trigger('login', {
+			"provider": "itunes"
+		});
 		return false;
 	});
 
 	$('.paywall-subscribe').click(function() {
 		console.log('User wants access - register');
-		app.bridge.trigger('register', null);
+		app.bridge.trigger('register', {
+			"provider": null
+		});
 		return false;
 	});
 	
 	$('.paywall-logout').click(function() {
 		console.log('User wants to logout - logout');
-		app.bridge.trigger('logout', null);
+		app.bridge.trigger('logout', {
+			"provider": "spid"
+		});
 		return false;
 	});
 	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
-		var username = $(this).find('input[name="username"]').val();
-	    var password = $(this).find('input[name="password"]').val();
-		app.bridge.trigger('login', null, username, password);
+		app.bridge.trigger('login', {
+			"provider": "spid",
+			"username": $(this).find('input[name="username"]').val(),
+			"password": $(this).find('input[name="password"]').val()
+		});
 		return false;
 	});
 	
 	$('#paywall-forgot-password form').bind('submit', function(e) {
 		console.log('User wants password - forgotPassword');
 		var username = $(this).find('input[name="username"]').val();
-		app.bridge.trigger('forgotPassword', null, username);
+		app.bridge.trigger('forgotPassword', {
+			"provider": "spid",
+			"username": $(this).find('input[name="username"]').val()
+		});
 		return false;
 	});
 	                     

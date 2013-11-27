@@ -13,7 +13,7 @@ require(['main', 'pages'], function(app, pages){
   var state = {
     article: 0,
     page: 0
-  }
+  };
 
   function toCharCode (str) {
     return str.toUpperCase().charCodeAt();
