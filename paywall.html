@@ -149,7 +149,9 @@ window.onload = function() {
 	var paywallHeight = $('#paywallInner').height();
 	
 	console.log('paywallLoaded ' + paywallHeight);
-	
+    app.bridge.trigger('paywallLoaded', {
+        "height": paywallHeight
+    });
 };
 </script>
 </body>
