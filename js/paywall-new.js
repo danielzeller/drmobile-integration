@@ -21,13 +21,14 @@ define('paywall', ['main'], function (app) {
 		//var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var animDuration = args.animated ? 300 : 0;
 		var fullName = args.user;
-		var loggedInUser = fullName ? true : false;
-		var paywallState = loggedInUser ? $('#paywall-logged-in') : $('#paywall-login');
+		var isLoggedIn = fullName ? true : false;
+		var activePaywallElement = isLoggedIn ? $('#paywall-logged-in') : $('#paywall-login');
 		var paywallHeight = $('#paywallInner').height();
 		
-		if(loggedInUser) {
-			$('.paywall-tab').removeClass('open');
-			paywallState.addClass('open');
+		$('.paywall-tab').removeClass('open');
+		activePaywallElement.addClass('open');
+		
+		if(isLoggedIn) {
 			$('.getSpidUserName').text(fullName);
 		}
 		
