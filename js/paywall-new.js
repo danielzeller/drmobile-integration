@@ -16,12 +16,22 @@ define('paywall', ['main'], function (app) {
 	var paywall = {};
 
 	app.event.on('updatePaywall', function (args) {
-		var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
-		var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
-		var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
+		//var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
+		//var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
+		//var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var animDuration = args.animated ? 300 : 0;
+		var fullName = args.user;
+		var loggedInUser = fullName ? true : false;
+		var paywallState = loggedInUser ? $('#paywall-logged-in') : $('#paywall-login');
 		var paywallHeight = $('#paywallInner').height();
 		
+		if(loggedInUser) {
+			$('.paywall-tab').removeClass('open');
+			paywallState.addClass('open');
+			$('.getSpidUserName').text(fullName);
+		}
+		
+/*
 		if(gotProducts)
 		{
 			$.each(args.products, function(i, p) {
@@ -30,8 +40,10 @@ define('paywall', ['main'], function (app) {
 				productPriceEl.text(p.price + ',-');
 			});
 		}
-
+*/
+		
 		console.log('Updated paywall');		
+
 	});
 
 
@@ -85,12 +97,12 @@ define('paywall', ['main'], function (app) {
 		return false;
 	});
 	
-	$('#paywall-forgot-password form').bind('submit', function(e) {
-		console.log('User wants password - forgotPassword');
-		var username = $(this).find('input[name="username"]').val();
+	$('a.forgotPassword').bind('click', function(e) {
+		var forgotPasswordUrl = $(this).attr('href');
+		console.log('User wants password - forgotPassword ' + forgotPasswordUrl);
 		app.bridge.trigger('forgotPassword', {
 			"provider": "spid",
-			"username": $(this).find('input[name="username"]').val()
+			"url": forgotPasswordUrl
 		});
 		return false;
 	});

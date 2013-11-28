@@ -275,7 +275,7 @@
 
 .paywall .halfWidth {
 	width: 45%;
-	float: right;
+	float: left;
 	text-align: left;
 }
 .paywall .halfWidth:first-child {
