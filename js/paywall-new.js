@@ -1,30 +1,46 @@
 define('paywall', ['main'], function (app) {
 	"use strict";
+	
+	function updatePaywallHeight() {
 
-	$( document ).ready(function() {
+		// see wich tab is highest
+		var arr = [];
+		$('.paywall-tab').each(function(){
+		    arr.push($(this).outerHeight());	    
+		});			
+
+		$('#paywall-content').css('height', Math.max.apply( Math, arr ));
+
+		// push paywall Total height 
 		var paywallHeight = $('#paywallInner').height();
-		
-		console.log('paywallLoaded ' + paywallHeight);
 	    app.bridge.trigger('paywallLoaded', {
 	        "height": paywallHeight
 	    });
-	});
+		console.log('paywall height = ' + paywallHeight);		
 
+
+	}
+	
+
+	$(document).ready(function() {
+		window.setTimeout(updatePaywallHeight, 300);
+		
+	});
 	
 	// PAYWALL 
 
 	var paywall = {};
 
 	app.event.on('updatePaywall', function (args) {
-		//var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
-		//var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
-		//var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
+		var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
+		var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
+		var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var animDuration = args.animated ? 300 : 0;
 		var fullName = args.user;
 		var isLoggedIn = fullName ? true : false;
 		var activePaywallElement = isLoggedIn ? $('#paywall-logged-in') : $('#paywall-login');
 		var paywallHeight = $('#paywallInner').height();
-		
+				
 		$('.paywall-tab').removeClass('open');
 		activePaywallElement.addClass('open');
 		
@@ -32,7 +48,6 @@ define('paywall', ['main'], function (app) {
 			$('.getSpidUserName').text(fullName);
 		}
 		
-/*
 		if(gotProducts)
 		{
 			$.each(args.products, function(i, p) {
@@ -41,11 +56,12 @@ define('paywall', ['main'], function (app) {
 				productPriceEl.text(p.price + ',-');
 			});
 		}
-*/
 		
 		console.log('Updated paywall');		
 
 	});
+	
+	
 
 
 	$('#chrome').on('touchmove, touchstart', function () {

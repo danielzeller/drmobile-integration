@@ -3,6 +3,9 @@
 ::selection { background: transparent; }
 ::-moz-selection { background: transparent; }
 
+.chrome {
+    background: rgba(0,0,0,0.8);
+}
 .clearfix:after {
 	clear: both;
 	content: ' ';
@@ -17,19 +20,20 @@
 	clear: both;
 	display: block;
 }
-
+.green {
+	color: #85B200;
+}
+.overflowHidden {
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
 .paywall * {
 	-webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none; 
-}
-
-.overflowHidden {
-	overflow: hidden;
-	height: 100%;
-	width: 100%;
 }
 .paywall {
 	opacity: 1;
@@ -38,9 +42,26 @@
 	font-family: 'Open Sans', sans-serif;
 	pointer-events: inherit;
 	position: relative;
+	width: 100%;
+	border-bottom: 1px solid rgba(255,255,255,0.2);
 }
-.green {
-	color: #85B200;
+.paywall-inner {
+    color: #fff;
+    text-align: center;
+    opacity:1;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+}
+.paywall-inner:before {
+	position: absolute;
+	content: '';
+	height: 4px;
+	width: 100%;
+	left: 0;
+	top: -2px;
+	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
+	background-size: 100%;
 }
 
 .paywall nav div.more-info-trigger{
@@ -72,23 +93,6 @@
 	background-size: 47px;
 }
 
-.paywall-inner {
-    color: #fff;
-    text-align: center;
-    opacity:1;
-    display: block;
-    background: rgba(0,0,0,0.8);
-}
-.paywall-inner:before {
-	position: absolute;
-	content: '';
-	height: 4px;
-	width: 100%;
-	left: 0;
-	top: -2px;
-	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
-	background-size: 100%;
-}
 .paywall nav {
 	border-bottom: 1px solid rgba(255,255,255,0.2);
 	display: block;
@@ -109,22 +113,24 @@
 .paywall nav div.open{
 	border-bottom: 3px solid #fff;
 }
+#paywall-content {
+	position: relative;
+}
 .paywall-tab {
-/*
-	transition: all 0.3s ease-out;
 	-webkit-transition: all 0.3s ease-out;
-*/
+	transition: all 0.3s ease-out;
 	opacity: 0;
 	width: 100%;
 	left: 25%;
 	pointer-events: none;
-	display: none;
 	padding-bottom: 30px;
+	position: absolute;
+	top: 0;
+	
 }
 .paywall-tab.open {
 	opacity: 1;
 	left: 0;
-	display: block;
 	pointer-events: inherit;
 }
 .paywall .paywallHeader {
@@ -275,7 +281,7 @@
 
 .paywall .halfWidth {
 	width: 45%;
-	float: left;
+	float: right;
 	text-align: left;
 }
 .paywall .halfWidth:first-child {
