@@ -1,16 +1,53 @@
 define('paywall', ['main'], function (app) {
 	"use strict";
+	
+	function updatePaywallHeight() {
 
+		// see wich tab is highest
+		var arr = [];
+		$('.paywall-tab').each(function(){
+		    arr.push($(this).outerHeight());	    
+		});			
+
+		$('#paywall-content').css('height', Math.max.apply( Math, arr ));
+
+		// push paywall Total height 
+		var paywallHeight = $('#paywallInner').height();
+	    app.bridge.trigger('paywallLoaded', {
+	        "height": paywallHeight
+	    });
+		console.log('paywall height = ' + paywallHeight);		
+
+
+	}
+	
+
+	$(document).ready(function() {
+		window.setTimeout(updatePaywallHeight, 300);
+		
+	});
+	
 	// PAYWALL 
 
 	var paywall = {};
-	paywall.shouldPreventTouch = true;
 
-	app.event.on('showPaywall', function (args) {
+	app.event.on('updatePaywall', function (args) {
 		var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
 		var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var animDuration = args.animated ? 300 : 0;
+		var fullName = args.user;
+		var isLoggedIn = fullName ? true : false;
+		var activePaywallElement = isLoggedIn ? $('#paywall-logged-in') : $('#paywall-login');
+		var paywallHeight = $('#paywallInner').height();
+				
+		$('.paywall-tab').removeClass('open');
+		activePaywallElement.addClass('open');
+		
+		if(isLoggedIn) {
+			$('.getSpidUserName').text(fullName);
+		}
+		
 		if(gotProducts)
 		{
 			$.each(args.products, function(i, p) {
@@ -19,31 +56,17 @@ define('paywall', ['main'], function (app) {
 				productPriceEl.text(p.price + ',-');
 			});
 		}
-
-		$('.paywall').addClass('showPaywall');
-
-		console.log('Displaying paywall');
 		
-		paywall.shouldPreventTouch = true;
-	});
+		console.log('Updated paywall');		
 
-	app.event.on('hidePaywall', function (args) {
-
-		$('.paywall').removeClass('showPaywall');
-
-		console.log('Hiding paywall');
-		
-		paywall.shouldPreventTouch = false;		
 	});
 	
+	
+
+
 	$('#chrome').on('touchmove, touchstart', function () {
 		console.log('Touched paywall');
-
-		if(paywall.shouldPreventTouch) {
-			$('.layer-content').addClass('overflowHidden');
-		} else {
-			$('.layer-content').removeClass('overflowHidden');
-		}
+		$('.layer-content').removeClass('overflowHidden');
 	});
 
 	$('.paywall-buy-product').click(function() {
@@ -91,35 +114,23 @@ define('paywall', ['main'], function (app) {
 		return false;
 	});
 	
-	$('#paywall-forgot-password form').bind('submit', function(e) {
-		console.log('User wants password - forgotPassword');
-		var username = $(this).find('input[name="username"]').val();
+	$('a.forgotPassword').bind('click', function(e) {
+		var forgotPasswordUrl = $(this).attr('href');
+		console.log('User wants password - forgotPassword ' + forgotPasswordUrl);
 		app.bridge.trigger('forgotPassword', {
 			"provider": "spid",
-			"username": $(this).find('input[name="username"]').val()
+			"url": forgotPasswordUrl
 		});
 		return false;
 	});
 	                     
 	$(".paywall-tab-trigger").bind('click', function(e){
-	    var toShow = $(this).attr('target');
+	    var toShow = $(this).attr('intern');
 	    console.log('open ' + toShow);
 	    $(".paywall-tab.open").removeClass('open');
 		$(".paywall-tab-trigger.open").removeClass('open');
 	    $(toShow).addClass('open');
 	    $(this).addClass('open');
-		return false;
-	});
-
-	$(".more-info-trigger").bind('click', function(e){
-	    var toShow = $(this).attr('target');
-	    $(toShow).addClass('open');
-		return false;
-	});
-
-	$(".close-more-info").bind('click', function(e){
-	    var toShow = $(this).attr('target');
-	    $(toShow).removeClass('open');
 		return false;
 	});
  

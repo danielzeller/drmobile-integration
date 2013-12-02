@@ -29,6 +29,8 @@
 	</style>
 </head>
 <body>
+
+<?php $android = strstr($_SERVER['HTTP_USER_AGENT'],'Android'); ?>
 <div class="chrome" id="chrome">
 	<div id="purchase-with-products-wall" class="paywall">
 		<div id="paywallInner" class="paywall-inner clearfix">
@@ -51,7 +53,9 @@
 					<footer class="paywallFooter">
 						<a href="http://wp.agens.no/ivy/guide/" class="spid-logo"></a>
 						<a target="_blank" href="https://payment.schibsted.no/auth/forgotPassword?redirect=aftenposten.no" class="forgotPassword">Glemt passord?</a>
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<?php if( !$android ){ ?>
+							<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<?php } ?>					
 					</footer>
 			    </div>
 			    <div id="paywall-forgot-password" class="paywall-tab">
@@ -64,49 +68,73 @@
 					</form>
 					<footer class="paywallFooter">
 						<a href="http://wp.agens.no/ivy/guide/" class="spid-logo"></a>
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						
+						<?php if( !$android ){ ?>
+							<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<?php } ?>
 					</footer>
 			    </div>
 			    <div id="paywall-logged-in" class="paywall-tab">
 					<header class="paywallHeader">
 	                	<p>Hei <b><span class="getSpidUserName">Ukjent</span></b>, du er logget på med en SPiD-bruker uten tilgang. Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
 	                	
-						<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <a href="http://wp.agens.no/ivy/guide/" class="green">Les mer ›</a></p>
+						<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <a href="http://wp.agens.no/ivy/guide/" class="green"><b>Les mer ›</b></a></p>
 		        	</header>
 					<footer class="paywallFooter">
 						<a href="#" class="paywall-logout icon">Logg ut Arild Langtind</a>
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<?php if( !$android ){ ?>
+							<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<?php } ?>
 					</footer>
 			    </div>
-			    <div id="paywall-buy" class="paywall-tab">
-					<header class="paywallHeader">
-		                <div class="halfWidth">
-			                <p><b>Kjøp abonnement hos Aftenposten</b><br>
-	Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<a href="http://wp.agens.no/ivy/guide/" class="green"> <b>Les mer her ›</b></a></p>
-		                </div>
-		                <div class="halfWidth">
-			                <p><b>Kjøp abonnement via iTunes App Store</b><br>
-	Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du gjennom din iTunes konto.<b intern="#paywall-products" class="green paywall-tab-trigger"> Kjøp tilgang her ›</b></p>
-		                </div>
-		        	</header>
-			    </div>
-			    <div id="paywall-products" class="paywall-tab">
-					<header class="paywallHeader">
-		                <p>Kjøp abonnement på appen via iTunes</p>
-		        	</header>
-			        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
-			            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
-			        </a>
-			        <a href="#buymonthly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenmonthly">
-			            <div class="green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
-			        </a>
-					<footer class="paywallFooter">
-						<span intern="#paywall-buy" class="green paywall-tab-trigger">« Gå tilbake</span>
-	
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
-						<p><small>*Du administrerer ditt abonnement via din iTunes konto.</small></p>
-					</footer>
-			    </div>
+				<?php if( !$android ){ ?>
+
+				    <div id="paywall-buy" class="paywall-tab">
+						<header class="paywallHeader">
+			                <div class="halfWidth">
+				                <p><b>Kjøp abonnement hos Aftenposten</b><br>
+		Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<a href="http://wp.agens.no/ivy/guide/" class="green"> <b>Les mer her ›</b></a></p>
+			                </div>
+			                <div class="halfWidth">
+				                <p><b>Kjøp abonnement via iTunes App Store</b><br>
+		Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du gjennom din iTunes konto.<b intern="#paywall-products" class="green paywall-tab-trigger"> Kjøp tilgang her ›</b></p>
+			                </div>
+			        	</header>
+				    </div>
+				    <div id="paywall-products" class="paywall-tab">
+						<header class="paywallHeader">
+			                <p>Kjøp abonnement på appen via iTunes</p>
+			        	</header>
+				        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
+				            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
+				        </a>
+				        <a href="#buymonthly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenmonthly">
+				            <div class="green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
+				        </a>
+						<footer class="paywallFooter">
+							<span intern="#paywall-buy" class="green paywall-tab-trigger">« Gå tilbake</span>
+		
+							<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+							<p><small>*Du administrerer ditt abonnement via din iTunes konto.</small></p>
+						</footer>
+				    </div>
+				<?php } else { ?>
+					<div id="paywall-buy" class="paywall-tab">
+						<header class="paywallHeader">
+			                <p>Kjøp abonnement på appen via SPiD</p>
+			        	</header>
+				        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
+				            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
+				        </a>
+				        <a href="#buymonthly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenmonthly">
+				            <div class="green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
+				        </a>
+						<footer class="paywallFooter">		
+							<p><small>*Du administrerer ditt abonnement via din SPiD-konto.</small></p>
+						</footer>
+				    </div>
+				<?php } ?>						
+
 		    </div>
 		    <div class="clear"></div>
 		</div>
