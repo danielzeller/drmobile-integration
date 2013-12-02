@@ -409,6 +409,7 @@ b {
 		left: 0;
 		float: left;
 		display: inline-block;
+		margin: 0 10px 0 0;
 	}
 
 	.paywall footer {
