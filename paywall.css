@@ -323,6 +323,14 @@ b {
 .paywall.android-beta h1{
 	font-size: 28px;
 }
+.android .paywall .halfWidth:first-child {
+	float: none;
+	margin: auto;
+}
+.android a.paywall-restore,
+.promotingAppStore {
+	display: none;
+}
 @media only screen and (max-width: 768px) {
 	.paywall .halfWidth {
 		width: 100%;
@@ -407,9 +415,9 @@ b {
 		position: relative;
 		top: 0;
 		left: 0;
-		float: left;
+		float: none;
 		display: inline-block;
-		margin: 0 10px 0 0;
+		margin: 0 0 0 0;
 	}
 
 	.paywall footer {

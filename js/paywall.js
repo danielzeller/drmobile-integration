@@ -17,9 +17,23 @@ define('paywall', ['main'], function (app) {
 	        "height": paywallHeight
 	    });
 		console.log('paywall height = ' + paywallHeight);		
-
-
 	}
+	
+	var isMobile = {
+	    Android: function() {
+	        return navigator.userAgent.match(/Android/i);
+	    },
+	    iOS: function() {
+	        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	    },
+	    any: function() {
+	        return (isMobile.Android() || isMobile.iOS() );
+	    }
+	};
+	
+	if( !isMobile.iOS() ){
+		$('body').addClass('android');		
+	};
 	
 
 	$(document).ready(function() {
