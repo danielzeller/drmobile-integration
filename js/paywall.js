@@ -31,14 +31,13 @@ define('paywall', ['main'], function (app) {
 	    }
 	};
 	
-	if( !isMobile.iOS() ){
+	if( isMobile.Android() ){
 		$('body').addClass('android');		
 	};
 	
 
 	$(document).ready(function() {
 		window.setTimeout(updatePaywallHeight, 300);
-		
 	});
 	
 	// PAYWALL 
