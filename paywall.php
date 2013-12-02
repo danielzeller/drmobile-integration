@@ -37,7 +37,7 @@
 			<nav id="paywallavigation">
 				<div intern="#paywall-login" class="paywall-tab-trigger open">Allerede abonnent?</div>
 				<div intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent</div>
-				<a href="http://wp.agens.no/ivy/guide/" class="more-info-trigger round-button"><b>i</b></a>
+				<a href="https://kundesenter.aftenposten.no/" class="more-info-trigger round-button"><b>i</b></a>
 			</nav>
 			<div id="paywall-content">
 			    <div id="paywall-login" class="paywall-tab open">

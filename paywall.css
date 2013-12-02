@@ -76,7 +76,7 @@ b {
 	line-height: 24px;
 	height: 30px;
 	width: 30px;
-	display: block;
+	display: inline-block;
 	color: #fff !important;
 	padding: 0;
 	margin: 0;
@@ -135,7 +135,7 @@ b {
 	width: 100%;
 	left: 25%;
 	pointer-events: none;
-	padding-bottom: 30px;
+	padding-bottom: 50px;
 	position: absolute;
 	top: 0;
 	
