@@ -50,7 +50,7 @@ b {
 	pointer-events: inherit;
 	position: relative;
 	width: 100%;
-	border-bottom: 1px solid rgba(255,255,255,0.2);
+	border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 .paywall-inner {
     color: #fff;

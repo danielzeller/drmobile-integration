@@ -36,17 +36,20 @@
 		<div id="paywallInner" class="paywall-inner clearfix">
 			<nav id="paywallavigation">
 				<div intern="#paywall-login" class="paywall-tab-trigger open">Allerede abonnent?</div>
-<!-- 				<div intern="#paywall-logged-in" class="paywall-tab-trigger">Pålogget uten bruker</div> -->
 				<div intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent</div>
 				<a href="http://wp.agens.no/ivy/guide/" class="more-info-trigger">i</a>
 			</nav>
 			<div id="paywall-content">
 			    <div id="paywall-login" class="paywall-tab open">
 					<header class="paywallHeader">
-		                <p><b>Kunde hos aftenposten?</b><br>Logg inn med din SPiD-bruker:</p>
+		                <p><b>Kunde hos aftenposten?</b><br>Har du kjøpt tilgang til Aftenposten digital og har en SPiD-konto. Vennligst logg inn for å få tilgang.</p>
 		        	</header>
 					<form action="">
-						<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off">
+						<select id="username">
+							<option value="1">snd.web2@gmail.com</option>
+							<option value="2" selected="selected">aslak@agens.no</option>
+						</select>
+<!-- 						<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off"> -->
 						<input type="password" name="password" value="paywall12" placeholder="SPiD-passord" autocomplete="off">
 						<input type="submit" value=" › ">
 					</form>
