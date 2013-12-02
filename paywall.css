@@ -70,20 +70,25 @@ b {
 	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
 	background-size: 100%;
 }
-
-.paywall nav a.more-info-trigger{
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
+.paywall .round-button {
 	border-radius: 100%;
+	border: 1px solid #85B200;
+	line-height: 24px;
+	height: 30px;
+	width: 30px;
+	display: block;
+	color: #fff !important;
 	padding: 0;
 	margin: 0;
-	border: 1px solid #85B200;
+	cursor: pointer;
+}
+
+.paywall nav a.round-button{
+	line-height: 30px;
 	position: absolute;
 	right: 20px;
 	top: 50%;
 	margin-top: -15px;
-	cursor: pointer;
 }
 .paywall nav a.more-info-trigger:active{
 	background: #85B200;
@@ -169,21 +174,37 @@ b {
     display: inline-block;
     margin: auto 5px;
 }
-.paywall .green-button {
-    background: #85B200;
-	padding: 12px 15px;
+
+#paywall-products .round-button {
+	position: absolute;
+	top: 50%;
+	left: 10%;
+	margin-top: -40px;
+	font-size: 22px;
+	line-height: 24px;
+}
+.paywall .button {
+    background: transparent;
+	padding: 7px 30px 9px;
     display: inline-block;
 	font-family: 'Open Sans', sans-serif;
     font-weight: bold;
 	font-size: 15px;
 	border: 1px solid #85B200;
+	border: 1px solid rgba(255,255,255,0.2);
+	border-radius: 40px;
 }
-.paywall a:active .green-button,
-.paywall a.green-button:active {
+.paywall a:active .button,
+.paywall a.button:active {
     background: transparent;
     border: 1px solid #85B200;
-
 }
+
+.paywall .button.green-button {
+	border: 1px solid #85B200;
+	background: #85B200;
+}
+
 .paywall input {
 	background: none;
 	border: 1px solid rgba(255,255,255,0.5);
@@ -288,7 +309,7 @@ b {
 .paywall .halfWidth {
 	width: 45%;
 	float: right;
-	text-align: left;
+	text-align: center;
 }
 .paywall .halfWidth:first-child {
 	float: left;
@@ -351,9 +372,9 @@ b {
 		margin: 5px auto 0;
 		width: 90%;
 	}
-	.paywall .green-button {
+	.paywall .button {
 		margin: auto;
-		padding: 7px 20px;
+		padding: 7px 20px 9px;
 		width: 100%;
 		box-sizing:border-box;
 		-moz-box-sizing:border-box;
@@ -382,6 +403,13 @@ b {
 		top: inherit;
 	}
 	
+	#paywall-products .round-button {
+		position: relative;
+		top: 0;
+		left: 0;
+		float: left;
+		display: inline-block;
+	}
 
 	.paywall footer {
 		padding: 10px 20px;

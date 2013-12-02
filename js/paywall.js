@@ -106,12 +106,9 @@ define('paywall', ['main'], function (app) {
 	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
-		var e = document.getElementById("username");
-		var spidUsername = e.options[e.selectedIndex].text;
 		app.bridge.trigger('login', {
 			"provider": "spid",
-			"username": spidUsername,
-			//"username": $(this).find('input[name="username"]').val(),
+			"username": $(this).find('input[name="username"]').val(),
 			"password": $(this).find('input[name="password"]').val()
 		});
 		return false;

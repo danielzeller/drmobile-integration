@@ -37,19 +37,15 @@
 			<nav id="paywallavigation">
 				<div intern="#paywall-login" class="paywall-tab-trigger open">Allerede abonnent?</div>
 				<div intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent</div>
-				<a href="http://wp.agens.no/ivy/guide/" class="more-info-trigger">i</a>
+				<a href="http://wp.agens.no/ivy/guide/" class="more-info-trigger round-button"><b>i</b></a>
 			</nav>
 			<div id="paywall-content">
 			    <div id="paywall-login" class="paywall-tab open">
 					<header class="paywallHeader">
-		                <p><b>Kunde hos aftenposten?</b><br>Har du kjøpt tilgang til Aftenposten digital og har en SPiD-konto. Vennligst logg inn for å få tilgang.</p>
+		                <p>Har du kjøpt tilgang til Aftenposten Digital og har en SPiD-konto. Vennligst logg inn for å få tilgang.</p>
 		        	</header>
 					<form action="">
-						<select id="username">
-							<option value="1">snd.web2@gmail.com</option>
-							<option value="2" selected="selected">aslak@agens.no</option>
-						</select>
-<!-- 						<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off"> -->
+						<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off">
 						<input type="password" name="password" value="paywall12" placeholder="SPiD-passord" autocomplete="off">
 						<input type="submit" value=" › ">
 					</form>
@@ -81,7 +77,7 @@
 					<header class="paywallHeader">
 	                	<p>Hei <b><span class="getSpidUserName">Ukjent</span></b>, du er logget på med en SPiD-bruker uten tilgang. Vennligst logg ut og logg deg på med en bruker som har tilgang.</p>
 	                	
-						<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <a href="http://wp.agens.no/ivy/guide/" class="green"><b>Les mer ›</b></a></p>
+						<p>På <b>ap.no/produkter</b> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement for eksisterende kunder. <a href="https://kundesenter.aftenposten.no/" class="green"><b>Les mer ›</b></a></p>
 		        	</header>
 					<footer class="paywallFooter">
 						<a href="#" class="paywall-logout icon">Logg ut Arild Langtind</a>
@@ -96,27 +92,30 @@
 						<header class="paywallHeader">
 			                <div class="halfWidth">
 				                <p><b>Kjøp abonnement hos Aftenposten</b><br>
-		Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<a href="http://wp.agens.no/ivy/guide/" class="green"> <b>Les mer her ›</b></a></p>
+		Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.</p>
+								<a href="https://kundesenter.aftenposten.no/" class="button green-button"> <b>Les mer her</b></a>
+
 			                </div>
 			                <div class="halfWidth">
-				                <p><b>Kjøp abonnement via iTunes App Store</b><br>
-		Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du gjennom din iTunes konto.<b intern="#paywall-products" class="green paywall-tab-trigger"> Kjøp tilgang her ›</b></p>
+				                <p><b>Kjøp abonnement via App Store</b><br>
+		Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du via din Apple ID.</p>
+					            <div intern="#paywall-products" class="button white-button paywall-tab-trigger">Kjøp tilgang nå</div>
+
 			                </div>
 			        	</header>
 				    </div>
 				    <div id="paywall-products" class="paywall-tab">
 						<header class="paywallHeader">
+							<div intern="#paywall-buy" class="green paywall-tab-trigger go-back-button round-button">‹</div>
 			                <p>Kjøp abonnement på appen via iTunes</p>
 			        	</header>
 				        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
-				            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
+				            <div class="button green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
 				        </a>
 				        <a href="#buymonthly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenmonthly">
-				            <div class="green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
+				            <div class="button green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
 				        </a>
-						<footer class="paywallFooter">
-							<span intern="#paywall-buy" class="green paywall-tab-trigger">« Gå tilbake</span>
-		
+						<footer class="paywallFooter">		
 							<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
 							<p><small>*Du administrerer ditt abonnement via din iTunes konto.</small></p>
 						</footer>
@@ -127,10 +126,10 @@
 			                <p>Kjøp abonnement på appen via SPiD</p>
 			        	</header>
 				        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
-				            <div class="green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
+				            <div class="button green-button">Kjøp <span class="paywall-product-title">en uke</<span> for <span class="paywall-product-price">35:-</span>*</div>
 				        </a>
 				        <a href="#buymonthly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenmonthly">
-				            <div class="green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
+				            <div class="button green-button">Kjøp <span class="paywall-product-title">en måned</<span> for <span class="paywall-product-price">98:-</span>*</div>
 				        </a>
 						<footer class="paywallFooter">		
 							<p><small>*Du administrerer ditt abonnement via din SPiD-konto.</small></p>
