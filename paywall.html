@@ -132,6 +132,8 @@ require(['main', 'paywall'], function(app, paywall){
   //runs main(app) just by referencing it
 });
 
+//allow :active styles to work in your CSS on a page in Mobile Safari
+document.addEventListener("touchstart", function(){}, true);
 </script>
 </body>
 </html>

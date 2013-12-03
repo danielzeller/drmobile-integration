@@ -41,6 +41,7 @@ b {
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none; 
+	-webkit-tap-highlight-color: transparent;
 }
 .paywall {
 	opacity: 1;
@@ -63,7 +64,7 @@ b {
 .paywall-inner:before {
 	position: absolute;
 	content: '';
-	height: 4px;
+	height: 5px;
 	width: 100%;
 	left: 0;
 	top: -2px;
