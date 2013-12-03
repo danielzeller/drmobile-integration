@@ -30,9 +30,9 @@ b {
 .paywall-tab-trigger {
 	cursor: pointer;
 }
-.paywall .green, .paywall a.green ,
-.light .paywall .green, .light .paywall a.green {
-	color: #85B200 !important;
+.paywall .blue, .paywall a.blue ,
+.light .paywall .blue, .light .paywall a.blue {
+	color: #2bb4ed !important;
 }
 .overflowHidden {
 	overflow: hidden;
@@ -81,11 +81,12 @@ b {
 	top: 0;
 	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
 	background-size: 100%;
+	background-size: cover;
 	z-index: 999;
 }
 .paywall .round-button {
 	border-radius: 100%;
-	border: 1px solid #85B200;
+	border: 1px solid #2bb4ed;
 	line-height: 24px;
 	height: 30px;
 	width: 30px;
@@ -107,7 +108,8 @@ b {
 	margin-top: -15px;
 }
 .paywall nav a.more-info-trigger:active{
-	background: #85B200;
+	background: #2bb4ed;
+	color: #fff !important;
 }
 
 .aftenposten-logo {
@@ -211,31 +213,37 @@ b {
 	font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 	font-size: 13px;
-	border: 1px solid #85B200;
+	border: 1px solid #2bb4ed;
 	border: 1px solid rgba(255,255,255,0.2);
-	border-radius: 40px;
 	text-transform: uppercase;
 	font-style: normal;
+	box-shadow: 0 4px 0 #1081b1;
+	border-radius: 4px;
+	margin-top: 0px;
+	margin-bottom: 4px;
 }
 .light .paywall .button {
-	border-color: #85B200;
+	border-color: #2bb4ed;
 
 }
 .paywall a:active .button,
 .paywall a.button:active {
-    background: transparent;
-    border: 1px solid #85B200;
+    border: 1px solid #2bb4ed;
+    box-shadow: none;
+    margin-top: 4px;
+    margin-bottom: 0;
 }
 
-.paywall .button.green-button {
-	border: 1px solid #85B200;
-	background: #85B200;
-}
-.light .paywall .button.green-button {
+.paywall .button.blue-button {
+	border: 1px solid #2bb4ed;
+	background: #2bb4ed;
 	color: #fff !important;
 }
-.light .paywall .button.green-button:active {
-	color: #85B200 !important;
+.light .paywall .button.blue-button {
+	color: #fff !important;
+}
+.light .paywall .button.blue-button:active {
+	color: #fff !important;
 }
 
 .paywall input {
@@ -263,14 +271,14 @@ b {
 	color: #333;
 }
 .paywall input[type="submit"] {
-	background: #85B200;
-	border: 1px solid #85B200;
+	background: #2bb4ed;
+	border: 1px solid #2bb4ed;
 	font-weight: bold;
 	color: #fff;
 }
 .paywall input[type="submit"]:focus {
 	background: none;
-	border: 1px solid #85B200;
+	border: 1px solid #2bb4ed;
 }
 .paywall input::-webkit-input-placeholder,
 .paywall input:-moz-placeholder{
@@ -284,8 +292,8 @@ b {
 }
 .light .paywall input:focus {
 	border-color: #ddd;
-	color: #85B200;
-	border-bottom-color: #85B200;
+	color: #2bb4ed;
+	border-bottom-color: #2bb4ed;
 }
 .paywall input:focus::-webkit-input-placeholder {
 	color: #fff;
@@ -301,11 +309,11 @@ b {
 }
 
 .paywall footer a:active{
-	color: #85B200 !important;
+	color: #2bb4ed !important;
 }
 
 .paywall footer a:active{
-	color: #85B200 !important;
+	color: #2bb4ed !important;
 }
 
 .paywall a.icon {
@@ -403,7 +411,7 @@ b {
 	}
 	.paywall p {
 		font-size: 14px;
-		text-align: left;
+		text-align: center;
 	}
 	.paywall footer p {
 		text-align: center;
@@ -430,15 +438,21 @@ b {
 		width: 90%;
 	}
 	.paywall .button {
-		margin: auto;
 		padding: 7px 20px 9px;
-		width: 70%;
 		-moz-box-sizing:border-box;
 		box-sizing:border-box;
 	}
+	.paywall .paywall-buy-product .button {
+		width: 80%;
+		margin: 0 auto 4px;
+	}
+	.paywall .paywall-buy-product .button:active {
+		width: 80%;
+		margin: 4px auto 0;
+	}
 	.paywall input[type="submit"] {
-		background: #85B200;
-		border: 1px solid #85B200;
+		background: #2bb4ed;
+		border: 1px solid #2bb4ed;
 		font-weight: bold;
 		width: 15%;
 		padding: 0;
