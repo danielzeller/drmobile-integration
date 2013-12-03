@@ -40,8 +40,9 @@ define('paywall', ['main'], function (app) {
 		window.setTimeout(updatePaywallHeight, 300);
 	});
 	
+	
+	
 	// PAYWALL 
-
 	var paywall = {};
 
 	app.event.on('updatePaywall', function (args) {
@@ -50,15 +51,16 @@ define('paywall', ['main'], function (app) {
 		var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var animDuration = args.animated ? 300 : 0;
 		var fullName = args.user;
-		var isLoggedIn = fullName ? true : false;
+		var isLoggedIn = fullName || fullName=="" ? true : false;
 		var activePaywallElement = isLoggedIn ? $('#paywall-logged-in') : $('#paywall-login');
 		var paywallHeight = $('#paywallInner').height();
+		var checkIfFullNameIsEmpty = fullName =="" ? fullName : " " + fullName;
 				
 		$('.paywall-tab').removeClass('open');
 		activePaywallElement.addClass('open');
 		
 		if(isLoggedIn) {
-			$('.getSpidUserName').text(fullName);
+			$('.getSpidUserName').text(checkIfFullNameIsEmpty);
 		}
 		
 		if(gotProducts)
@@ -144,6 +146,7 @@ define('paywall', ['main'], function (app) {
 		$(".paywall-tab-trigger.open").removeClass('open');
 	    $(toShow).addClass('open');
 	    $(this).addClass('open');
+	    
 		return false;
 	});
  
