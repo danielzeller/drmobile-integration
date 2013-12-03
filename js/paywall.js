@@ -1,7 +1,6 @@
 define('paywall', ['main'], function (app) {
 	"use strict";
-	document.addEventListener("touchstart", function(){}, true);
-	
+		
 	function updatePaywallHeight() {
 
 		// see wich tab is highest
