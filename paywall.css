@@ -136,7 +136,8 @@ b {
 	left: 25%;
 	pointer-events: none;
 	position: absolute;
-	top: 0;
+	top: 50%;
+	padding-bottom: 30px;
 	
 }
 .paywall-tab.open {
@@ -250,7 +251,7 @@ b {
 	color: #fff;
 }
 .paywall footer{
-	padding: 20px;
+	padding: 25px;
 	clear: both;
 }
 .paywall footer a{

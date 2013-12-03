@@ -6,7 +6,10 @@ define('paywall', ['main'], function (app) {
 		// see wich tab is highest
 		var arr = [];
 		$('.paywall-tab').each(function(){
-		    arr.push($(this).outerHeight());	    
+			var thisOutherHeight = $(this).outerHeight();
+			var thisMarginTop = thisOutherHeight / 2;
+		    arr.push(thisOutherHeight);
+		    $(this).css('margin-top',  -thisMarginTop);    
 		});			
 
 		$('#paywall-content').css('height', Math.max.apply( Math, arr ));
