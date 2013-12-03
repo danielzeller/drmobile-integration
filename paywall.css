@@ -67,11 +67,12 @@ b {
     display: block;
     overflow: hidden;
     width: 100%;
+    position: relative;
 }
 .light .paywall-inner {
     color: #333;
 }
-.paywall-inner:before {
+.paywall-inner .coloredBorder {
 	position: absolute;
 	content: '';
 	height: 4px;
