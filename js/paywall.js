@@ -132,6 +132,7 @@ define('paywall', ['main'], function (app) {
 		return false;
 	});
 	
+/*
 	$('a.forgotPassword').bind('click', function(e) {
 		var forgotPasswordUrl = $(this).attr('href');
 		console.log('User wants password - forgotPassword ' + forgotPasswordUrl);
@@ -141,6 +142,7 @@ define('paywall', ['main'], function (app) {
 		});
 		return false;
 	});
+*/
 	                     
 	$(".paywall-tab-trigger").bind('click', function(e){
 	    var toShow = $(this).attr('intern');
