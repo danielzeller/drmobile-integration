@@ -61,9 +61,14 @@ define('paywall', ['main'], function (app) {
 				
 		$('.paywall-tab').removeClass('open');
 		activePaywallElement.addClass('open');
-		
+
+		var loggedInLink = document.getElementById('paywall-tab-trigger-login');
+
 		if(isLoggedIn) {
 			$('.getSpidUserName').text(checkIfFullNameIsEmpty);
+			loggedInLink.setAttribute('intern', '#paywall-logged-in');
+		} else {
+			loggedInLink.setAttribute('intern', '#paywall-login');
 		}
 		
 		if(gotProducts)
