@@ -3,8 +3,11 @@
 ::selection { background: transparent; }
 ::-moz-selection { background: transparent; }
 
-.chrome {
-    background: rgba(0,0,0,0.8);
+body {
+    background: #333;
+}
+body.light {
+    background: #fff;
 }
 .clearfix:after {
 	clear: both;
@@ -22,12 +25,13 @@
 }
 
 b {
-	font-weight: 700;
+	font-weight: 600;
 }
 .paywall-tab-trigger {
 	cursor: pointer;
 }
-.paywall .green, .paywall a.green {
+.paywall .green, .paywall a.green ,
+.light .paywall .green, .light .paywall a.green {
 	color: #85B200 !important;
 }
 .overflowHidden {
@@ -53,6 +57,9 @@ b {
 	width: 100%;
 	border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+.light .paywall {
+	border-color: #eee;
+}
 .paywall-inner {
     color: #fff;
     text-align: center;
@@ -61,13 +68,16 @@ b {
     overflow: hidden;
     width: 100%;
 }
+.light .paywall-inner {
+    color: #333;
+}
 .paywall-inner:before {
 	position: absolute;
 	content: '';
-	height: 5px;
+	height: 4px;
 	width: 100%;
 	left: 0;
-	top: -2px;
+	top: 0;
 	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
 	background-size: 100%;
 }
@@ -82,6 +92,9 @@ b {
 	padding: 0;
 	margin: 0;
 	cursor: pointer;
+}
+.light .paywall .round-button {
+	color: #333 !important;
 }
 
 .paywall nav a.round-button{
@@ -111,20 +124,24 @@ b {
 	display: block;
 	position: relative;
 }
+.light .paywall nav {
+	border-color: #eee;
+}
 .paywall nav div{
 	padding: 15px 0;
-	margin: 0 20px;
-	border: none;
-	color: #fff;
-	font-weight: bold;
+	margin: 0 20px -2px;
+	font-weight: 300;
 	display: inline-block;
-}
-
-.paywall nav div{
-	border-bottom: 3px solid transparent;
+	border-bottom: 2px solid transparent;
+	letter-spacing: 1px;
 }
 .paywall nav div.open{
-	border-bottom: 3px solid #fff;
+	font-weight: 700;
+	border-color: #fff;
+	letter-spacing: 0;
+}
+.light .paywall nav div.open{
+	border-color: #333;
 }
 #paywall-content {
 	position: relative;
@@ -171,7 +188,9 @@ b {
     font-weight: 100 !important;
 	font-style: italic !important;
 }
-
+.light .paywall a {
+	color: #333 !important;
+}
 #paywall-products .paywall-buy-product {
     display: inline-block;
     margin: auto 5px;
@@ -197,6 +216,10 @@ b {
 	border-radius: 40px;
 	font-style: italic;
 }
+.light .paywall .button {
+	border-color: #85B200;
+
+}
 .paywall a:active .button,
 .paywall a.button:active {
     background: transparent;
@@ -206,6 +229,9 @@ b {
 .paywall .button.green-button {
 	border: 1px solid #85B200;
 	background: #85B200;
+}
+.light .paywall .button.green-button {
+	color: #fff !important;
 }
 
 .paywall input {
@@ -226,10 +252,15 @@ b {
     -o-user-select: text;
     user-select: text;
 }
+.light .paywall input {
+	border-color: #eee;
+	color: #333;
+}
 .paywall input[type="submit"] {
 	background: #85B200;
 	border: 1px solid #85B200;
 	font-weight: bold;
+	color: #fff;
 }
 .paywall input[type="submit"]:focus {
 	background: none;
@@ -247,6 +278,10 @@ b {
 	border-color: #fff;
 	color: #fff;
 	outline-width: 0;
+}
+.light .paywall input:focus {
+	border-color: #ccc;
+	color: #333;
 }
 .paywall input:focus::-webkit-input-placeholder {
 	color: #fff;
