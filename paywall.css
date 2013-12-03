@@ -58,7 +58,7 @@ b {
 	border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 .light .paywall {
-	border-color: #eee;
+	border-color: #fafafa;
 }
 .paywall-inner {
     color: #fff;
@@ -81,6 +81,7 @@ b {
 	top: 0;
 	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
 	background-size: 100%;
+	z-index: 999;
 }
 .paywall .round-button {
 	border-radius: 100%;
@@ -126,23 +127,21 @@ b {
 	position: relative;
 }
 .light .paywall nav {
-	border-color: #eee;
+	border-color: #ddd;
 }
 .paywall nav div{
-	padding: 15px 0;
-	margin: 0 20px -2px;
-	font-weight: 300;
+	padding: 15px 20px;
+	margin: 0 0px -1px;
+	font-weight: 600;
 	display: inline-block;
-	border-bottom: 2px solid transparent;
-	letter-spacing: 1px;
+	border: 1px solid transparent;
 }
 .paywall nav div.open{
-	font-weight: 700;
 	border-color: #fff;
-	letter-spacing: 0;
 }
 .light .paywall nav div.open{
-	border-color: #333;
+	border-color: #ddd;
+	border-bottom-color: #fff;
 }
 #paywall-content {
 	position: relative;
@@ -187,7 +186,7 @@ b {
 	color: #fff !important;
     text-decoration: none !important;
     font-weight: 100 !important;
-	font-style: italic !important;
+	font-style: italic;
 }
 .light .paywall a {
 	color: #333 !important;
@@ -207,15 +206,16 @@ b {
 }
 .paywall .button {
     background: transparent;
-	padding: 7px 30px 9px;
+	padding: 10px 30px 12px;
     display: inline-block;
 	font-family: 'Open Sans', sans-serif;
-    font-weight: 700;
-	font-size: 15px;
+    font-weight: 600;
+	font-size: 13px;
 	border: 1px solid #85B200;
 	border: 1px solid rgba(255,255,255,0.2);
 	border-radius: 40px;
-	font-style: italic;
+	text-transform: uppercase;
+	font-style: normal;
 }
 .light .paywall .button {
 	border-color: #85B200;
@@ -234,6 +234,9 @@ b {
 .light .paywall .button.green-button {
 	color: #fff !important;
 }
+.light .paywall .button.green-button:active {
+	color: #85B200 !important;
+}
 
 .paywall input {
 	background: none;
@@ -245,16 +248,18 @@ b {
 	-webkit-appearance: none;
 	appearance: none;
 	border-radius:0;
-	font-weight: 700;
+	font-weight: 400;
 	font-family: 'Open Sans', sans-serif;
     -webkit-user-select: text;
     -khtml-user-select: text;
     -moz-user-select: text;
     -o-user-select: text;
     user-select: text;
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
 }
 .light .paywall input {
-	border-color: #eee;
+	border-color: #ddd;
 	color: #333;
 }
 .paywall input[type="submit"] {
@@ -267,22 +272,20 @@ b {
 	background: none;
 	border: 1px solid #85B200;
 }
-.paywall input::-webkit-input-placeholder {
-	color: #fff;
-	font-weight: 100;
-}
-.paywall input:-moz-placeholder {
-	color: #fff;
-	font-weight: 400;
+.paywall input::-webkit-input-placeholder,
+.paywall input:-moz-placeholder{
+	color: #999;
 }
 .paywall input:focus {
 	border-color: #fff;
 	color: #fff;
+	font-weight: 400;
 	outline-width: 0;
 }
 .light .paywall input:focus {
-	border-color: #ccc;
-	color: #333;
+	border-color: #ddd;
+	color: #85B200;
+	border-bottom-color: #85B200;
 }
 .paywall input:focus::-webkit-input-placeholder {
 	color: #fff;
@@ -406,13 +409,20 @@ b {
 		text-align: center;
 	}
 	.paywall input {
-		padding: 7px 10px;
-		width: 90%;
+		padding: 8px 10px;
+		width: 100%;
 		-moz-box-sizing:border-box;
 		box-sizing:border-box;
-		border-right: none;
 		margin-top: -1px;
 		float: left;
+	}
+	.paywall input:focus {
+		z-index: 99;
+		position: relative;
+	}
+	.paywall input[type=password] {
+		width: 85%;
+		border-right: none;
 	}
 	#paywall-products .paywall-buy-product,
 	.paywall form {
@@ -422,7 +432,7 @@ b {
 	.paywall .button {
 		margin: auto;
 		padding: 7px 20px 9px;
-		width: 100%;
+		width: 70%;
 		-moz-box-sizing:border-box;
 		box-sizing:border-box;
 	}
@@ -430,18 +440,16 @@ b {
 		background: #85B200;
 		border: 1px solid #85B200;
 		font-weight: bold;
-		width: 10%;
+		width: 15%;
 		padding: 0;
 		float: left;
-		height: 72px;
-		margin-top: -36px;
+		height: 38px;
 	}
 	.paywall nav {
 		position: static;
 	}
 	.paywall nav div {
-		padding: 10px 0;
-		margin: 0 10px;
+		padding: 10px 15px;
 		
 	}
 	.paywall nav a.more-info-trigger {
