@@ -79,8 +79,9 @@ b {
 	width: 100%;
 	left: 0;
 	top: 0;
-	background: url(gfx/paywall/colored_stripe.png) no-repeat left center;
+	background: #2bb4ed url(gfx/paywall/colored_stripe.png) no-repeat left center;
 	background-size: 100%;
+	-webkit-background-size: cover;
 	background-size: cover;
 	z-index: 999;
 }
