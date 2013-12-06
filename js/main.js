@@ -157,7 +157,11 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner'], function (Alf,
 			   page.render(pageContentEl);
 			});
 
-		}
+		},
+
+        exitFullscreen: function () {
+                   app.fullscreenLayer.exitFullscreen();
+        }
 
 	};
 
