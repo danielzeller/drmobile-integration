@@ -36,7 +36,7 @@ define('paywall', ['main'], function (app) {
 	
 	if( isMobile.Android() ){
 		$('body').addClass('android');		
-	};
+	}
 	
 
 	$(document).ready(function() {
