@@ -1,27 +1,7 @@
 define('paywall', ['main'], function (app) {
 	"use strict";
-		
-	function updatePaywallHeight() {
 
-		// see wich tab is highest
-		var arr = [];
-		$('.paywall-tab').each(function(){
-			var thisOutherHeight = $(this).outerHeight();
-			var thisMarginTop = thisOutherHeight / 2;
-		    arr.push(thisOutherHeight);
-		    $(this).css('margin-top',  -thisMarginTop);    
-		});			
 
-		$('#paywall-content').css('height', Math.max.apply( Math, arr ));
-
-		// push paywall Total height 
-		var paywallHeight = $('#paywallInner').height();
-	    app.bridge.trigger('paywallLoaded', {
-	        "height": paywallHeight
-	    });
-		console.log('paywall height = ' + paywallHeight);		
-	}
-	
 	var isMobile = {
 	    Android: function() {
 	        return navigator.userAgent.match(/Android/i);
@@ -36,13 +16,34 @@ define('paywall', ['main'], function (app) {
 	
 	if( isMobile.Android() ){
 		$('body').addClass('android');		
+	};
+
+		
+	function updatePaywallHeight() {
+
+		// see wich tab is highest
+		var arr = [];
+		$('.paywall-tab').each(function(){		
+			var thisOutherHeight = $(this).outerHeight();
+			var thisMarginTop = thisOutherHeight / 2;
+		    arr.push(thisOutherHeight);
+		    $(this).css('margin-top',  - thisMarginTop);    
+		});	
+		
+		$('#paywall-content').css('height', Math.max.apply( Math, arr ));
+		
+		// push paywall Total height 
+		var paywallHeight = $('#paywallInner').height();
+	    app.bridge.trigger('paywallLoaded', {
+	        "height": paywallHeight
+	    });
+		console.log('paywall height = ' + paywallHeight);	
+
 	}
 	
-
 	$(document).ready(function() {
-		window.setTimeout(updatePaywallHeight, 300);
+		updatePaywallHeight();
 	});
-	
 	
 	
 	// PAYWALL 
@@ -62,13 +63,13 @@ define('paywall', ['main'], function (app) {
 		$('.paywall-tab').removeClass('open');
 		activePaywallElement.addClass('open');
 
-		var loggedInLink = document.getElementById('paywall-tab-trigger-login');
+		var subscriberLink = $("a[id*='subscriber-link']");
 
 		if(isLoggedIn) {
 			$('.getSpidUserName').text(checkIfFullNameIsEmpty);
-			loggedInLink.setAttribute('intern', '#paywall-logged-in');
+			subscriberLink.attr('intern', '#paywall-logged-in');
 		} else {
-			loggedInLink.setAttribute('intern', '#paywall-login');
+			subscriberLink.attr('intern', '#paywall-login');
 		}
 		
 		if(gotProducts)
@@ -136,18 +137,6 @@ define('paywall', ['main'], function (app) {
 		});
 		return false;
 	});
-	
-/*
-	$('a.forgotPassword').bind('click', function(e) {
-		var forgotPasswordUrl = $(this).attr('href');
-		console.log('User wants password - forgotPassword ' + forgotPasswordUrl);
-		app.bridge.trigger('forgotPassword', {
-			"provider": "spid",
-			"url": forgotPasswordUrl
-		});
-		return false;
-	});
-*/
 	                     
 	$(".paywall-tab-trigger").bind('click', function(e){
 	    var toShow = $(this).attr('intern');
@@ -156,7 +145,12 @@ define('paywall', ['main'], function (app) {
 		$(".paywall-tab-trigger.open").removeClass('open');
 	    $(toShow).addClass('open');
 	    $(this).addClass('open');
-	    
+		return false;
+	});
+	
+	$(".active-tab").bind('click', function(e){
+		var activeTab = $(this).attr('active-tab');
+	    $(activeTab).addClass('open');
 		return false;
 	});
  

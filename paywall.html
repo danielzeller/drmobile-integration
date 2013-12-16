@@ -29,69 +29,77 @@
 <div class="chrome" id="chrome">
 	<div id="purchase-with-products-wall" class="paywall">
 		<div id="paywallInner" class="paywall-inner clearfix">
-			<nav id="paywallnavigation">
-				<span class="coloredBorder"></span>
-				<div intern="#paywall-login" id="paywall-tab-trigger-login" class="paywall-tab-trigger open">Allerede abonnent?</div>
-				<div intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent</div>
-				<a href="https://kundesenter.aftenposten.no/" class="more-info-trigger round-button"><b>i</b></a>
-			</nav>
+			<div class="aftenposten-logo no-mobile"></div>
+			<a href="https://kundesenter.aftenposten.no/" class="more-info-trigger round-button"><b>i</b></a>
 			<div id="paywall-content">
+
 			    <div id="paywall-login" class="paywall-tab open">
 					<header class="paywallHeader clearfix">
-		                <p>Har du kjøpt tilgang til Aftenposten Digital og har en SPiD-konto. Vennligst logg inn for å få tilgang.</p>
+						<h2>Logg inn med <a href="http://wp.agens.no/ivy/guide/" class="spid-logo"></a></h2>
+			            <p>Har du kjøpt tilgang til Aftenposten Digital og har en SPiD-konto. Vennligst logg inn her:</p>
 		        	</header>
-					<form action="">
-						<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off">
-						<input type="password" name="password" value="paywall12" placeholder="SPiD-passord" autocomplete="off">
+					<form class="clearfix">
+						<div class="input_username input"><input type="text" name="username" placeholder="SPiD-brukernavn" autocomplete="off"></div>
+						<div class="input_password input"><input type="password" name="password" placeholder="SPiD-passord" autocomplete="off"></div>
 						<input type="submit" value=" › ">
 					</form>
 					<footer class="paywallFooter">
-						<a href="http://wp.agens.no/ivy/guide/" class="spid-logo"></a>
-						<a href="https://payment.schibsted.no/auth/forgotPassword?redirect=aftenposten.no" class="forgotPassword">Glemt passord?</a><br>
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+
+						<a href="https://payment.schibsted.no/auth/forgotPassword?redirect=aftenposten.no" class="forgotPassword">Glemt passord?</a>
+						<a href="#" class="paywall-restore">Gjenopprette kjøp</a>
+						<a href="#" intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent ›</a>
+
 					</footer>
 			    </div>
 			    <div id="paywall-forgot-password" class="paywall-tab">
 					<header class="paywallHeader clearfix">
 		                <p>Skriv inn din SPiD-brukernavn for å få tilsendt glemt SPiD-passord.</p>
 		        	</header>
-					<form action="">
-						<input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off">
+					<form>
+						<div class="input_username input"><input type="text" name="username" value="snd.web2@gmail.com" placeholder="SPiD-brukernavn" autocomplete="off"></div>
 						<input type="submit" value=" › ">
 					</form>
 					<footer class="paywallFooter">
 						<a href="http://wp.agens.no/ivy/guide/" class="spid-logo"></a>
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<a href="#" class="paywall-restore">Gjenopprette kjøp</a>
 					</footer>
 			    </div>
 			    <div id="paywall-logged-in" class="paywall-tab">
 					<header class="paywallHeader clearfix">
-	                	<p>Hei<b><span class="getSpidUserName">Ukjent</span></b>, brukeren du er logget inn med har ingen abonnement som gir tilgang til dette innholdet.</p>
-						<p>På <a href="https://kundesenter.aftenposten.no/" class="blue">ap.no/produkter</a> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement.</p>
-						<a href="https://kundesenter.aftenposten.no/" class="button blue-button"> <b>Les mer her</b></a>
+	                	<h2>Hei, <span class="getSpidUserName">Ukjent</span>!</h2>
+	                	<p>Brukeren du er logget inn med har ingen abonnement som gir tilgang til dette innholdet. På <a href="https://kundesenter.aftenposten.no/" class="blue">ap.no/produkter</a> finner du en oversikt over tilgjengelige produktpakker og mulighet for utvidelse av abonnement.</p>
+						<a href="https://kundesenter.aftenposten.no/" class="button blue-button"> <b>Les mer ›</b></a>
 		        	</header>
 					<footer class="paywallFooter">
-						<a href="#" class="paywall-logout">Logg ut <span class="getSpidUserName">Ukjent</span></a>
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
+						<a href="#" class="paywall-logout">Logg ut</a>
+						<a href="#" intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent ›</a>
 					</footer>
 			    </div>
 			    <div id="paywall-buy" class="paywall-tab">
 					<header class="paywallHeader clearfix">
+
 		                <div class="halfWidth aftenpostenProducts">
-			                <p><b>Kjøp abonnement hos Aftenposten</b><br>
-							Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.</p>
-							<a href="https://kundesenter.aftenposten.no/" class="button blue-button"> <b>Les mer her</b></a>
+			                <h2>Kjøp abonnement hos Aftenposten</a></h2>
+			                <p>Som abonnent hos Aftenposten får du tilgang til alle våre digitale produkter, samt ubegrenset tilgang til aftenposten.no.<a href="https://kundesenter.aftenposten.no/" class="no-tablet blue">Les mer her ›</a></p>
+							<a href="https://kundesenter.aftenposten.no/" class="button blue-button no-mobile blue">Les mer her</a>
 		                </div>
 		                <div class="halfWidth promotingAppStore">
-			                <p><b>Kjøp abonnement via iTunes / App Store</b><br>
-							Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du via din iTunes konto.</p>
-				            <div intern="#paywall-products" class="button blue-button paywall-tab-trigger">Kjøp tilgang nå</div>
+			                <h2>Kjøp abonnement via iTunes</h2>
+							<p>Velger du å abonnere via iTunes, får du kun tilgang til denne appen. Ditt abonnement administrerer du via din iTunes konto. <br><a href="#" intern="#paywall-products" class="paywall-tab-trigger blue no-tablet">Kjøp tilgang nå ›</a></p>
+				            <a href="#" intern="#paywall-products" class="button blue-button paywall-tab-trigger no-mobile">Kjøp tilgang nå</a>
 		                </div>
 		        	</header>
+					<footer class="paywallFooter">
+						<a href="#" intern="#paywall-login" id="subscriber-link1" class="subscriber-link paywall-tab-trigger">‹ Allerede abonnent?</a>
+					</footer>
+
 			    </div>
 			    <div id="paywall-products" class="paywall-tab">
+					<a href="#" intern="#paywall-buy" class="paywall-tab-trigger go-back-button round-button">‹</a>
+
 					<header class="paywallHeader clearfix">
-		                <p>Kjøp abonnement på appen via iTunes</p>
+		                <h2>Kjøp abonnement via iTunes</h2>
+		                <p>Du administrerer ditt abonnement via din iTunes konto.</p>
 		        	</header>
 			        <a href="#buyweekly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenweekly">
 			            <div class="button blue-button">Kjøp <span class="paywall-product-title">en uke</span> for <span class="paywall-product-price">35:-</span>*</div>
@@ -99,11 +107,9 @@
 			        <a href="#buymonthly" class="paywall-buy-product" pid="com.ivyengine.aftenpostenmonthly">
 			            <div class="button blue-button">Kjøp <span class="paywall-product-title">en måned</span> for <span class="paywall-product-price">98:-</span>*</div>
 			        </a>
-					<footer class="paywallFooter">		
-						<a href="#" class="paywall-restore icon">Gjenopprette kjøp</a>
-						<p><small>*Du administrerer ditt abonnement via din iTunes konto.</small></p>
-						<div intern="#paywall-buy" class="blue paywall-tab-trigger go-back-button round-button">‹</div>
-
+					<footer class="paywallFooter">
+						<a href="#" class="paywall-restore">Gjenopprette kjøp</a>
+						<a href="#" intern="#paywall-login" id="subscriber-link2" class="subscriber-link paywall-tab-trigger">‹ Allerede abonnent?</a>
 					</footer>
 			    </div>
 		    </div>
