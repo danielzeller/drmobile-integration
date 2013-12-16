@@ -330,7 +330,6 @@ body.light {
 	font-size: 14px;
 	margin: 10px 10px !important;
 	font-weight: 600 !important;
-	font-style: italic;
 }
 
 .paywall footer a:active{
@@ -502,12 +501,9 @@ body.light {
 		z-index: 9999
 	}
 	#paywall-products .round-button {
-		top: auto;
-		bottom: -10px;
 		left: 10px;
-		float: none;
-		margin-top: 0;
 	}
+
 	.paywall footer {
 		padding: 0;
 		width: 90%;
@@ -517,21 +513,32 @@ body.light {
 		/* border-bottom: 1px solid #ddd; */
 	}
 	.paywall footer a {
-		display: block;
 		text-align: center;
-/* 		width: 50%; */
-/* 		float: left; */
-/*
-		margin: 0 !important;
-		box-sizing:border-box;
-		-moz-box-sizing:border-box; /* Firefox */
-*/
 	}
 	.paywall-tab {
 		padding-bottom: 10px;
 	}
-	.paywall-tab-trigger {
+	
+}
+
+
+@media only screen and (max-width: 480px) {
+	.paywall footer a {
 		display: block;
 	}
-	
+	#paywall-products .round-button {
+		top: auto;
+		bottom: -10px;
+		left: 10px;
+		float: none;
+		margin-top: 0;
+	}
+}
+@media only screen and (max-width: 320px) {
+	.paywall footer a {
+		display: block;
+	}
+	#paywall-products .round-button {
+		bottom: -20px;
+	}
 }
