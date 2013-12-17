@@ -24,6 +24,25 @@ body.light {
 	display: block;
 }
 
+.aftenposten-logo {
+	position: absolute;
+	bottom: 20px;
+	width: 47px;
+	height: 47px;
+	right: 20px;
+	background: url(gfx/paywall/paywall-sprite@2x.png) no-repeat center -42px;
+	background-size: 47px;
+}
+
+.colored-border {
+	position: absolute;
+	height: 3px;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: url(gfx/paywall/colored_border.jpg) no-repeat left center;
+}
+
 .paywall h1 {
     font-size: 30px;
     margin: 0;
@@ -141,15 +160,6 @@ body.light {
 .paywall a.round-button:active{
 	background: #2bb4ed;
 	color: #fff !important;
-}
-.aftenposten-logo {
-	position: absolute;
-	bottom: 20px;
-	width: 47px;
-	height: 47px;
-	right: 20px;
-	background: url(gfx/paywall-sprite@2x.png) no-repeat center -42px;
-	background-size: 47px;
 }
 
 .light .paywall nav {
@@ -276,7 +286,7 @@ body.light {
 	z-index: 999;
 }
 .input_username:before {
-	background: url(gfx/paywall-sprite@2x.png) no-repeat -0px -22px;
+	background: url(gfx/paywall/paywall-sprite@2x.png) no-repeat -0px -22px;
 	background-size: 47px;
 }
 .input_password:before {
@@ -349,19 +359,19 @@ body.light {
 	content: '';
 	height: 21px;
 	width: 21px;
-	background: url(gfx/paywall-sprite@2x.png) no-repeat left -19px;
+	background: url(gfx/paywall/paywall-sprite@2x.png) no-repeat left -19px;
 	background-size: 47px;
 	position: absolute;
 	left: 8px;
 }
 
 .paywall a.icon.paywall-logout:before {
-	background: url(gfx/paywall-sprite@2x.png) no-repeat -25px -19px;
+	background: url(gfx/paywall/paywall-sprite@2x.png) no-repeat -25px -19px;
 	background-size: 47px;
 }
 .paywall a.spid-logo{
 	position: relative;
-	background: url(gfx/paywall-sprite@2x.png) no-repeat left top;
+	background: url(gfx/paywall/paywall-sprite@2x.png) no-repeat left top;
 	background-size: 53px;
 	width: 50px;
 	display: inline-block;
