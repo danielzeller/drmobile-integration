@@ -129,7 +129,7 @@ define('paywall', ['main'], function (app) {
 	});
 	
 	$('.externalBrowser').click(function() {
-	    var externalURL = $(this).attr('url');
+	    var externalURL = $(this).attr('href');
 		console.log('Open external browser = ' + externalURL);
 		app.bridge.trigger('externalBrowser', {
 			"url": externalURL
