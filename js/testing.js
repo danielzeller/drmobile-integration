@@ -156,7 +156,7 @@ require(['main', 'pages'], function(app, pages){
      + '&publicationName=' + publicationName
      + '&limit=20&order=updated+desc';
      //skip    "&callback=?"
-     url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?publicationArticleId=aftenposten_all_ap6743515&formatName=iphone";
+     url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=iphone";
     pages.get({
       url: url,
       callback: init
