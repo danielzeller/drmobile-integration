@@ -128,6 +128,15 @@ define('paywall', ['main'], function (app) {
 		return false;
 	});
 	
+	$('.externalBrowser').click(function() {
+	    var externalURL = $(this).attr('url');
+		console.log('Open external browser = ' + externalURL);
+		app.bridge.trigger('externalBrowser', {
+			"url": externalURL
+		});
+		return false;
+	});
+	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
 		app.bridge.trigger('login', {
