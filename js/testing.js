@@ -172,7 +172,7 @@ require(['main', 'pages'], function(app, pages){
     var url;
 
     if(env){
-      url = "http://"+env+".aptoma.no/drmobile.json?"+
+      url = "http://"+env+"/drmobile.json?"+
       "articleId="+articleId+
       "&formatName="+formatName;
     }else{
