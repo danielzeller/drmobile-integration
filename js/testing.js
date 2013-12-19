@@ -133,6 +133,7 @@ require(['main', 'pages'], function(app, pages){
   }
 
   function onTestPage(){
+    return true;
     var num ='[0-9]{1,3}';
     var dot = '\.';
     var ipRegex = [num, num, num, num].join(dot);
@@ -176,11 +177,13 @@ require(['main', 'pages'], function(app, pages){
       "&formatName="+formatName;
     }else{
       var publicationName = 'ap_pub_5';
-      var url = 'http://rai-dev.aptoma.no:9000/drmobile.json?formatName=' + formatName
+      url = 'http://rai-dev.aptoma.no:9000/drmobile.json?formatName=' + formatName
        + '&publicationName=' + publicationName
        + '&limit=20&order=updated+desc';
+
+      url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=ipad_landscape";
     }
-    url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=ipad_landscape";
+
     console.log('load from: ', url);
 
     pages.get({
