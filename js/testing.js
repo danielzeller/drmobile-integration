@@ -21,8 +21,8 @@ require(['main', 'pages'], function(app, pages){
 
   function init(pagesData){
     pagesList = pagesData;
-    app.event.trigger('renderPage',
-        pagesList.items[0].compiled.pages[0], pagesList.items[0].service.assetsBaseUrl, '');
+    console.log(pagesList);
+    loadPage(state);
 
     document.onkeydown=changePageKeyboard;
 
@@ -35,9 +35,10 @@ require(['main', 'pages'], function(app, pages){
       console.error('pagesList empty', pagesList);
       return;
     }
-    app.event.trigger('renderPage',
-        pagesList.items[state.article].compiled.pages[state.page],
-        pagesList.items[state.article].service.assetsBaseUrl, '');
+    app.event.trigger('renderPage',{
+      json: pagesList.items[state.article].compiled.pages[state.page],
+      assetsBaseUrl: pagesList.items[state.article].service.assetsBaseUrl
+    });
   }
 
   function setNextPage(){
@@ -145,18 +146,46 @@ require(['main', 'pages'], function(app, pages){
     return false;
   }
 
+  function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        if (decodeURIComponent(pair[0]) == variable) {
+            return decodeURIComponent(pair[1]);
+        }
+    }
+    console.log('Query variable %s not found', variable);
+}
+
   if(onTestPage()){
     console.log('on test page!');
     // The name of the publication in LayoutPreview
-    var publicationName = 'ap_pub_5';
-    // The name of the format you want to use
-    var formatName = 'iphone';
-    // Article URL. Point this to your DrMobile API endpoint (DrLib)
-    var url = 'http://rai-dev.aptoma.no:9000/drmobile.json?formatName=' + formatName
-     + '&publicationName=' + publicationName
-     + '&limit=20&order=updated+desc';
-     //skip    "&callback=?"
+
      url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=iphone";
+
+    var env = getQueryVariable('env') ;
+    var formatName = getQueryVariable('format') || 'iphone';
+    var articleId = getQueryVariable('id') || 'ap6743515';
+    state.page = getQueryVariable('page') || 0;
+    var url;
+
+    if(env && env =='staging'){
+      url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?"+
+      "articleId="+articleId+
+      "&formatName="+formatName;
+    }else if(env && env =='sandbox'){
+      url = "http://sandbox.drmobile.aptoma.no/drmobile.json?"+
+      "articleId="+articleId+
+      "&formatName="+formatName;
+    }else{
+      var publicationName = 'ap_pub_5';
+      var url = 'http://rai-dev.aptoma.no:9000/drmobile.json?formatName=' + formatName
+       + '&publicationName=' + publicationName
+       + '&limit=20&order=updated+desc';
+    }
+    console.log('load from: ', url);
+
     pages.get({
       url: url,
       callback: init
