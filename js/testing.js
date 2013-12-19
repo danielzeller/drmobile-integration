@@ -162,7 +162,7 @@ require(['main', 'pages'], function(app, pages){
     console.log('on test page!');
     // The name of the publication in LayoutPreview
 
-     url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=iphone";
+
 
     var env = getQueryVariable('env') ;
     var formatName = getQueryVariable('format') || 'iphone';
@@ -170,12 +170,8 @@ require(['main', 'pages'], function(app, pages){
     state.page = getQueryVariable('page') || 0;
     var url;
 
-    if(env && env =='staging'){
-      url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?"+
-      "articleId="+articleId+
-      "&formatName="+formatName;
-    }else if(env && env =='sandbox'){
-      url = "http://sandbox.drmobile.aptoma.no/drmobile.json?"+
+    if(env){
+      url = "http://"+env+".aptoma.no/drmobile.json?"+
       "articleId="+articleId+
       "&formatName="+formatName;
     }else{
@@ -184,6 +180,7 @@ require(['main', 'pages'], function(app, pages){
        + '&publicationName=' + publicationName
        + '&limit=20&order=updated+desc';
     }
+    url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=ipad_landscape";
     console.log('load from: ', url);
 
     pages.get({
