@@ -4,7 +4,7 @@ define('paywall', ['main'], function (app) {
 	// PAYWALL 
 
 	var paywall = {};
-	paywall.shouldPreventTouch = true;
+	paywall.shouldPreventTouch = false;
 
 	app.event.on('showPaywall', function (args) {
 		var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
