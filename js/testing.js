@@ -184,6 +184,13 @@ require(['main', 'pages'], function(app, pages){
       url = "http://aftenposten-staging.drlib.aptoma.no/drmobile.json?articleId=common408675&formatName=ipad_landscape";
     }
 
+    //we need it because iphone is 100% width and for desktop preview
+    //it desn't make sense
+    var iPhoneFormat = formatName === 'iphone';
+    var $chrome = $('#chrome');
+    $chrome.width( iPhoneFormat ? 320 :  '');
+    $chrome.css('overflow', iPhoneFormat ? 'scroll' :  'hidden');
+
     console.log('load from: ', url);
 
     pages.get({
