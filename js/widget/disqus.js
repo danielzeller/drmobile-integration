@@ -23,7 +23,7 @@ define('js/widgets/disqus', ['alf'], function(Alf){
                 }
 
                 //console.log('Comments for: ' + shortname + ' ' + query);
-                var url = 'http://hfossli.github.io/drmobile-integration/disqus.html?='+shortname+'&identifier='+query;
+                var url = 'http://hfossli.github.io/drmobile-integration/disqus.html?shortname='+shortname+'&identifier='+query;
                 app.bridge.trigger('closedBrowser', url);
 
                 skip = true;
