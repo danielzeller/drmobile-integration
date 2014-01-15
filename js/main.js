@@ -1,4 +1,4 @@
-define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner'], function (Alf, disqus, banner) {
+define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/phonebanner'], function (Alf, disqus, banner, phonebanner) {
 	"use strict";
 	var $ = Alf.dom;
 
@@ -12,6 +12,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner'], function (Alf,
 	var widgets = [];
       widgets.push(disqus);
       widgets.push(banner);
+      widgets.push(phonebanner);
 
 
 	var app = {
