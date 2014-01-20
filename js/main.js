@@ -77,6 +77,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 				 */
 				eventTriggered: function () {
 
+                    console.log("eventTriggered: " + arguments);
 					var eventInfo = JSON.stringify([].slice.call(arguments));
                     console.log("eventTriggered: " + eventInfo);
 
