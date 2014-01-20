@@ -76,7 +76,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 				 * @return {void}
 				 */
 				eventTriggered: function () {
-                    console.log("eventTriggered: integrationLoaded");
+                    console.log("eventTriggered: " + eventInfo);
 
 					var eventInfo = JSON.stringify([].slice.call(arguments));
                     this.frameIndex = (this.frameIndex + 1) % this.eventFrames.length;
@@ -196,10 +196,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	});
 
 	app.event.on('renderPage', function(args) {
-        console.log("Event: renderPage");
-
 		var pageContentEl = $('#alf-layer-content');
-
         console.log(args)
 
 		window.scrollTo(0);
@@ -230,7 +227,6 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	});
 
 	$(document).ready(function () {
-        console.log("Bridge: integrationLoaded");
 		app.bridge.trigger('integrationLoaded', {});
 	});
 
