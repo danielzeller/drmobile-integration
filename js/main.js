@@ -196,6 +196,8 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	app.event.on('renderPage', function(args) {
 		var pageContentEl = $('#alf-layer-content');
 
+        console.log(args)
+
 		window.scrollTo(0);
 		app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {
 			if(args.onReadyForDisplay) {
