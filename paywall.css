@@ -3,10 +3,10 @@
 ::selection { background: transparent; }
 ::-moz-selection { background: transparent; }
 
-body {
+body.android {
     background: #333;
 }
-body.light {
+body.android.light {
     background: #eee;
 }
 .clearfix:after {
@@ -109,7 +109,6 @@ body.light {
 	pointer-events: inherit;
 	position: relative;
 	width: 100%;
-	border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 .light .paywall {
 	border-color: #fafafa;
