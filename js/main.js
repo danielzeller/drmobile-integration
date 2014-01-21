@@ -77,9 +77,11 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 				 */
 				eventTriggered: function () {
 
-                    console.log("eventTriggered: " + arguments);
+                    console.log("eventTriggered arguments: " + arguments);
+                    console.log([].slice.call(arguments));
+
 					var eventInfo = JSON.stringify([].slice.call(arguments));
-                    console.log("eventTriggered: " + eventInfo);
+                    console.log("eventTriggered eventInfo: " + eventInfo);
 
                     this.frameIndex = (this.frameIndex + 1) % this.eventFrames.length;
 					if(app.isEmbeddedInApp)
