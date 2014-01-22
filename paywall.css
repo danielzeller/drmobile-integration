@@ -544,10 +544,13 @@ body.android.light {
 	}
 }
 @media only screen and (max-width: 320px) {
+	.paywall footer{
+		text-align: center;
+	}
 	.paywall footer a {
-		display: block;
+		display: inline-block;
 	}
 	#paywall-products .round-button {
-		bottom: -18px;
+		bottom: -2px;
 	}
 }
