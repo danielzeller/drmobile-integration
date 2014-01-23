@@ -560,7 +560,7 @@ body.android.light {
 @media only screen and (max-width: 320px) {
 
 }
-@media only screen and (max-device-height: 480px) {
+@media (max-device-width: 482px) {
 	.focus header {
 		padding-top: 45px !important;
 	}

@@ -14,6 +14,8 @@ define('paywall', ['main'], function (app) {
 	    }
 	};
 	
+	var deviceHeight = window.screen.height;
+		
 	if( isMobile.Android() ){
 		$('body').addClass('android');		
 	}
@@ -37,7 +39,7 @@ define('paywall', ['main'], function (app) {
 	    app.bridge.trigger('paywallLoaded', {
 	        "height": paywallHeight
 	    });
-		console.log('paywall height = ' + paywallHeight);	
+		console.log('Paywall height = ' + paywallHeight);	
 
 	}
 	
@@ -72,8 +74,7 @@ define('paywall', ['main'], function (app) {
 			subscriberLink.attr('intern', '#paywall-login');
 		}
 		
-		if(gotProducts)
-		{
+		if(gotProducts) {
 			$.each(args.products, function(i, p) {
 				var productEl = $('[pid="'+p.productIdentifier+'"]');
 				var productPriceEl = productEl.find('.paywall-product-price');
@@ -85,15 +86,20 @@ define('paywall', ['main'], function (app) {
 
 	});
 	
-	if (window.screen.height < 480) {
+	console.log('Device height = ' + deviceHeight);
+
+	if (deviceHeight <= 480) {
+		console.log('Device height < 480px');
 		$( "input" ).focus(function() {
 			console.log('input is focus');	
 			$('#paywall-login').addClass('focus');
 		});
 		$( "input" ).focusout(function() {
-			console.log('input is outFocus');	
+			console.log('input is out of focus');	
 			$('#paywall-login').removeClass('focus');
 		});
+	} else {
+		console.log('Device height > 480px');
 	}
 
 	
