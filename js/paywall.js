@@ -60,10 +60,8 @@ define('paywall', ['main'], function (app) {
 	
 	$(document).ready(function() {
 		updatePaywallHeight();
-	    setTimeout(function(){
-			checkDeviceHeightAndAdjustInputIfNeeded();
-			console.log('Device height = ' + deviceHeight);
-	    }, 3000);
+		checkDeviceHeightAndAdjustInputIfNeeded();
+		console.log('Device height = ' + deviceHeight);
 	});
 	
 	
@@ -104,6 +102,8 @@ define('paywall', ['main'], function (app) {
 		console.log('Updated paywall');		
 
 	});
+	
+
 
 
 
