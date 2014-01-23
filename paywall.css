@@ -121,6 +121,7 @@ body.android.light {
     overflow: hidden;
     width: 100%;
     position: relative;
+    background: #eee;
 }
 .paywall .round-button {
 	border-radius: 100%;
@@ -143,7 +144,7 @@ body.android.light {
 .paywall .go-back-button {
 	position: absolute;
 	top: 50%;
-	left: 10%;
+	left: 20px;
 	margin-top: -20px;
 	font-size: 22px;
 	line-height: 24px;
@@ -155,6 +156,9 @@ body.android.light {
 	right: 20px;
 	top: 20px;
 	z-index: 9999;
+}
+.paywall .paywall-tab a.more-info-trigger{
+	display: none;
 }
 .paywall a.round-button:active{
 	background: #2bb4ed;
@@ -337,7 +341,7 @@ body.android.light {
 }
 .paywall footer a{
 	font-size: 14px;
-	margin: 10px 10px !important;
+	margin: 10px 10px 5px !important;
 	font-weight: 600 !important;
 }
 
@@ -506,10 +510,14 @@ body.android.light {
 	.paywall a.more-info-trigger {
 		bottom: 10px;
 		right: 10px;
-		top: inherit;
-		z-index: 9999
+		top: auto;
+		z-index: 9999;
+		display: none;
 	}
-	#paywall-products .round-button {
+	.paywall .paywall-tab a.more-info-trigger {
+		display: block;
+	}
+	.button-bottom.round-button {
 		left: 10px;
 	}
 
@@ -518,14 +526,14 @@ body.android.light {
 		width: 90%;
 		display: block;
 		/* border-top: 1px solid #ddd; */
-		margin: 5px auto 10px;
+		margin: 5px auto 0;
 		/* border-bottom: 1px solid #ddd; */
 	}
 	.paywall footer a {
 		text-align: center;
 	}
 	.paywall-tab {
-		padding-bottom: 10px;
+		padding-bottom: 15px;
 	}
 	
 }
@@ -538,9 +546,9 @@ body.android.light {
 	.paywall footer a {
 		display: inline-block;
 	}
-	#paywall-products .round-button {
+	.button-bottom.round-button {
 		top: auto;
-		bottom: -10px;
+		bottom: 10px;
 		left: 10px;
 		float: none;
 		margin-top: 0;
@@ -548,7 +556,4 @@ body.android.light {
 }
 @media only screen and (max-width: 320px) {
 
-	#paywall-products .round-button {
-		bottom: -2px;
-	}
 }
