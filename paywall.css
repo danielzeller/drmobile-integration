@@ -183,6 +183,10 @@ body.android.light {
 	top: 50%;
 	padding: 20px 0;	
 }
+.paywall-tab header {
+	-webkit-transition: padding-top 0.3s ease-out;
+	transition: padding-top 0.3s ease-out;
+}
 
 .paywall-tab-trigger {
 	cursor: pointer;
@@ -340,7 +344,7 @@ body.android.light {
 }
 .paywall footer a{
 	font-size: 14px;
-	margin: 10px 10px 5px !important;
+	margin: 5px 10px !important;
 	font-weight: 600 !important;
 }
 
@@ -555,4 +559,13 @@ body.android.light {
 }
 @media only screen and (max-width: 320px) {
 
+}
+@media only screen and (max-height: 480px) {
+	.focus header {
+		padding-top: 45px !important;
+	}
+		
+	.focus .hide-on-focus {
+		display: none;
+	}
 }

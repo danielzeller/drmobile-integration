@@ -34,11 +34,12 @@
 			<a href="https://kundesenter.aftenposten.no/" class="externalBrowser more-info-trigger round-button"><b>i</b></a>
 			<div id="paywall-content">
 			    <div id="paywall-login" class="paywall-tab open">
+					<a href="https://kundesenter.aftenposten.no/" class="externalBrowser more-info-trigger round-button"><b>i</b></a>
 					<header class="paywallHeader clearfix">
 						<h2>Logg inn med <a href="https://kundesenter.aftenposten.no/" class="externalBrowser spid-logo"></a></h2>
 			            <p>Har du kjøpt tilgang til Aftenposten Digital og har en SPiD-konto. Vennligst logg inn.</p>
 		        	</header>
-					<form class="clearfix">
+					<form id="login_form" class="clearfix">
 						<div class="input_username input"><input type="text" name="username" placeholder="SPiD-brukernavn" value="snd.web2@gmail.com" autocomplete="off"></div>
 						<div class="input_password input"><input type="password" name="password" placeholder="SPiD-passord" value="paywall12" autocomplete="off"></div>
 						<input type="submit" value=" › ">
@@ -46,12 +47,10 @@
 					<footer class="paywallFooter">
 
 						<a href="https://payment.schibsted.no/auth/forgotPassword?redirect=aftenposten.no" class="externalBrowser forgotPassword">Glemt passord?</a>
-						<a href="#" intern="#paywall-buy" class="paywall-tab-trigger">Bli abonnent ›</a>
-						<a href="#" class="paywall-restore">Gjenopprette iTunes-kjøp</a>
+						<a href="#" intern="#paywall-buy" class="paywall-tab-trigger hide-on-focus">Bli abonnent ›</a>
+						<a href="#" class="paywall-restore hide-on-focus">Gjenopprette iTunes-kjøp</a>
 
 					</footer>
-					<a href="https://kundesenter.aftenposten.no/" class="externalBrowser more-info-trigger round-button"><b>i</b></a>
-
 			    </div>
 			    <div id="paywall-forgot-password" class="paywall-tab">
 					<header class="paywallHeader clearfix">

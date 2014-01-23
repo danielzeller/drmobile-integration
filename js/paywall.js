@@ -85,6 +85,18 @@ define('paywall', ['main'], function (app) {
 
 	});
 	
+	if ($(window).height() < 480) {	
+		$( "input" ).focus(function() {
+			console.log('input is focus');	
+			$('#paywall-login').addClass('focus');
+		});
+		$( "input" ).focusout(function() {
+			console.log('input is outFocus');	
+			$('#paywall-login').removeClass('focus');
+		});
+	}
+
+	
 	
 
 
