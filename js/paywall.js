@@ -42,9 +42,28 @@ define('paywall', ['main'], function (app) {
 		console.log('Paywall height = ' + paywallHeight);	
 
 	}
+	function checkDeviceHeightAndAdjustInputIfNeeded() {
+		if (deviceHeight <= 480) {
+			console.log('Device height < 480px');
+			$( "input" ).focus(function() {
+				console.log('input is focus');	
+				$('#paywall-login').addClass('focus');
+			});
+			$( "input" ).focusout(function() {
+				console.log('input is out of focus');	
+				$('#paywall-login').removeClass('focus');
+			});
+		} else {
+			console.log('Device height > 480px');
+		}
+	}
 	
 	$(document).ready(function() {
 		updatePaywallHeight();
+	    setTimeout(function(){
+			checkDeviceHeightAndAdjustInputIfNeeded();
+			console.log('Device height = ' + deviceHeight);
+	    }, 3000);
 	});
 	
 	
@@ -85,25 +104,7 @@ define('paywall', ['main'], function (app) {
 		console.log('Updated paywall');		
 
 	});
-	
-	console.log('Device height = ' + deviceHeight);
 
-	if (deviceHeight <= 480) {
-		console.log('Device height < 480px');
-		$( "input" ).focus(function() {
-			console.log('input is focus');	
-			$('#paywall-login').addClass('focus');
-		});
-		$( "input" ).focusout(function() {
-			console.log('input is out of focus');	
-			$('#paywall-login').removeClass('focus');
-		});
-	} else {
-		console.log('Device height > 480px');
-	}
-
-	
-	
 
 
 	$('#chrome').on('touchmove, touchstart', function () {
