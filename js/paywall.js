@@ -85,7 +85,7 @@ define('paywall', ['main'], function (app) {
 
 	});
 	
-	if ($(window).height() < 480) {	
+	if (window.screen.height < 480) {
 		$( "input" ).focus(function() {
 			console.log('input is focus');	
 			$('#paywall-login').addClass('focus');
