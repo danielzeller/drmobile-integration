@@ -207,16 +207,16 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 		}
 	});
 
-	app.event.on('applicationInfo', function (info) {
-		app.logToAll('Got applicationInfo:');
+	app.event.on('clientInfo', function (info) {
+		app.logToAll('Got clientInfo:');
 	});
 
 	app.event.on('networkReachability', function (state) {
-		app.logToAll('Got applicationInfo:');
+		app.logToAll('Got networkReachability:');
 	});
 
 	app.event.on('applicationState', function(state) {
-		app.logToAll('Got appstate: ' + state);
+		app.logToAll('Got applicationState: ' + state);
 	});
 
 	$(document).ready(function () {
