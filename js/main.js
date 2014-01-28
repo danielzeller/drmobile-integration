@@ -76,7 +76,9 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 				 * @return {void}
 				 */
 				eventTriggered: function () {
+                    console.log([].slice.call(arguments));
 					var eventInfo = JSON.stringify([].slice.call(arguments));
+
                     this.frameIndex = (this.frameIndex + 1) % this.eventFrames.length;
 					if(app.isEmbeddedInApp)
 					{
@@ -158,7 +160,11 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 			   page.render(pageContentEl);
 			});
 
-		}
+		},
+
+        exitFullscreen: function () {
+                   app.fullscreenLayer.exitFullscreen();
+        }
 
 	};
 
@@ -191,6 +197,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 
 	app.event.on('renderPage', function(args) {
 		var pageContentEl = $('#alf-layer-content');
+        console.log(args)
 
 		window.scrollTo(0);
 		app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {

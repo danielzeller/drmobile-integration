@@ -1,49 +1,115 @@
 define('paywall', ['main'], function (app) {
 	"use strict";
 
+
+	var isMobile = {
+	    Android: function() {
+	        return navigator.userAgent.match(/Android/i);
+	    },
+	    iOS: function() {
+	        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+	    },
+	    any: function() {
+	        return (isMobile.Android() || isMobile.iOS() );
+	    }
+	};
+	
+	var deviceHeight = window.screen.height;
+		
+	if( isMobile.Android() ){
+		$('body').addClass('android');		
+	}
+
+		
+	function updatePaywallHeight() {
+
+		// see wich tab is highest
+		var arr = [];
+		$('.paywall-tab').each(function(){		
+			var thisOutherHeight = $(this).outerHeight();
+			var thisMarginTop = thisOutherHeight / 2;
+		    arr.push(thisOutherHeight);
+		    $(this).css('margin-top',  - thisMarginTop);    
+		});	
+		
+		$('#paywall-content').css('height', Math.max.apply( Math, arr ));
+		
+		// push paywall Total height 
+		var paywallHeight = $('#paywallInner').height();
+	    app.bridge.trigger('paywallLoaded', {
+	        "height": paywallHeight
+	    });
+		console.log('Paywall height = ' + paywallHeight);	
+
+	}
+	function checkDeviceHeightAndAdjustInputIfNeeded() {
+		if (deviceHeight <= 480) {
+			console.log('Device height < 480px');
+			$( "input" ).focus(function() {
+				console.log('input is focus');	
+				$('#paywall-login').addClass('focus');
+			});
+			$( "input" ).focusout(function() {
+				console.log('input is out of focus');	
+				$('#paywall-login').removeClass('focus');
+			});
+		} else {
+			console.log('Device height > 480px');
+		}
+	}
+	
+	$(document).ready(function() {
+		updatePaywallHeight();
+		checkDeviceHeightAndAdjustInputIfNeeded();
+		console.log('Device height = ' + deviceHeight);
+	});
+	
+	
 	// PAYWALL 
-
 	var paywall = {};
-	paywall.shouldPreventTouch = false;
 
-	app.event.on('showPaywall', function (args) {
+	app.event.on('updatePaywall', function (args) {
 		var gotProducts = typeof(args.products) != "undefined" && args.products.length > 0;
 		var wall = gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var otherWall = !gotProducts ? $('#purchase-with-products-wall') : $('#login-or-signup-wall');
 		var animDuration = args.animated ? 300 : 0;
-		if(gotProducts)
-		{
+		var fullName = args.user;
+		var isLoggedIn = fullName || fullName=="" ? true : false;
+		var activePaywallElement = isLoggedIn ? $('#paywall-logged-in') : $('#paywall-login');
+		var paywallHeight = $('#paywallInner').height();
+		var checkIfFullNameIsEmpty = fullName =="" ? fullName : " " + fullName;
+				
+		$('.paywall-tab').removeClass('open');
+		activePaywallElement.addClass('open');
+
+		var subscriberLink = $("a[id*='subscriber-link']");
+
+		if(isLoggedIn) {
+			$('.getSpidUserName').text(checkIfFullNameIsEmpty);
+			subscriberLink.attr('intern', '#paywall-logged-in');
+		} else {
+			subscriberLink.attr('intern', '#paywall-login');
+		}
+		
+		if(gotProducts) {
 			$.each(args.products, function(i, p) {
 				var productEl = $('[pid="'+p.productIdentifier+'"]');
 				var productPriceEl = productEl.find('.paywall-product-price');
 				productPriceEl.text(p.price + ',-');
 			});
 		}
-
-		$('.paywall').addClass('showPaywall');
-
-		console.log('Displaying paywall');
 		
-		paywall.shouldPreventTouch = true;
-	});
+		console.log('Updated paywall');		
 
-	app.event.on('hidePaywall', function (args) {
-
-		$('.paywall').removeClass('showPaywall');
-
-		console.log('Hiding paywall');
-		
-		paywall.shouldPreventTouch = false;		
 	});
 	
+
+
+
+
 	$('#chrome').on('touchmove, touchstart', function () {
 		console.log('Touched paywall');
-
-		if(paywall.shouldPreventTouch) {
-			$('.layer-content').addClass('overflowHidden');
-		} else {
-			$('.layer-content').removeClass('overflowHidden');
-		}
+		$('.layer-content').removeClass('overflowHidden');
 	});
 
 	$('.paywall-buy-product').click(function() {
@@ -81,6 +147,15 @@ define('paywall', ['main'], function (app) {
 		return false;
 	});
 	
+	$('.externalBrowser').click(function() {
+	    var externalURL = $(this).attr('href');
+		console.log('Open external browser = ' + externalURL);
+		app.bridge.trigger('externalBrowser', {
+			"url": externalURL
+		});
+		return false;
+	});
+	
 	$('#paywall-login form').bind('submit', function(e) {
 		console.log('User wants access - login');
 		app.bridge.trigger('login', {
@@ -90,19 +165,9 @@ define('paywall', ['main'], function (app) {
 		});
 		return false;
 	});
-	
-	$('#paywall-forgot-password form').bind('submit', function(e) {
-		console.log('User wants password - forgotPassword');
-		var username = $(this).find('input[name="username"]').val();
-		app.bridge.trigger('forgotPassword', {
-			"provider": "spid",
-			"username": $(this).find('input[name="username"]').val()
-		});
-		return false;
-	});
 	                     
 	$(".paywall-tab-trigger").bind('click', function(e){
-	    var toShow = $(this).attr('target');
+	    var toShow = $(this).attr('intern');
 	    console.log('open ' + toShow);
 	    $(".paywall-tab.open").removeClass('open');
 		$(".paywall-tab-trigger.open").removeClass('open');
@@ -110,16 +175,10 @@ define('paywall', ['main'], function (app) {
 	    $(this).addClass('open');
 		return false;
 	});
-
-	$(".more-info-trigger").bind('click', function(e){
-	    var toShow = $(this).attr('target');
-	    $(toShow).addClass('open');
-		return false;
-	});
-
-	$(".close-more-info").bind('click', function(e){
-	    var toShow = $(this).attr('target');
-	    $(toShow).removeClass('open');
+	
+	$(".active-tab").bind('click', function(e){
+		var activeTab = $(this).attr('active-tab');
+	    $(activeTab).addClass('open');
 		return false;
 	});
  
