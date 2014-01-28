@@ -10,9 +10,9 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	});
 
 	var widgets = [];
-      widgets.push(disqus);
-      widgets.push(banner);
-      widgets.push(phonebanner);
+    widgets.push(disqus);
+    widgets.push(banner);
+    widgets.push(phonebanner);
 
 
 	var app = {
