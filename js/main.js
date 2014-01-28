@@ -76,7 +76,9 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 				 * @return {void}
 				 */
 				eventTriggered: function () {
+                    console.log([].slice.call(arguments));
 					var eventInfo = JSON.stringify([].slice.call(arguments));
+
                     this.frameIndex = (this.frameIndex + 1) % this.eventFrames.length;
 					if(app.isEmbeddedInApp)
 					{
@@ -158,7 +160,11 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 			   page.render(pageContentEl);
 			});
 
-		}
+		},
+
+        exitFullscreen: function () {
+                   app.fullscreenLayer.exitFullscreen();
+        }
 
 	};
 
@@ -191,6 +197,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 
 	app.event.on('renderPage', function(args) {
 		var pageContentEl = $('#alf-layer-content');
+        console.log(args)
 
 		window.scrollTo(0);
 		app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {
@@ -207,16 +214,16 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 		}
 	});
 
-	app.event.on('applicationInfo', function (info) {
-		app.logToAll('Got applicationInfo:');
+	app.event.on('clientInfo', function (info) {
+		app.logToAll('Got clientInfo:');
 	});
 
 	app.event.on('networkReachability', function (state) {
-		app.logToAll('Got applicationInfo:');
+		app.logToAll('Got networkReachability:');
 	});
 
 	app.event.on('applicationState', function(state) {
-		app.logToAll('Got appstate: ' + state);
+		app.logToAll('Got applicationState: ' + state);
 	});
 
 	$(document).ready(function () {
