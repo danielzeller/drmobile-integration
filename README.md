@@ -1,6 +1,6 @@
-drmobile-integration
-====================
+Integration
+===========
 
-DrMobile integration example
+Used by core application to render pages
 
-http://hfossli.github.io/drmobile-integration/
+[![IVY Engine - Digital storytelling](http://static.agens.no/images/ivy_digital_storytelling_small.png)](http://ivyengine.com/)
