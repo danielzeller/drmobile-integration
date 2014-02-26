@@ -24,7 +24,7 @@ define('js/widgets/disqus', ['alf'], function(Alf){
 
                 //console.log('Comments for: ' + shortname + ' ' + query);
                 var url = 'http://lisa.aftenposten.no/aftenposten_pluss/stage/integration/disqus.html?shortname='+shortname+'&identifier='+query;
-                app.bridge.trigger('closedBrowser', url);
+                window.location.href = url;
 
                 skip = true;
                 setTimeout(function(){
