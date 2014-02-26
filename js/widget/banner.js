@@ -34,12 +34,13 @@ define('js/widgets/phonebanner', ['alf'], function(Alf){
             var container = this.container;
             container.$el.empty();
 
-            var url = "http://a.adtech.de/addyn/3.0/995.1/0/0/-1/ADTECH;loc=100;grp=[group];alias=MobilApp_Forside-Top-5;misc=" + new Date().getTime();
+            var url = "http://a.adtech.de/addyn/3.0/995.1/0/0/-1/ADTECH;loc=100;grp=[group];alias=MobilApp_Test-Top-5;misc=" + new Date().getTime();
 
             var iframe = document.createElement('iframe');
             iframe.className = 'ad-iframe';
             iframe.scrolling='no';
-            var html = '<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0"><scr'+'ipt language="javascript1.1" src="' + url + '"></scri'+'pt></body>';
+            var html = '<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" rightmargin="0">'
+                + '<scr'+'ipt language="javascript1.1" src="' + url + '"></scri'+'pt></body>';
             iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(html);
             container.$el.append(iframe);
 
