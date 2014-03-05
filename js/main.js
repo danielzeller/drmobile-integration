@@ -162,18 +162,31 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 
 		},
 
+        /**
+         * Clear the page on screen
+         *
+         * @param {Function} onDone
+         * @return {void}
+         */
+        clearPage: function () {
+            if (this.page) {
+                this.page.tearDown();
+                this.page = null;
+            }
+        },
+
         exitFullscreen: function () {
-                   app.fullscreenLayer.exitFullscreen();
+            app.fullscreenLayer.exitFullscreen();
         }
 
-	};
+    };
 
 	app.initialize();
 	window.app = app;
 	window.onerror = function(message, url, linenumber) {
 		var error = url + ':' + linenumber + ' - ' + message;
 		app.logToConsole(error);
-		app.bridge.trigger('error', { 
+		app.bridge.trigger('error', {
 			"reason": error
 		});
 	};
@@ -212,6 +225,10 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 			});
 		}
 	});
+
+    app.event.on('clearPage', function(args) {
+        app.clearPage()
+    });
 
 	app.event.on('clientInfo', function (info) {
 		app.logToAll('Got clientInfo:');
