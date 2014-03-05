@@ -168,11 +168,12 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
          * @param {Function} onDone
          * @return {void}
          */
-        clearPage: function () {
+        clearPage: function (pageContentEl) {
             if (this.page) {
                 this.page.tearDown();
                 this.page = null;
             }
+            pageContentEl.html("");
         },
 
         exitFullscreen: function () {
@@ -227,7 +228,8 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	});
 
     app.event.on('clearPage', function(args) {
-        app.clearPage()
+        var pageContentEl = $('#alf-layer-content');
+        app.clearPage(pageContentEl);
     });
 
 	app.event.on('clientInfo', function (info) {
