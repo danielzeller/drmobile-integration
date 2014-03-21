@@ -210,21 +210,23 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	});
 
 	app.event.on('renderPage', function(args) {
-		var pageContentEl = $('#alf-layer-content');
+		setTimeout(function(){ // delay to allow for main thread to continue 
+			var pageContentEl = $('#alf-layer-content');
 
-		window.scrollTo(0, 0);
-		app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {
-			if(args.onReadyForDisplay) {
-				app.bridge.trigger(args.onReadyForDisplay, {
+			window.scrollTo(0, 0);
+			app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {
+				if(args.onReadyForDisplay) {
+					app.bridge.trigger(args.onReadyForDisplay, {
+						"contextHash": args.contextHash
+					});
+				}
+			});
+			if(args.onRenderCompleted) {
+				app.bridge.trigger(args.onRenderCompleted, {
 					"contextHash": args.contextHash
 				});
 			}
-		});
-		if(args.onRenderCompleted) {
-			app.bridge.trigger(args.onRenderCompleted, {
-				"contextHash": args.contextHash
-			});
-		}
+		}, 10);
 	});
 
     app.event.on('clearPage', function(args) {
