@@ -2,11 +2,8 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	"use strict";
 	var $ = Alf.dom;
 
-	// Bubble up the tap event on video elements in fullscreen slideshow
-	$(document.body).on('tap', '.ap-slideshow-fullscreen .video', function() {
-		var videoUrl = $(this).attr('data-video-url');
-		// bridge.trigger('playVideo', videoUrl)
-		alert("OK - tapped video - " + videoUrl);
+	$('.alf-layer-fullscreen').on('singleTap touchstart tap click touchend', 'a', function (ev) { 
+		ev.stopImmediatePropagation(); 
 	});
 
 	var widgets = [];
