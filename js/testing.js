@@ -169,9 +169,11 @@ require(['main', 'pages'], function(app, pages){
     var formatName = getQueryVariable('format') || 'iphone';
     var articleId = getQueryVariable('id') || 'ap6743515';
     state.page = getQueryVariable('page') || 0;
-    var url;
+    var url = getQueryVariable('url');
 
-    if(env){
+    if(url){
+      //use url
+    }else if(env){
       url = "http://"+env+"/drmobile.json?"+
       "articleId="+articleId+
       "&formatName="+formatName;
