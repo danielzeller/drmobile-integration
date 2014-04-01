@@ -215,13 +215,13 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 
 			window.scrollTo(0, 0);
 			app.renderPage(pageContentEl, args.json, args.assetsBaseUrl, function() {
-				if(args.onReadyForDisplay) {
+				if('onReadyForDisplay' in args && !!args.onReadyForDisplay) {
 					app.bridge.trigger(args.onReadyForDisplay, {
 						"contextHash": args.contextHash
 					});
 				}
 			});
-			if(args.onRenderCompleted) {
+			if('onRenderCompleted' in args && !!args.onRenderCompleted) {
 				app.bridge.trigger(args.onRenderCompleted, {
 					"contextHash": args.contextHash
 				});
