@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v8
+# v9
 
 CACHE:
 vendor/aptoma/alf/alf.css
@@ -8,18 +8,20 @@ js/widget/disqus.js
 js/widget/banner.js
 js/main.js
 js/pages.js
-gfx/ap-big.png
 gfx/appicon.png
+gfx/issue-logo-black.png
+gfx/issue-logo-black@2x.png
 gfx/issue-logo.png
 gfx/issue-logo@2x.png
 gfx/ivy-loader.gif
-gfx/multimedia_background.jpg
-gfx/multimedia_icon.png
+gfx/multimedia-placeholder.png
+gfx/multimedia-placeholder@2x.png
+gfx/quote.png
+gfx/quote@2x.png
 gfx/ratings.1.png
 gfx/ratings@2x.1.png
 gfx/sprite.png
 gfx/sprite@2x.png
-gfx/with_psuedo.png
 
 http://lisa.aftenposten.no/aftenposten_pluss/fonts/ClanOT/ClanOT-Book.otf
 http://lisa.aftenposten.no/aftenposten_pluss/fonts/ClanOT/ClanOT-Thin.otf
