@@ -210,7 +210,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
 	});
 
 	app.event.on('renderPage', function(args) {
-		setTimeout(function(){ // delay to allow for main thread to continue 
+		setTimeout(function(){ // delay for allowing main thread to continue 
 			var pageContentEl = $('#alf-layer-content');
 
 			window.scrollTo(0, 0);
