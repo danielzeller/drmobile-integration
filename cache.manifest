@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v6
+# v8
 
 CACHE:
 vendor/aptoma/alf/alf.css
@@ -29,15 +29,6 @@ http://lisa.aftenposten.no/aftenposten_pluss/fonts/ClanOT/ClanOT-Ultra.otf
 http://lisa.aftenposten.no/aftenposten_pluss/fonts/PublicoHeadline/PublicoHeadline-Bold.otf
 http://lisa.aftenposten.no/aftenposten_pluss/fonts/PublicoHeadline/PublicoHeadline-Medium.otf
 http://lisa.aftenposten.no/aftenposten_pluss/fonts/PublicoHeadline/PublicoHeadline-Light.otf
-
-http://hfossli.github.io/drmobile-integration/fonts/ClanOT/ClanOT-Book.otf
-http://hfossli.github.io/drmobile-integration/fonts/ClanOT/ClanOT-Medium.otf
-http://hfossli.github.io/drmobile-integration/fonts/ClanOT/ClanOT-Bold.otf
-http://hfossli.github.io/drmobile-integration/fonts/ClanOT/ClanOT-Ultra.otf
-http://hfossli.github.io/drmobile-integration/fonts/ClanOT/ClanOT-Thin.otf
-http://hfossli.github.io/drmobile-integration/fonts/PublicoHeadline/PublicoHeadline-Bold.otf
-http://hfossli.github.io/drmobile-integration/fonts/PublicoHeadline/PublicoHeadline-Medium.otf
-http://hfossli.github.io/drmobile-integration/fonts/PublicoHeadline/PublicoHeadline-Light.otf
 
 NETWORK:
 *
