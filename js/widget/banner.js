@@ -34,7 +34,7 @@ define('js/widgets/phonebanner', ['alf'], function(Alf){
             var container = this.container;
             container.$el.empty();
 
-            var url = "http://adserver.adtech.de/addyn/3.0/995/4063904/0/1072/ADTECH;loc=100;target=_blank;grp=145485162;misc=" + new Date().getTime();
+            var url = "http://a.adtech.de/addyn/3.0/995.1/0/0/-1/ADTECH;loc=100;grp=[group];alias=MobilAPpluss_Default-Top-5;misc=" + new Date().getTime();
             var phoneadwrapper = document.createElement('div');
             phoneadwrapper.className = 'phone-ad-wrap';
             var iframe = document.createElement('iframe');
