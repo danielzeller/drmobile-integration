@@ -190,7 +190,7 @@ define('main', ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/pho
                 pageDivs.appendChild(pageDiv);
             }
 
-            $(pageContentEl).html(pageDivs).css('overflow', 'auto');
+            $(pageContentEl).html(pageDivs);//.css('overflow', 'auto');
 
             $.each(deskedPages, function (i, deskedPage) {
                 var page = new Alf.layout.Page({
