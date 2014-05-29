@@ -63,6 +63,66 @@
 <script type="text/javascript" src="js/widget/disqus.js"></script>
 <script type="text/javascript" src="js/widget/banner.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="/js/ivy.js"></script>
+<script type="text/javascript" src="/js/handlebars-v1.3.0.js"></script>
+<script type="text/javascript" src="http://js.pusher.com/2.2/pusher.min.js"></script>
+<script id="live-template" type="text/x-handlebars-template">
+  <div class="ivy-live">
+		<h1>{{title}}</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>
+
+					</th>
+					<th>
+						Time
+					</th>
+					<th>
+						Title
+					</th>
+					<th>
+						Message
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each posts}}
+				<tr>
+					<td>
+						<img src="{{icon}}" alt="" />
+					</td>
+					<td>
+						{{time}}
+					</td>
+					<td>
+						{{title}}
+					</td>
+					<td>
+						{{content}}
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+  </div>
+</script>
+<script id="live-template-post" type="text/x-handlebars-template">
+	<tr>
+		<td>
+			<img src="{{icon}}" alt="" />
+		</td>
+		<td>
+			{{time}}
+		</td>
+		<td>
+			{{title}}
+		</td>
+		<td>
+			{{content}}
+		</td>
+	</tr>
+</script>
 <script type="text/javascript">
 require(['main'], function(app){
   "use strict";
