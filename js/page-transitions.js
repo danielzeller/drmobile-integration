@@ -9,6 +9,7 @@ define('js/page-transitions', ['alf'], function(Alf)
     PageTransitions.prototype = {
         init: function(args)
         {
+            console.log(Hammer);
             var self = this;
             this.args = args;
 
@@ -24,12 +25,12 @@ define('js/page-transitions', ['alf'], function(Alf)
             this.pageCount = this.$pages.length;
 
             this.setPageDimensions();
-            $(window).on('load resize orientationchange', function()
+            $(window).on('resize orientationchange', function()
             {
                 self.setPageDimensions.call(self);
             });
             console.log('PAGE TRANSITIONS – Does it even make it here!??!?!')
-            console.log(Hammer);
+
 
             new Hammer(this.$chrome[0], args.hammer.options).on(args.hammer.events, function(e)
             {
@@ -63,7 +64,7 @@ define('js/page-transitions', ['alf'], function(Alf)
         handler: function(e)
         {
             var self = this;
-            console.log(Event, e);
+
             switch(e.type)
             {
                 // Stick to the finger
