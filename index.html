@@ -1,133 +1,75 @@
 <!DOCTYPE html>
 <html manifest="cache.manifest">
-<head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-	<meta name="apple-mobile-web-app-capable" content="yes" >
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" >
-	<meta name="format-detection" content="telephone=no" >
-	<title>Aftenposten integration</title>
-	<link rel="stylesheet" type="text/css" href="vendor/aptoma/alf/alf.css">
-	<link rel="apple-touch-icon-precomposed" href="gfx/appicon.png"/>
-	<style type="text/css">
-		.event-frame {
-			display: none;
-		}
-		body {
-			background-color: #F7F7F7;
-		}
-		.banner-fullwidth .ad-iframe, .phone-banner .ad-iframe {
-			margin: 0;
-			padding: 0;
-			border: none;
-			width: 100%;
-			height: 100%;
-			overflow: hidden;
-			background: url('gfx/issue-logo.png') no-repeat center;
-		}
-		.phone-banner .phone-ad-wrap {
-			width: 320px; height: 225px; padding: 0; overflow: hidden;
-			margin-left: auto; margin-right: auto;
-		}
-		.phone-banner .phone-ad-wrap .ad-iframe {
-			width: 468px; height: 300px; overflow: hidden;
-			-ms-zoom: 0.68;
-			-moz-transform: scale(0.68);
-			-moz-transform-origin: 0 0;
-			-o-transform: scale(0.68);
-			-o-transform-origin: 0 0;
-			-webkit-transform: scale(0.68);
-			-webkit-transform-origin: 0 0;
-		}
-		@media (-webkit-min-device-pixel-ratio: 2) {
-			.banner-fullwidth .ad-iframe, .phone-banner .ad-iframe {
-				background: url('gfx/issue-logo@2x.png') no-repeat center;
-				background-size: 137px;
-			}
-		}
-	</style>
-</head>
-<body>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+        <meta name="apple-mobile-web-app-capable" content="yes" >
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" >
+        <meta name="format-detection" content="telephone=no" >
+        <title>Aftenposten integration</title>
+        <link rel="stylesheet" type="text/css" href="vendor/aptoma/alf/alf.css">
+        <link rel="stylesheet" type="text/css" href="vendor/agens/page-transitions.css">
+        <link rel="stylesheet" type="text/css" href="vendor/agens/branding.css">
+        <link rel="apple-touch-icon-precomposed" href="gfx/appicon.png"/>
+    </head>
+    <body>
+        <div id="chrome" class="chrome">
+            <div class="mask">
+               <div id="alf-layer-content" class="alf-layer alf-layer-content article"></div>
+            </div>
+            <div id="alf-layer-fullscreen" class="alf-layer alf-layer-fullscreen alf-is-hidden"></div>
+        </div>
 
-<div class="chrome" id="chrome">
-	<div class="alf-layer alf-layer-content" id="alf-layer-content"></div>
-	<div class="alf-layer alf-layer-fullscreen alf-is-hidden" id="alf-layer-fullscreen"></div>
-</div>
+        <iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+        <iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+        <iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+        <iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
 
-<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
-<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
-<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
-<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
-
-<script type="text/javascript" src="vendor/aptoma/alf/alf.min.js"></script>
-<script type="text/javascript" src="js/widget/disqus.js"></script>
-<script type="text/javascript" src="js/widget/banner.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/ivy.js"></script>
-<script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
-<script type="text/javascript" src="js/pusher.min.js"></script>
-<script id="live-template" type="text/x-handlebars-template">
-  <div class="ivy-live">
-		<h1>{{title}}</h1>
-		<table>
-			<thead>
-				<tr>
-					<th>
-
-					</th>
-					<th>
-						Time
-					</th>
-					<th>
-						Title
-					</th>
-					<th>
-						Message
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				{{#each posts}}
-				<tr>
-					<td>
-						<img src="{{icon}}" alt="" />
-					</td>
-					<td>
-						{{time}}
-					</td>
-					<td>
-						{{title}}
-					</td>
-					<td>
-						{{content}}
-					</td>
-				</tr>
-				{{/each}}
-			</tbody>
-		</table>
-  </div>
-</script>
-<script id="live-template-post" type="text/x-handlebars-template">
-	<tr>
-		<td>
-			<img src="{{icon}}" alt="" />
-		</td>
-		<td>
-			{{time}}
-		</td>
-		<td>
-			{{title}}
-		</td>
-		<td>
-			{{content}}
-		</td>
-	</tr>
-</script>
-<script type="text/javascript">
-require(['main'], function(app){
-  "use strict";
-  //runs main(app) just by referencing it
-});
-</script>
-</body>
+        <script type="text/javascript" src="vendor/aptoma/alf/alf.min.js"></script>
+        <script type="text/javascript" src="js/widget/disqus.js"></script>
+        <script type="text/javascript" src="js/widget/banner.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/ivy.js"></script>
+        <script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
+        <script type="text/javascript" src="js/pusher.min.js"></script>
+        <script id="live-template" type="text/x-handlebars-template">
+            <div class="ivy-live">
+                <h1>{{title}}</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Time</th>
+                            <th>Title</th>
+                            <th>Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each posts}}
+                        <tr>
+                            <td><img src="{{icon}}" alt="" /></td>
+                            <td>{{time}}</td>
+                            <td>{{title}}</td>
+                            <td>{{content}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </script>
+        <script id="live-template-post" type="text/x-handlebars-template">
+            <tr>
+                <td><img src="{{icon}}" alt="" /></td>
+                <td>{{time}}</td>
+                <td>{{title}}</td>
+                <td>{{content}}</td>
+            </tr>
+        </script>
+        <script type="text/javascript">
+            require(['main'], function(app) {
+                'use strict';
+                //runs main(app) just by referencing it
+            });
+        </script>
+    </body>
 </html>
