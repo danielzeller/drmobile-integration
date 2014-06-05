@@ -195,7 +195,8 @@ define('main',
 
                 $(pageContentEl).html(pageDivs);//.css('overflow', 'auto');
 
-                $.each(deskedPages, function (i, deskedPage) {
+                $.each(deskedPages, function (i, deskedPage)
+                {
                     var page = new Alf.layout.Page({
                         pixelRatio: pixelDensity,
                         layer: self.pageLayer,
@@ -207,8 +208,27 @@ define('main',
 
                     page.on('loadComplete', function () {
                         if (++loadCompletes === deskedPages.length)
+                        {
                             onDone();
 
+                            console.log('Setup page transitions');
+                            // Setup page transitions
+                            var pageTransitions = new PageTransitions(
+                            {
+                                selector: {
+                                    chrome: '#chrome',
+                                    article: '.article',
+                                    page: '.page'
+                                },
+                                hammer: {
+                                    options: {
+                                        dragLockToAxis: true,
+                                        preventDefault: true
+                                    },
+                                    events: 'release dragup dragdown swipeup swipedown'
+                                }
+                            });
+                        }
                     });
 
                     page.decompile(deskedPage, function () {
@@ -304,23 +324,6 @@ define('main',
                             "contextHash": args.contextHash
                         });
                     }
-
-                    // Setup page transitions
-                    var pageTransitions = new PageTransitions(
-                    {
-                        selector: {
-                            chrome: '#chrome',
-                            article: '.article',
-                            page: '.page'
-                        },
-                        hammer: {
-                            options: {
-                                dragLockToAxis: true,
-                                preventDefault: true
-                            },
-                            events: 'release dragup dragdown swipeup swipedown'
-                        }
-                    });
                 });
                 if ('onRenderCompleted' in args && !!args.onRenderCompleted) {
                     app.bridge.trigger(args.onRenderCompleted, {
