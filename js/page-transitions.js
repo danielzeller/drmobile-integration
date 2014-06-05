@@ -61,6 +61,7 @@ define('js/page-transitions', ['alf'], function(Alf)
 
             new Hammer(this.$chrome[0], this.args.hammer.options).on(this.args.hammer.events, function(e)
             {
+                console.log(e);
                 switch(e.type)
                 {
                     // Stick to the finger
