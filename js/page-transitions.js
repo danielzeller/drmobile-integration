@@ -3,7 +3,6 @@ define('js/page-transitions', ['alf'], function(Alf)
     var $ = Alf.dom;
     var PageTransitions = function(args)
     {
-        console.log(args);
         var self = this;
         this.args = args;
 
@@ -21,6 +20,7 @@ define('js/page-transitions', ['alf'], function(Alf)
         this.setPageDimensions();
         $(window).on('resize orientationchange', function()
         {
+            self.listen.call(self);
             self.setPageDimensions.call(self);
         });
 
