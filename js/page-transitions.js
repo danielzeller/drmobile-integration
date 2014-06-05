@@ -9,6 +9,7 @@ define('js/page-transitions', ['alf'], function(Alf)
     PageTransitions.prototype = {
         init: function(args)
         {
+            console.log('PageTransitions initiated');
             var self = this;
             this.args = args;
 
@@ -28,6 +29,8 @@ define('js/page-transitions', ['alf'], function(Alf)
             {
                 self.setPageDimensions.call(self);
             });
+
+            console.log(Hammer);
 
             new Hammer(this.$chrome[0], args.hammer.options).on(args.hammer.events, function(e)
             {
