@@ -57,7 +57,10 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         listen: function()
         {
-            console.log('listen!');
+            setTimeout(function()
+            {
+                console.log('listening!');
+            }, 1500);
             var self = this;
 
             new Hammer(this.$chrome[0], this.args.hammer.options).on(this.args.hammer.events, function(e)
