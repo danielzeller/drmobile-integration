@@ -61,7 +61,7 @@ define('js/page-transitions', ['alf'], function(Alf)
         handler: function(e)
         {
             var self = this;
-
+            console.log(Event, e);
             switch(e.type)
             {
                 // Stick to the finger
