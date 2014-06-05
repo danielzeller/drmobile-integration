@@ -3,35 +3,31 @@ define('js/page-transitions', ['alf'], function(Alf)
     var $ = Alf.dom;
     var PageTransitions = function(args)
     {
-        this.init(args);
+        console.log(args);
+        var self = this;
+        this.args = args;
+
+        // Cache DOM elements
+        this.$chrome = $(args.selector.chrome);
+        this.$ = this.$chrome.find;
+        this.$article = this.$(args.selector.article);
+        this.$pages = this.$(args.selector.page);
+
+        // State
+        this.pageHeight = this.$pages.height();
+        this.currentPage = 0;
+        this.pageCount = this.$pages.length;
+
+        this.setPageDimensions();
+        $(window).on('resize orientationchange', function()
+        {
+            self.setPageDimensions.call(self);
+        });
+
+        this.listen();
     };
 
     PageTransitions.prototype = {
-        init: function(args)
-        {
-            var self = this;
-            this.args = args;
-
-            // Cache DOM elements
-            this.$chrome = $(args.selector.chrome);
-            this.$ = this.$chrome.find;
-            this.$article = this.$(args.selector.article);
-            this.$pages = this.$(args.selector.page);
-
-            // State
-            this.pageHeight = this.$pages.height();
-            this.currentPage = 0;
-            this.pageCount = this.$pages.length;
-
-            this.setPageDimensions();
-            $(window).on('resize orientationchange', function()
-            {
-                self.setPageDimensions.call(self);
-            });
-
-            this.listen();
-        },
-
         setPageDimensions: function()
         {
             this.$pages.height(this.pageHeight);
