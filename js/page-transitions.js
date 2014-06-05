@@ -9,7 +9,6 @@ define('js/page-transitions', ['alf'], function(Alf)
     PageTransitions.prototype = {
         init: function(args)
         {
-            console.log(Hammer);
             var self = this;
             this.args = args;
 
@@ -29,13 +28,8 @@ define('js/page-transitions', ['alf'], function(Alf)
             {
                 self.setPageDimensions.call(self);
             });
-            console.log('PAGE TRANSITIONS – Does it even make it here!??!?!')
 
-
-            new Hammer(this.$chrome[0], args.hammer.options).on(args.hammer.events, function(e)
-            {
-                self.handler.call(self, e)
-            });
+            this.listen();
         },
 
         setPageDimensions: function()
@@ -61,49 +55,51 @@ define('js/page-transitions', ['alf'], function(Alf)
             this.$article.css('transform', 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)');
         },
 
-        handler: function(e)
+        listen: function()
         {
             var self = this;
 
-            switch(e.type)
+            new Hammer(this.$chrome[0], this.args.hammer.options).on(this.args.hammer.events, function(e)
             {
-                // Stick to the finger
-                case 'dragup':
-                case 'dragdown':
-                    var pageOffset = -(100 / this.pageCount) * this.currentPage;
-                    var dragOffset = ((100 / this.pageHeight) * e.gesture.deltaY) / this.pageCount;
+                switch(e.type)
+                {
+                    // Stick to the finger
+                    case 'dragup':
+                    case 'dragdown':
+                        var pageOffset = -(100 / self.pageCount) * self.currentPage;
+                        var dragOffset = ((100 / self.pageHeight) * e.gesture.deltaY) / self.pageCount;
 
-                    self.setArticleOffset(dragOffset + pageOffset);
-                    break;
+                        self.setArticleOffset(dragOffset + pageOffset);
+                        break;
 
-                // Just navigate
-                case 'swipeup':
-                    self.next();
-                    e.gesture.stopDetect();
-                    break;
+                    // Just navigate
+                    case 'swipeup':
+                        self.next();
+                        e.gesture.stopDetect();
+                        break;
 
-                case 'swipedown':
-                    self.prev();
-                    e.gesture.stopDetect();
-                    break;
+                    case 'swipedown':
+                        self.prev();
+                        e.gesture.stopDetect();
+                        break;
 
-                // If more then 50% moved, navigate
-                case 'release':
-                    if(Math.abs(e.gesture.deltaY) > this.pageHeight / 2)
-                    {
-                        if(e.gesture.direction == 'down')
-                            self.prev();
+                    // If more then 50% moved, navigate
+                    case 'release':
+                        if(Math.abs(e.gesture.deltaY) > self.pageHeight / 2)
+                        {
+                            if(e.gesture.direction == 'down')
+                                self.prev();
+                            else
+                                self.next();
+                        }
                         else
-                            self.next();
-                    }
-                    else
-                        self.showPage(this.currentPage, true);
+                            self.showPage(self.currentPage, true);
 
-                    break;
-            }
+                        break;
+                }
+            });
         }
     };
 
     return PageTransitions;
 });
-
