@@ -1,4 +1,4 @@
-define(['alf', 'js/hammer'], function(Alf, Hammer)
+define('page-transitions', ['alf'], function(Alf)
 {
     var $ = Alf.dom;
     var PageTransitions = function(args)

@@ -1,5 +1,5 @@
 define('main',
-    ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/phonebanner', 'js/page-transitions'],
+    ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/phonebanner', 'page-transitions'],
     function (Alf, disqus, banner, phonebanner, PageTransitions)
     {
         'use strict';
