@@ -51,14 +51,11 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         listen: function()
         {
-            console.log('listening!');
             var self = this;
-
-            console.log(this.args.hammer.events, this.args.hammer.options);
 
             new Hammer(this.$chrome[0], this.args.hammer.options).on(this.args.hammer.events, function(e)
             {
-                console.log(e);
+                console.log('Event', e.type);
                 switch(e.type)
                 {
                     // Stick to the finger
