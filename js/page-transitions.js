@@ -8,9 +8,8 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         // Cache DOM elements
         this.$chrome = $(args.selector.chrome);
-        this.$ = this.$chrome.find;
-        this.$article = this.$(args.selector.article);
-        this.$pages = this.$(args.selector.page);
+        this.$article = this.$chrome.find(args.selector.article);
+        this.$pages = this.$article.find(args.selector.page);
 
         // State
         this.pageHeight = this.$pages.height();
@@ -20,7 +19,6 @@ define('js/page-transitions', ['alf'], function(Alf)
         this.setPageDimensions();
         $(window).on('resize orientationchange', function()
         {
-            self.listen.call(self);
             self.setPageDimensions.call(self);
         });
 
