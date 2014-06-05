@@ -211,7 +211,6 @@ define('main',
                         {
                             onDone();
 
-                            console.log('Setup page transitions');
                             // Setup page transitions
                             var pageTransitions = new PageTransitions(
                             {
@@ -314,7 +313,6 @@ define('main',
         });
 
         app.event.on('renderPages', function (args) {
-            console.log('=============== renderPages event from app!!');
             setTimeout(function () { // delay for allowing main thread to continue
                 var pageContentEl = $('#alf-layer-content');
 
