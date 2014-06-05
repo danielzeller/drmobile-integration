@@ -309,7 +309,7 @@ define('main',
                     var pageTransitions = new PageTransitions(
                     {
                         selector: {
-                            canvas: '#canvas',
+                            chrome: '#chrome',
                             article: '.article',
                             page: '.page'
                         },

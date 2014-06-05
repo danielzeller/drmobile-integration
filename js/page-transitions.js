@@ -13,7 +13,7 @@ define('js/page-transitions', ['alf'], function(Alf)
             this.args = args;
 
             // Cache DOM elements
-            this.$chrome = $(args.selector.canvas);
+            this.$chrome = $(args.selector.chrome);
             this.$ = this.$chrome.find;
             this.$article = this.$(args.selector.article);
             this.$pages = this.$(args.selector.page);
