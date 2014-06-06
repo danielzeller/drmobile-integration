@@ -50,8 +50,8 @@ define('js/page-transitions', ['alf'], function(Alf)
             var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
             this.$article.css(
             {
-                transform: transform,
-                webkitTransform: transform
+                '-webkit-transform': transform,
+                'transform': transform
             });
         },
 
