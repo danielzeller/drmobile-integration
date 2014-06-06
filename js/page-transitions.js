@@ -28,6 +28,12 @@ define('js/page-transitions', ['alf'], function(Alf)
     PageTransitions.prototype = {
         setPageDimensions: function()
         {
+            // Hack: Make web view too wide, to trigger Android’s scaling (maintain 4:3 aspect ratio)
+            var tooHigh = 768 - $(window).height();
+            var tooWide = parseInt((tooHigh / 3) * 4, 10);
+            tooWide += tooWide % 2;
+            $('body, html').width(tooWide);
+
             this.$pages.height(this.pageHeight);
             this.$article.height(this.pageHeight * this.pageCount);
         },
