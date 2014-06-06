@@ -16,8 +16,15 @@ define('main',
 
 
         var app = {
-            initialize: function () {
-                this.isEmbeddedInApp = this.getURLParameter('isEmbeddedInApp', '1') != '0';
+            initialize: function()
+            {
+                this.context = this.objectifyUrlParams();
+                console.log(this.context);
+
+                this.isEmbeddedInApp = true;
+                if('isEmbeddedInApp' in this.context)
+                    this.isEmbeddedInApp = this.context.isEmbeddedInApp;
+
                 this.page = null;
                 this.event = null;
                 this.bridge = null;
@@ -25,10 +32,30 @@ define('main',
                 this.initLayers();
             },
 
-            getURLParameter: function (name, fallbackValue) {
-                return decodeURI(
-                    (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [, fallbackValue])[1]
-                );
+            objectifyUrlParams: function()
+            {
+                var params = {};
+                var search = window.location.search;
+
+                // https://github.com/sindresorhus/query-string
+                if(typeof search === 'string')
+                {
+                    search = search.trim().replace(/^\?/, '');
+
+                    if(search)
+                    {
+                        params = search.trim().split('&').reduce(function(result, param)
+                        {
+                            var parts = param.replace(/\+/g, ' ').split('=');
+                            // missing `=` should be `null`:
+                            // http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
+                            result[parts[0]] = parts[1] === undefined ? null : decodeURIComponent(parts[1]);
+                            return result;
+                        }, {});
+                    }
+                }
+
+                return params;
             },
 
             logToApp: function (data) {
