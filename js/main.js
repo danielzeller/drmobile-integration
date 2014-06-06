@@ -19,7 +19,6 @@ define('main',
             initialize: function()
             {
                 this.context = this.objectifyUrlParams();
-                console.log(this.context);
 
                 this.isEmbeddedInApp = true;
                 if('isEmbeddedInApp' in this.context)
@@ -30,6 +29,10 @@ define('main',
                 this.bridge = null;
                 this.initBridge();
                 this.initLayers();
+
+                if('deviceOS' in this.context && this.context.deviceOS == 'android' &&
+                   'deviceType' in this.context && this.context.deviceType == 'tablet')
+                    $('html').addClass('android-tablet');
             },
 
             objectifyUrlParams: function()

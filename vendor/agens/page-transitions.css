@@ -1,11 +1,11 @@
-html,
-body {
+html.android-tablet,
+html.android-tablet body {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
-#chrome {
+html.android-tablet #chrome {
     width: 100%;
     height: 100%;
     position: relative;
@@ -14,7 +14,7 @@ body {
     -webkit-transform-style: preserve-3d;
 }
 
-.mask {
+html.android-tablet .mask {
     width: 800px;
     height: 600px;
     position: absolute;
@@ -24,7 +24,7 @@ body {
     overflow: hidden;
 }
 
-.article {
+html.android-tablet .article {
     position: relative;
     width: 800px;
     margin: 0 auto;
@@ -38,14 +38,14 @@ body {
     -webkit-transform-style: preserve-3d;
 }
 
-.article.animate {
+html.android-tablet .article.animate {
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
 }
 
-.page {
+html.android-tablet .page {
     width: 800px;
     height: 600px;
     position: relative;
