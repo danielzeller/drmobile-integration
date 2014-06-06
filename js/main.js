@@ -1,6 +1,6 @@
 define('main',
     ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/phonebanner', 'js/page-transitions'],
-    function (Alf, disqus, banner, phonebanner, PageTransitions)
+    function (Alf, disqus, banner, phonebanner)
     {
         'use strict';
         var $ = Alf.dom;
@@ -13,7 +13,6 @@ define('main',
         widgets.push(disqus);
         widgets.push(banner);
         widgets.push(phonebanner);
-
 
         var app = {
             initialize: function()
@@ -242,6 +241,7 @@ define('main',
                             onDone();
 
                             // Setup page transitions
+                            var PageTransitions = require('js/page-transitions');
                             var pageTransitions = new PageTransitions(
                             {
                                 selector: {

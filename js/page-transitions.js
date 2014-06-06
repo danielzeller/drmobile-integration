@@ -45,6 +45,8 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         setArticleOffset: function(percent, animate)
         {
+            console.log('transform', 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)');
+
             this.$article[animate ? 'addClass' : 'removeClass']('animate');
             this.$article.css('transform', 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)');
         },
@@ -55,7 +57,6 @@ define('js/page-transitions', ['alf'], function(Alf)
 
             new Hammer(this.$chrome[0], this.args.hammer.options).on(this.args.hammer.events, function(e)
             {
-                console.log('Event', e.type);
                 switch(e.type)
                 {
                     // Stick to the finger
