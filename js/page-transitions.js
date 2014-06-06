@@ -48,11 +48,7 @@ define('js/page-transitions', ['alf'], function(Alf)
             this.$article[animate ? 'addClass' : 'removeClass']('animate');
 
             var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
-            this.$article.css(
-            {
-                '-webkit-transform': transform,
-                'transform': transform
-            });
+            this.$article[0].style = 'transform: ' + transform;
         },
 
         listen: function()
