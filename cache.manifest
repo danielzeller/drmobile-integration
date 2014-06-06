@@ -1,13 +1,17 @@
 CACHE MANIFEST
-# v13
+# v40
 
 CACHE:
 vendor/aptoma/alf/alf.css
 vendor/aptoma/alf/alf.min.js
+vendor/agens/page-transitions.css
+vendor/agens/branding.css
 js/widget/disqus.js
 js/widget/banner.js
 js/main.js
 js/pages.js
+js/hammer.js
+js/page-transitions.js
 gfx/appicon.png
 gfx/issue-logo-black.png
 gfx/issue-logo-black@2x.png
