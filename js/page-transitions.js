@@ -32,7 +32,7 @@ define('js/page-transitions', ['alf'], function(Alf)
             var tooHigh = 768 - $(window).height();
             var tooWide = parseInt((tooHigh / 3) * 4, 10);
             tooWide += tooWide % 2;
-            $('body, html').width(tooWide);
+            $('body, html').width($(window).width() + tooWide);
 
             this.$pages.height(this.pageHeight);
             this.$article.height(this.pageHeight * this.pageCount);
