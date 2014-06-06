@@ -45,10 +45,14 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         setArticleOffset: function(percent, animate)
         {
-            console.log('transform', 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)');
-
             this.$article[animate ? 'addClass' : 'removeClass']('animate');
-            this.$article.css('transform', 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)');
+
+            var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
+            this.$article.css(
+            {
+                transform: transform,
+                webkitTransform: transform
+            });
         },
 
         listen: function()
