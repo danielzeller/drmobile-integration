@@ -183,9 +183,16 @@ define('main',
                     onDone();
                 });
 
-                page.decompile(deskedPage, function () {
-                    page.render(pageContentEl);
-                });
+                if (deskedPage.docType == "ad") {
+                  console.log("Content is an ad");
+                  $(pageContentEl).append(deskedPage.html);
+                } else if (deskedPage.docType == "livearticle") {
+                  console.log("Content is a live article");
+                } else {
+                  page.decompile(deskedPage, function () {
+                      page.render(pageContentEl);
+                  });
+                }
 
             },
 
