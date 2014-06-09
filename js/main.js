@@ -186,6 +186,8 @@ define('main',
                 if (deskedPage.docType == "ad") {
                   console.log("Content is an ad");
                   $(pageContentEl).append(deskedPage.html);
+                  page.decompiled = true;
+                  page.trigger('loadComplete');
                 } else if (deskedPage.docType == "livearticle") {
                   console.log("Content is a live article");
                 } else {
