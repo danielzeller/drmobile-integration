@@ -264,7 +264,9 @@ define('main',
                                 hammer: {
                                     options: {
                                         dragLockToAxis: true,
-                                        preventDefault: true
+                                        preventDefault: true,
+                                        swipeVelocityY: 0.1,
+                                        swipeMaxTouches: 2
                                     },
                                     events: 'release dragup dragdown swipeup swipedown'
                                 }
