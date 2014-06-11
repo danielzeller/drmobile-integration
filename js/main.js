@@ -308,13 +308,11 @@ define('main',
             scalePage: function()
             {
                 // Scale webview to fit Android tablets
-                var windowWidth = window.innerWidth;
-                var windowHeight = window.innerHeight;
-                var tooHigh = 768 - windowHeight;
+                var tooHigh = 768 - $(window).height();
                 var tooWide = parseInt((tooHigh / 3) * 4, 10);
                 tooWide += tooWide % 2;
 
-                var $metaViewport = $('<meta name="viewport" content="width=' + (windowWidth + tooWide) +', user-scalable=no">');
+                var $metaViewport = $('<meta name="viewport" content="width=' + ($(window).width() + tooWide) +', user-scalable=no">');
                 $('head').find('meta[name="viewport"]').remove();
                 $('head').append($metaViewport);
             }
