@@ -307,6 +307,9 @@ define('main',
 
             scalePage: function()
             {
+                console.log('window width ====================', $(window).width());
+                console.log('window height ===================', $(window).height());
+
                 // Scale webview to fit Android tablets
                 var tooHigh = 768 - $(window).height();
                 var tooWide = parseInt((tooHigh / 3) * 4, 10);
