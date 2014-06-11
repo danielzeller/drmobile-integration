@@ -14,37 +14,6 @@
         <link rel="apple-touch-icon-precomposed" href="gfx/appicon.png"/>
     </head>
     <body>
-        <script type="text/javascript">
-            // Scale webview to fit on Android tablets
-            (function()
-            {
-                if(window.location.search.indexOf('deviceOS=android') == -1 || window.location.search.indexOf('deviceType=tablet') == -1) return;
-
-                var windowWidth = window.innerWidth;
-                var windowHeight = window.innerHeight;
-                var tooHigh = 768 - windowHeight;
-                var tooWide = parseInt((tooHigh / 3) * 4, 10);
-                tooWide += tooWide % 2;
-
-                var metaViewport = document.createElement('meta');
-                metaViewport.name = 'viewport';
-                metaViewport.content = [
-                    'width=' + (windowWidth + tooWide),
-                    'initial-scale=1.0',
-                    'maximum-scale=1.0',
-                    'user-scalable=no'
-                ].join(', ');
-
-                var metas = document.head.getElementsByTagName('meta');
-                for(var i = metas.length; i--;)
-                {
-                    if(metas[i].name == 'viewport')
-                        document.head.removeChild(metas[i]);
-                }
-
-                document.head.appendChild(metaViewport);
-            })();
-        </script>
         <div id="chrome" class="chrome">
             <div class="mask">
                <div id="alf-layer-content" class="alf-layer alf-layer-content article"></div>

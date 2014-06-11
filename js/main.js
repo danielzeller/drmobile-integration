@@ -31,7 +31,10 @@ define('main',
 
                 if('deviceOS' in this.context && this.context.deviceOS == 'android' &&
                    'deviceType' in this.context && this.context.deviceType == 'tablet')
+                {
                     $('html').addClass('android-tablet');
+                    this.scalePage();
+                }
             },
 
             objectifyUrlParams: function()
@@ -300,8 +303,21 @@ define('main',
 
             exitFullscreen: function () {
                 app.fullscreenLayer.exitFullscreen();
-            }
+            },
 
+            scalePage: function()
+            {
+                // Scale webview to fit Android tablets
+                var windowWidth = window.innerWidth;
+                var windowHeight = window.innerHeight;
+                var tooHigh = 768 - windowHeight;
+                var tooWide = parseInt((tooHigh / 3) * 4, 10);
+                tooWide += tooWide % 2;
+
+                var $metaViewport = $('<meta name="viewport" content="width=' + (windowWidth + tooWide) +', initial-scale=1.0, maximum-scale=1.0, user-scalable=no">');
+                $('head').find('meta[name="viewport"]').remove();
+                $('head').append($metaViewport);
+            }
         };
 
         app.initialize();
