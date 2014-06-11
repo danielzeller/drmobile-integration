@@ -46,14 +46,6 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         setArticleOffset: function(percent, animate)
         {
-            var min = -25;
-            var max = 100 - this.step + 25;
-
-            if(percent < min)
-                percent = min;
-            else if(percent > max)
-                percent = max;
-
             this.$article[animate ? 'addClass' : 'removeClass']('animate');
 
             var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
