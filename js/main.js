@@ -315,7 +315,7 @@ define('main',
                 var newWidth = windowWidth / windowHeight * 768;
 
                 //var $metaViewport = $('<meta name="viewport" content="width=' + newWidth + ', user-scalable=no">');
-                var $metaViewport = $('<meta name="viewport" content="width=' + newWidth + '">');
+                var $metaViewport = $('<meta name="viewport" content="width=' + newWidth + ', height=768">');
                 $('head').find('meta[name="viewport"]').remove();
                 $('head').append($metaViewport);
             }
