@@ -47,7 +47,7 @@ define('js/page-transitions', ['alf'], function(Alf)
         setArticleOffset: function(percent, animate)
         {
             var min = -25;
-            var max = 100 - step + 25;
+            var max = 100 - this.step + 25;
 
             if(percent < min)
                 percent = min;
