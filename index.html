@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html manifest="cache.manifest">
     <head>
-        <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-        <meta name="apple-mobile-web-app-capable" content="yes" >
-        <meta name="apple-mobile-web-app-status-bar-style" content="black" >
-        <meta name="format-detection" content="telephone=no" >
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
         <title>Aftenposten integration</title>
         <link rel="stylesheet" type="text/css" href="vendor/aptoma/alf/alf.css">
         <link rel="stylesheet" type="text/css" href="vendor/agens/page-transitions.css">
@@ -15,29 +15,10 @@
     </head>
     <body>
         <script type="text/javascript">
-            // Hack: Make web view too wide, to trigger Android’s scaling (maintain 4:3 aspect ratio)
+            // Scale webview to fit on Android tablets
             (function()
             {
-                var params = {};
-                var search = window.location.search;
-
-                // https://github.com/sindresorhus/query-string
-                if(typeof search === 'string')
-                {
-                    search = search.trim().replace(/^\?/, '');
-
-                    if(search)
-                    {
-                        params = search.trim().split('&').reduce(function(result, param)
-                        {
-                            var parts = param.replace(/\+/g, ' ').split('=');
-                            // missing `=` should be `null`:
-                            // http://w3.org/TR/2012/WD-url-20120524/#collect-url-parameters
-                            result[parts[0]] = parts[1] === undefined ? null : decodeURIComponent(parts[1]);
-                            return result;
-                        }, {});
-                    }
-                }
+                if(window.location.search.indexOf('deviceOS=android') == -1 || window.location.search.indexOf('deviceType=tablet') == -1) return;
 
                 var windowWidth = window.innerWidth;
                 var windowHeight = window.innerHeight;
@@ -45,8 +26,23 @@
                 var tooWide = parseInt((tooHigh / 3) * 4, 10);
                 tooWide += tooWide % 2;
 
-                document.body.style.width = windowWidth + tooWide + 'px';
-                document.getElementsByTagName('html')[0].style.width = windowWidth + tooWide + 'px';
+                var metaViewport = document.createElement('meta');
+                metaViewport.name = 'viewport';
+                metaViewport.content = [
+                    'width=' + (windowWidth + tooWide),
+                    'initial-scale=1.0',
+                    'maximum-scale=1.0',
+                    'user-scalable=no'
+                ].join(', ');
+
+                var metas = document.head.getElementsByTagName('meta');
+                for(var i = metas.length; i--;)
+                {
+                    if(metas[i].name == 'viewport')
+                        document.head.removeChild(metas[i]);
+                }
+
+                document.head.appendChild(metaViewport);
             })();
         </script>
         <div id="chrome" class="chrome">
