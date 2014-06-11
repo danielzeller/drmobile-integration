@@ -48,13 +48,29 @@ define('js/page-transitions', ['alf'], function(Alf)
         {
             this.$article[animate ? 'addClass' : 'removeClass']('animate');
 
-            var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
-            this.$article.css(
+            if(Modernizr.csstransforms3d)
             {
-                '-webkit-transform': transform,
-                '-moz-transform': transform,
-                'transform': transform
-            });
+                var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
+                this.$article.css(
+                {
+                    '-webkit-transform': transform,
+                    'transform': transform
+                });
+            }
+            else if(Modernizr.csstransforms)
+            {
+                var transform = 'translate(0, ' + percent + '%)';
+                this.$article.css(
+                {
+                    '-webkit-transform': transform,
+                    'transform': transform
+                });
+            }
+            else
+            {
+                var px = ((this.pageHeight * this.pageCount) / 100) * percent;
+                this.$article.css('top', ((this.pageHeight * this.pageCount) / 100) * percent);
+            }
         },
 
         listen: function()

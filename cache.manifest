@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v59
+# v60
 
 CACHE:
 vendor/aptoma/alf/alf.css
@@ -10,6 +10,7 @@ js/widget/disqus.js
 js/widget/banner.js
 js/main.js
 js/pages.js
+vendor/agens/js/modernizr.js
 vendor/agens/js/hammer.js
 vendor/agens/js/page-transitions.js
 gfx/appicon.png
