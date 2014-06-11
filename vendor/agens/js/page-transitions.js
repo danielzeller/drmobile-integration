@@ -15,6 +15,7 @@ define('js/page-transitions', ['alf'], function(Alf)
         this.pageHeight = this.$pages.height();
         this.currentPage = 0;
         this.pageCount = this.$pages.length;
+        this.step = 100 / this.pageCount;
 
         this.setPageDimensions();
         $(window).on('resize orientationchange', function()
@@ -45,6 +46,14 @@ define('js/page-transitions', ['alf'], function(Alf)
 
         setArticleOffset: function(percent, animate)
         {
+            var min = -25;
+            var max = 100 - step + 25;
+
+            if(percent < min)
+                percent = min;
+            else if(percent > max)
+                percent = max;
+
             this.$article[animate ? 'addClass' : 'removeClass']('animate');
 
             var transform = 'translate3d(0, ' + percent + '%, 0) scale3d(1, 1, 1)';
