@@ -314,7 +314,7 @@ define('main',
                 var tooWide = parseInt((tooHigh / 3) * 4, 10);
                 tooWide += tooWide % 2;
 
-                var $metaViewport = $('<meta name="viewport" content="width=' + (windowWidth + tooWide) +', initial-scale=1.0, maximum-scale=1.0, user-scalable=no">');
+                var $metaViewport = $('<meta name="viewport" content="width=' + (windowWidth + tooWide) +', user-scalable=no">');
                 $('head').find('meta[name="viewport"]').remove();
                 $('head').append($metaViewport);
             }
