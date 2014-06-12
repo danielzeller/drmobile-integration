@@ -17,6 +17,7 @@ define('main',
         var app = {
             initialize: function()
             {
+                var self = this;
                 this.context = this.objectifyUrlParams();
 
                 this.isEmbeddedInApp = true;
@@ -35,7 +36,10 @@ define('main',
                     $('html').addClass('android-tablet');
 
                     this.scalePage();
-                    $(window).on('resize orientationchange', this.scalePage);
+                    $(window).on('resize orientationchange', function()
+                    {
+                        self.scalePage.call(self);
+                    });
                 }
             },
 
