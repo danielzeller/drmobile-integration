@@ -213,6 +213,9 @@ li {
 .note {
 	pointer-events: none;
 }
+.square.active .note {
+	color: #fff;
+}
 .square {
 	background: #fff;
 }
