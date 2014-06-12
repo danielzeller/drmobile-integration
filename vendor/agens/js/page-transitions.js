@@ -12,16 +12,16 @@ define('js/page-transitions', ['alf'], function(Alf)
         this.$pages = this.$article.find(args.selector.page);
 
         // State
-        this.pageHeight = this.$pages.height();
+        this.pageHeight = 768;//this.$pages.height();
         this.currentPage = 0;
         this.pageCount = this.$pages.length;
         this.step = 100 / this.pageCount;
 
         this.setPageDimensions();
-        $(window).on('resize orientationchange', function()
+        /*$(window).on('resize orientationchange', function()
         {
             self.setPageDimensions.call(self);
-        });
+        });*/
 
         this.listen();
     };
@@ -29,7 +29,7 @@ define('js/page-transitions', ['alf'], function(Alf)
     PageTransitions.prototype = {
         setPageDimensions: function()
         {
-            this.$pages.height(this.pageHeight);
+            //this.$pages.height(this.pageHeight);
             this.$article.height(this.pageHeight * this.pageCount);
         },
 

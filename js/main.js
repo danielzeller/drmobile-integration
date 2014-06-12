@@ -33,7 +33,9 @@ define('main',
                    'deviceType' in this.context && this.context.deviceType == 'tablet')
                 {
                     $('html').addClass('android-tablet');
+
                     this.scalePage();
+                    $(window).on('resize orientationchange', this.scalePage);
                 }
             },
 
@@ -314,10 +316,8 @@ define('main',
                 var windowHeight = $(window).height();
                 var newWidth = windowWidth / windowHeight * 768;
 
-                //var $metaViewport = $('<meta name="viewport" content="width=' + newWidth + ', user-scalable=no">');
-                var $metaViewport = $('<meta name="viewport" content="width=' + newWidth + '">');
-                $('head').find('meta[name="viewport"]').remove();
-                $('head').append($metaViewport);
+                //width=' + newWidth + ', user-scalable=no
+                $('head').find('meta[name="viewport"]').attr('content', 'width=' + newWidth);
             }
         };
 
