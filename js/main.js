@@ -316,6 +316,10 @@ define('main',
                 var windowHeight = $(window).height();
                 var newWidth = windowWidth / windowHeight * 768;
 
+                this.logToAll('original width: ' + windowWidth);
+                this.logToAll('original height: ' + windowHeight);
+                this.logToAll('new width: ' + newWidth);
+
                 //width=' + newWidth + ', user-scalable=no
                 $('head').find('meta[name="viewport"]').attr('content', 'width=' + newWidth);
             }
