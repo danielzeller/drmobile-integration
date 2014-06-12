@@ -110,6 +110,7 @@ p {
 	margin-bottom: 40px;
 }
 
+
 #board {
 	/* background: #222; */
 	-webkit-box-sizing: border-box;
@@ -149,7 +150,9 @@ p {
 }
 #main_menu header{
 	background: #DCA528;
-	width: 320px;
+	max-width: 280px;
+	min-width: 200px;
+	width: 100%;
 	padding: 18px 0;
 	margin: 0 auto;
 	display: block;
@@ -172,7 +175,9 @@ p {
 	display: block;
 	margin: auto;
 	clear: both;
-	width: 320px;
+	max-width: 280px;
+	min-width: 200px;
+	width: 100%;
 	color: #333;
 	padding: 20px 0;
 }
@@ -288,9 +293,8 @@ li {
 #keyboard {
 	height: 110px;
 }
-
 #keyboard.inactive .square {
-	border-color: #d0bd9b;
+	border: 1px solid #ddd;
 }
 #keyboard .square_numbers,
 #keyboard .note_numbers  {
@@ -300,7 +304,7 @@ li {
 	width: 11%;
 	height: 100%;
 	box-shadow: none;
-	border: 1px solid #ddd;
+	border: 1px solid #DCA528;
 }
 #keyboard .square:first-child  {
 	width: 12%;
