@@ -318,10 +318,10 @@ define('main',
                 // Scale webview to fit Android tablets
                 var scaleWidth = $(window).width() / $(window).height() * 768;
 
-                //$('<meta name="HandheldFriendly" content="true">').appendTo('head');
+                $('<meta name="HandheldFriendly" content="true">').appendTo('head');
 
                 //user-scalable=no
-                $('head').find('meta[name="viewport"]').attr('content', 'target-densitydpi=device-dpi, width=' + scaleWidth);
+                $('head').find('meta[name="viewport"]').attr('content', 'target-densitydpi=device-dpi, width=' + (scaleWidth + 200));
             }
         };
 
