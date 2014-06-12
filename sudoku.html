@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html manifest="cache.manifest">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+	<meta name="apple-mobile-web-app-capable" content="yes" >
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" >
+	<meta name="format-detection" content="telephone=no" >
+	<title>Aftenposten integration</title>
+	<link rel="stylesheet" type="text/css" href="vendor/aptoma/alf/alf.css">
+	<link rel="stylesheet" type="text/css" href="vendor/agens/css/ads.css">
+	<link rel="stylesheet" type="text/css" href="vendor/agens/css/sudoku.css">
+	<link rel="apple-touch-icon-precomposed" href="gfx/appicon.png"/>
+	<style type="text/css">
+		.event-frame {
+			display: none;
+		}
+		body {
+			background-color: #F7F7F7;
+		}
+		.banner-fullwidth .ad-iframe, .phone-banner .ad-iframe {
+			margin: 0;
+			padding: 0;
+			border: none;
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			background: url('gfx/issue-logo.png') no-repeat center;
+		}
+		.phone-banner .phone-ad-wrap {
+			width: 320px; height: 225px; padding: 0; overflow: hidden;
+			margin-left: auto; margin-right: auto;
+		}
+		.phone-banner .phone-ad-wrap .ad-iframe {
+			width: 468px; height: 300px; overflow: hidden;
+			-ms-zoom: 0.68;
+			-moz-transform: scale(0.68);
+			-moz-transform-origin: 0 0;
+			-o-transform: scale(0.68);
+			-o-transform-origin: 0 0;
+			-webkit-transform: scale(0.68);
+			-webkit-transform-origin: 0 0;
+		}
+		@media (-webkit-min-device-pixel-ratio: 2) {
+			.banner-fullwidth .ad-iframe, .phone-banner .ad-iframe {
+				background: url('gfx/issue-logo@2x.png') no-repeat center;
+				background-size: 137px;
+			}
+		}
+	</style>
+</head>
+<body>
+
+<div class="chrome" id="chrome">
+	<div class="alf-layer alf-layer-content" id="alf-layer-content">
+		<article style="" class="sudoku">
+			<header>
+				<nav id="main_menu">
+					<div class="table">
+						<div class="menu_content">
+							<header onclick="IVYSUDOKU.cheat(20);IVYSUDOKU.menuClose();" class="cheat_title">
+								Cheat 20
+								<div onclick="IVYSUDOKU.menuClose();" class="menuClose">&#215;</div>
+							</header>
+							<ul>
+								<li onclick="IVYSUDOKU.init(0);IVYSUDOKU.menuClose();">Lett</li>
+								<li onclick="IVYSUDOKU.init(1);IVYSUDOKU.menuClose();">Middels</li>
+								<li onclick="IVYSUDOKU.init(2);IVYSUDOKU.menuClose();">Vanskelig</li>
+								<li onclick="IVYSUDOKU.restart();">Omstart</li>
+								<!-- <li class="inactive" onclick="alert('Hjelp er dessverre foreløbig ikke tilgjengelig');">Hjelp</li> -->
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<h1 onclick="IVYSUDOKU.menuClick();"><span class="thin">&#9776; DAGENS</span> SUDOKU</h1>
+			<!-- 	<button id="menu_icon" onclick="IVYSUDOKU.menuClick();">&#9776;</button> -->
+			</header>
+			<div id="container" class="clearfix">
+			<div id="board">
+				<div id="g_1" class="group">
+						<div id="s_1_1" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_1_n" class="square_number"></div>
+						<div id="s_1_1_1" class="note"></div>
+						<div id="s_1_1_2" class="note"></div>
+						<div id="s_1_1_3" class="note"></div>
+						<div id="s_1_1_4" class="note"></div>
+						<div id="s_1_1_5" class="note"></div>
+						<div id="s_1_1_6" class="note"></div>
+						<div id="s_1_1_7" class="note"></div>
+						<div id="s_1_1_8" class="note"></div>
+						<div id="s_1_1_9" class="note"></div>
+					</div>
+					<div id="s_2_1" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_1_n" class="square_number">6</div>
+						<div id="s_2_1_1" class="note"></div>
+						<div id="s_2_1_2" class="note"></div>
+						<div id="s_2_1_3" class="note"></div>
+						<div id="s_2_1_4" class="note"></div>
+						<div id="s_2_1_5" class="note"></div>
+						<div id="s_2_1_6" class="note"></div>
+						<div id="s_2_1_7" class="note"></div>
+						<div id="s_2_1_8" class="note"></div>
+						<div id="s_2_1_9" class="note"></div>
+					</div>
+					<div id="s_3_1" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_1_n" class="square_number">2</div>
+						<div id="s_3_1_1" class="note"></div>
+						<div id="s_3_1_2" class="note"></div>
+						<div id="s_3_1_3" class="note"></div>
+						<div id="s_3_1_4" class="note"></div>
+						<div id="s_3_1_5" class="note"></div>
+						<div id="s_3_1_6" class="note"></div>
+						<div id="s_3_1_7" class="note"></div>
+						<div id="s_3_1_8" class="note"></div>
+						<div id="s_3_1_9" class="note"></div>
+					</div>
+					<div id="s_1_2" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_2_n" class="square_number">1</div>
+						<div id="s_1_2_1" class="note"></div>
+						<div id="s_1_2_2" class="note"></div>
+						<div id="s_1_2_3" class="note"></div>
+						<div id="s_1_2_4" class="note"></div>
+						<div id="s_1_2_5" class="note"></div>
+						<div id="s_1_2_6" class="note"></div>
+						<div id="s_1_2_7" class="note"></div>
+						<div id="s_1_2_8" class="note"></div>
+						<div id="s_1_2_9" class="note"></div>
+					</div>
+					<div id="s_2_2" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_2_n" class="square_number">7</div>
+						<div id="s_2_2_1" class="note"></div>
+						<div id="s_2_2_2" class="note"></div>
+						<div id="s_2_2_3" class="note"></div>
+						<div id="s_2_2_4" class="note"></div>
+						<div id="s_2_2_5" class="note"></div>
+						<div id="s_2_2_6" class="note"></div>
+						<div id="s_2_2_7" class="note"></div>
+						<div id="s_2_2_8" class="note"></div>
+						<div id="s_2_2_9" class="note"></div>
+					</div>
+					<div id="s_3_2" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_2_n" class="square_number"></div>
+						<div id="s_3_2_1" class="note"></div>
+						<div id="s_3_2_2" class="note"></div>
+						<div id="s_3_2_3" class="note"></div>
+						<div id="s_3_2_4" class="note"></div>
+						<div id="s_3_2_5" class="note"></div>
+						<div id="s_3_2_6" class="note"></div>
+						<div id="s_3_2_7" class="note"></div>
+						<div id="s_3_2_8" class="note"></div>
+						<div id="s_3_2_9" class="note"></div>
+					</div>
+					<div id="s_1_3" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_3_n" class="square_number"></div>
+						<div id="s_1_3_1" class="note"></div>
+						<div id="s_1_3_2" class="note"></div>
+						<div id="s_1_3_3" class="note"></div>
+						<div id="s_1_3_4" class="note"></div>
+						<div id="s_1_3_5" class="note"></div>
+						<div id="s_1_3_6" class="note"></div>
+						<div id="s_1_3_7" class="note"></div>
+						<div id="s_1_3_8" class="note"></div>
+						<div id="s_1_3_9" class="note"></div>
+					</div>
+					<div id="s_2_3" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_3_n" class="square_number">3</div>
+						<div id="s_2_3_1" class="note"></div>
+						<div id="s_2_3_2" class="note"></div>
+						<div id="s_2_3_3" class="note"></div>
+						<div id="s_2_3_4" class="note"></div>
+						<div id="s_2_3_5" class="note"></div>
+						<div id="s_2_3_6" class="note"></div>
+						<div id="s_2_3_7" class="note"></div>
+						<div id="s_2_3_8" class="note"></div>
+						<div id="s_2_3_9" class="note"></div>
+					</div>
+					<div id="s_3_3" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_3_n" class="square_number"></div>
+						<div id="s_3_3_1" class="note"></div>
+						<div id="s_3_3_2" class="note"></div>
+						<div id="s_3_3_3" class="note"></div>
+						<div id="s_3_3_4" class="note"></div>
+						<div id="s_3_3_5" class="note"></div>
+						<div id="s_3_3_6" class="note"></div>
+						<div id="s_3_3_7" class="note"></div>
+						<div id="s_3_3_8" class="note"></div>
+						<div id="s_3_3_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_2" class="group">
+						<div id="s_4_1" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_1_n" class="square_number">3</div>
+						<div id="s_4_1_1" class="note"></div>
+						<div id="s_4_1_2" class="note"></div>
+						<div id="s_4_1_3" class="note"></div>
+						<div id="s_4_1_4" class="note"></div>
+						<div id="s_4_1_5" class="note"></div>
+						<div id="s_4_1_6" class="note"></div>
+						<div id="s_4_1_7" class="note"></div>
+						<div id="s_4_1_8" class="note"></div>
+						<div id="s_4_1_9" class="note"></div>
+					</div>
+					<div id="s_5_1" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_1_n" class="square_number"></div>
+						<div id="s_5_1_1" class="note"></div>
+						<div id="s_5_1_2" class="note"></div>
+						<div id="s_5_1_3" class="note"></div>
+						<div id="s_5_1_4" class="note"></div>
+						<div id="s_5_1_5" class="note"></div>
+						<div id="s_5_1_6" class="note"></div>
+						<div id="s_5_1_7" class="note"></div>
+						<div id="s_5_1_8" class="note"></div>
+						<div id="s_5_1_9" class="note"></div>
+					</div>
+					<div id="s_6_1" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_1_n" class="square_number"></div>
+						<div id="s_6_1_1" class="note"></div>
+						<div id="s_6_1_2" class="note"></div>
+						<div id="s_6_1_3" class="note"></div>
+						<div id="s_6_1_4" class="note"></div>
+						<div id="s_6_1_5" class="note"></div>
+						<div id="s_6_1_6" class="note"></div>
+						<div id="s_6_1_7" class="note"></div>
+						<div id="s_6_1_8" class="note"></div>
+						<div id="s_6_1_9" class="note"></div>
+					</div>
+					<div id="s_4_2" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_2_n" class="square_number">6</div>
+						<div id="s_4_2_1" class="note"></div>
+						<div id="s_4_2_2" class="note"></div>
+						<div id="s_4_2_3" class="note"></div>
+						<div id="s_4_2_4" class="note"></div>
+						<div id="s_4_2_5" class="note"></div>
+						<div id="s_4_2_6" class="note"></div>
+						<div id="s_4_2_7" class="note"></div>
+						<div id="s_4_2_8" class="note"></div>
+						<div id="s_4_2_9" class="note"></div>
+					</div>
+					<div id="s_5_2" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_2_n" class="square_number"></div>
+						<div id="s_5_2_1" class="note"></div>
+						<div id="s_5_2_2" class="note"></div>
+						<div id="s_5_2_3" class="note"></div>
+						<div id="s_5_2_4" class="note"></div>
+						<div id="s_5_2_5" class="note"></div>
+						<div id="s_5_2_6" class="note"></div>
+						<div id="s_5_2_7" class="note"></div>
+						<div id="s_5_2_8" class="note"></div>
+						<div id="s_5_2_9" class="note"></div>
+					</div>
+					<div id="s_6_2" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_2_n" class="square_number"></div>
+						<div id="s_6_2_1" class="note"></div>
+						<div id="s_6_2_2" class="note"></div>
+						<div id="s_6_2_3" class="note"></div>
+						<div id="s_6_2_4" class="note"></div>
+						<div id="s_6_2_5" class="note"></div>
+						<div id="s_6_2_6" class="note"></div>
+						<div id="s_6_2_7" class="note"></div>
+						<div id="s_6_2_8" class="note"></div>
+						<div id="s_6_2_9" class="note"></div>
+					</div>
+					<div id="s_4_3" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_3_n" class="square_number"></div>
+						<div id="s_4_3_1" class="note"></div>
+						<div id="s_4_3_2" class="note"></div>
+						<div id="s_4_3_3" class="note"></div>
+						<div id="s_4_3_4" class="note"></div>
+						<div id="s_4_3_5" class="note"></div>
+						<div id="s_4_3_6" class="note"></div>
+						<div id="s_4_3_7" class="note"></div>
+						<div id="s_4_3_8" class="note"></div>
+						<div id="s_4_3_9" class="note"></div>
+					</div>
+					<div id="s_5_3" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_3_n" class="square_number">8</div>
+						<div id="s_5_3_1" class="note"></div>
+						<div id="s_5_3_2" class="note"></div>
+						<div id="s_5_3_3" class="note"></div>
+						<div id="s_5_3_4" class="note"></div>
+						<div id="s_5_3_5" class="note"></div>
+						<div id="s_5_3_6" class="note"></div>
+						<div id="s_5_3_7" class="note"></div>
+						<div id="s_5_3_8" class="note"></div>
+						<div id="s_5_3_9" class="note"></div>
+					</div>
+					<div id="s_6_3" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_3_n" class="square_number"></div>
+						<div id="s_6_3_1" class="note"></div>
+						<div id="s_6_3_2" class="note"></div>
+						<div id="s_6_3_3" class="note"></div>
+						<div id="s_6_3_4" class="note"></div>
+						<div id="s_6_3_5" class="note"></div>
+						<div id="s_6_3_6" class="note"></div>
+						<div id="s_6_3_7" class="note"></div>
+						<div id="s_6_3_8" class="note"></div>
+						<div id="s_6_3_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_3" class="group">
+						<div id="s_7_1" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_1_n" class="square_number"></div>
+						<div id="s_7_1_1" class="note"></div>
+						<div id="s_7_1_2" class="note"></div>
+						<div id="s_7_1_3" class="note"></div>
+						<div id="s_7_1_4" class="note"></div>
+						<div id="s_7_1_5" class="note"></div>
+						<div id="s_7_1_6" class="note"></div>
+						<div id="s_7_1_7" class="note"></div>
+						<div id="s_7_1_8" class="note"></div>
+						<div id="s_7_1_9" class="note"></div>
+					</div>
+					<div id="s_8_1" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_1_n" class="square_number"></div>
+						<div id="s_8_1_1" class="note"></div>
+						<div id="s_8_1_2" class="note"></div>
+						<div id="s_8_1_3" class="note"></div>
+						<div id="s_8_1_4" class="note"></div>
+						<div id="s_8_1_5" class="note"></div>
+						<div id="s_8_1_6" class="note"></div>
+						<div id="s_8_1_7" class="note"></div>
+						<div id="s_8_1_8" class="note"></div>
+						<div id="s_8_1_9" class="note"></div>
+					</div>
+					<div id="s_9_1" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_1_n" class="square_number">7</div>
+						<div id="s_9_1_1" class="note"></div>
+						<div id="s_9_1_2" class="note"></div>
+						<div id="s_9_1_3" class="note"></div>
+						<div id="s_9_1_4" class="note"></div>
+						<div id="s_9_1_5" class="note"></div>
+						<div id="s_9_1_6" class="note"></div>
+						<div id="s_9_1_7" class="note"></div>
+						<div id="s_9_1_8" class="note"></div>
+						<div id="s_9_1_9" class="note"></div>
+					</div>
+					<div id="s_7_2" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_2_n" class="square_number"></div>
+						<div id="s_7_2_1" class="note"></div>
+						<div id="s_7_2_2" class="note"></div>
+						<div id="s_7_2_3" class="note"></div>
+						<div id="s_7_2_4" class="note"></div>
+						<div id="s_7_2_5" class="note"></div>
+						<div id="s_7_2_6" class="note"></div>
+						<div id="s_7_2_7" class="note"></div>
+						<div id="s_7_2_8" class="note"></div>
+						<div id="s_7_2_9" class="note"></div>
+					</div>
+					<div id="s_8_2" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_2_n" class="square_number">4</div>
+						<div id="s_8_2_1" class="note"></div>
+						<div id="s_8_2_2" class="note"></div>
+						<div id="s_8_2_3" class="note"></div>
+						<div id="s_8_2_4" class="note"></div>
+						<div id="s_8_2_5" class="note"></div>
+						<div id="s_8_2_6" class="note"></div>
+						<div id="s_8_2_7" class="note"></div>
+						<div id="s_8_2_8" class="note"></div>
+						<div id="s_8_2_9" class="note"></div>
+					</div>
+					<div id="s_9_2" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_2_n" class="square_number"></div>
+						<div id="s_9_2_1" class="note"></div>
+						<div id="s_9_2_2" class="note"></div>
+						<div id="s_9_2_3" class="note"></div>
+						<div id="s_9_2_4" class="note"></div>
+						<div id="s_9_2_5" class="note"></div>
+						<div id="s_9_2_6" class="note"></div>
+						<div id="s_9_2_7" class="note"></div>
+						<div id="s_9_2_8" class="note"></div>
+						<div id="s_9_2_9" class="note"></div>
+					</div>
+					<div id="s_7_3" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_3_n" class="square_number">5</div>
+						<div id="s_7_3_1" class="note"></div>
+						<div id="s_7_3_2" class="note"></div>
+						<div id="s_7_3_3" class="note"></div>
+						<div id="s_7_3_4" class="note"></div>
+						<div id="s_7_3_5" class="note"></div>
+						<div id="s_7_3_6" class="note"></div>
+						<div id="s_7_3_7" class="note"></div>
+						<div id="s_7_3_8" class="note"></div>
+						<div id="s_7_3_9" class="note"></div>
+					</div>
+					<div id="s_8_3" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_3_n" class="square_number"></div>
+						<div id="s_8_3_1" class="note"></div>
+						<div id="s_8_3_2" class="note"></div>
+						<div id="s_8_3_3" class="note"></div>
+						<div id="s_8_3_4" class="note"></div>
+						<div id="s_8_3_5" class="note"></div>
+						<div id="s_8_3_6" class="note"></div>
+						<div id="s_8_3_7" class="note"></div>
+						<div id="s_8_3_8" class="note"></div>
+						<div id="s_8_3_9" class="note"></div>
+					</div>
+					<div id="s_9_3" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_3_n" class="square_number"></div>
+						<div id="s_9_3_1" class="note"></div>
+						<div id="s_9_3_2" class="note"></div>
+						<div id="s_9_3_3" class="note"></div>
+						<div id="s_9_3_4" class="note"></div>
+						<div id="s_9_3_5" class="note"></div>
+						<div id="s_9_3_6" class="note"></div>
+						<div id="s_9_3_7" class="note"></div>
+						<div id="s_9_3_8" class="note"></div>
+						<div id="s_9_3_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_4" class="group">
+						<div id="s_1_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_4_n" class="square_number"></div>
+						<div id="s_1_4_1" class="note"></div>
+						<div id="s_1_4_2" class="note"></div>
+						<div id="s_1_4_3" class="note"></div>
+						<div id="s_1_4_4" class="note"></div>
+						<div id="s_1_4_5" class="note"></div>
+						<div id="s_1_4_6" class="note"></div>
+						<div id="s_1_4_7" class="note"></div>
+						<div id="s_1_4_8" class="note"></div>
+						<div id="s_1_4_9" class="note"></div>
+					</div>
+					<div id="s_2_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_4_n" class="square_number"></div>
+						<div id="s_2_4_1" class="note"></div>
+						<div id="s_2_4_2" class="note"></div>
+						<div id="s_2_4_3" class="note"></div>
+						<div id="s_2_4_4" class="note"></div>
+						<div id="s_2_4_5" class="note"></div>
+						<div id="s_2_4_6" class="note"></div>
+						<div id="s_2_4_7" class="note"></div>
+						<div id="s_2_4_8" class="note"></div>
+						<div id="s_2_4_9" class="note"></div>
+					</div>
+					<div id="s_3_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_4_n" class="square_number"></div>
+						<div id="s_3_4_1" class="note"></div>
+						<div id="s_3_4_2" class="note"></div>
+						<div id="s_3_4_3" class="note"></div>
+						<div id="s_3_4_4" class="note"></div>
+						<div id="s_3_4_5" class="note"></div>
+						<div id="s_3_4_6" class="note"></div>
+						<div id="s_3_4_7" class="note"></div>
+						<div id="s_3_4_8" class="note"></div>
+						<div id="s_3_4_9" class="note"></div>
+					</div>
+					<div id="s_1_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_5_n" class="square_number"></div>
+						<div id="s_1_5_1" class="note"></div>
+						<div id="s_1_5_2" class="note"></div>
+						<div id="s_1_5_3" class="note"></div>
+						<div id="s_1_5_4" class="note"></div>
+						<div id="s_1_5_5" class="note"></div>
+						<div id="s_1_5_6" class="note"></div>
+						<div id="s_1_5_7" class="note"></div>
+						<div id="s_1_5_8" class="note"></div>
+						<div id="s_1_5_9" class="note"></div>
+					</div>
+					<div id="s_2_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_5_n" class="square_number"></div>
+						<div id="s_2_5_1" class="note"></div>
+						<div id="s_2_5_2" class="note"></div>
+						<div id="s_2_5_3" class="note"></div>
+						<div id="s_2_5_4" class="note"></div>
+						<div id="s_2_5_5" class="note"></div>
+						<div id="s_2_5_6" class="note"></div>
+						<div id="s_2_5_7" class="note"></div>
+						<div id="s_2_5_8" class="note"></div>
+						<div id="s_2_5_9" class="note"></div>
+					</div>
+					<div id="s_3_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_5_n" class="square_number"></div>
+						<div id="s_3_5_1" class="note"></div>
+						<div id="s_3_5_2" class="note"></div>
+						<div id="s_3_5_3" class="note"></div>
+						<div id="s_3_5_4" class="note"></div>
+						<div id="s_3_5_5" class="note"></div>
+						<div id="s_3_5_6" class="note"></div>
+						<div id="s_3_5_7" class="note"></div>
+						<div id="s_3_5_8" class="note"></div>
+						<div id="s_3_5_9" class="note"></div>
+					</div>
+					<div id="s_1_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_6_n" class="square_number"></div>
+						<div id="s_1_6_1" class="note"></div>
+						<div id="s_1_6_2" class="note"></div>
+						<div id="s_1_6_3" class="note"></div>
+						<div id="s_1_6_4" class="note"></div>
+						<div id="s_1_6_5" class="note"></div>
+						<div id="s_1_6_6" class="note"></div>
+						<div id="s_1_6_7" class="note"></div>
+						<div id="s_1_6_8" class="note"></div>
+						<div id="s_1_6_9" class="note"></div>
+					</div>
+					<div id="s_2_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_6_n" class="square_number"></div>
+						<div id="s_2_6_1" class="note"></div>
+						<div id="s_2_6_2" class="note"></div>
+						<div id="s_2_6_3" class="note"></div>
+						<div id="s_2_6_4" class="note"></div>
+						<div id="s_2_6_5" class="note"></div>
+						<div id="s_2_6_6" class="note"></div>
+						<div id="s_2_6_7" class="note"></div>
+						<div id="s_2_6_8" class="note"></div>
+						<div id="s_2_6_9" class="note"></div>
+					</div>
+					<div id="s_3_6" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_6_n" class="square_number">6</div>
+						<div id="s_3_6_1" class="note"></div>
+						<div id="s_3_6_2" class="note"></div>
+						<div id="s_3_6_3" class="note"></div>
+						<div id="s_3_6_4" class="note"></div>
+						<div id="s_3_6_5" class="note"></div>
+						<div id="s_3_6_6" class="note"></div>
+						<div id="s_3_6_7" class="note"></div>
+						<div id="s_3_6_8" class="note"></div>
+						<div id="s_3_6_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_5" class="group">
+						<div id="s_4_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_4_n" class="square_number"></div>
+						<div id="s_4_4_1" class="note"></div>
+						<div id="s_4_4_2" class="note"></div>
+						<div id="s_4_4_3" class="note"></div>
+						<div id="s_4_4_4" class="note"></div>
+						<div id="s_4_4_5" class="note"></div>
+						<div id="s_4_4_6" class="note"></div>
+						<div id="s_4_4_7" class="note"></div>
+						<div id="s_4_4_8" class="note"></div>
+						<div id="s_4_4_9" class="note"></div>
+					</div>
+					<div id="s_5_4" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_4_n" class="square_number">1</div>
+						<div id="s_5_4_1" class="note"></div>
+						<div id="s_5_4_2" class="note"></div>
+						<div id="s_5_4_3" class="note"></div>
+						<div id="s_5_4_4" class="note"></div>
+						<div id="s_5_4_5" class="note"></div>
+						<div id="s_5_4_6" class="note"></div>
+						<div id="s_5_4_7" class="note"></div>
+						<div id="s_5_4_8" class="note"></div>
+						<div id="s_5_4_9" class="note"></div>
+					</div>
+					<div id="s_6_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_4_n" class="square_number"></div>
+						<div id="s_6_4_1" class="note"></div>
+						<div id="s_6_4_2" class="note"></div>
+						<div id="s_6_4_3" class="note"></div>
+						<div id="s_6_4_4" class="note"></div>
+						<div id="s_6_4_5" class="note"></div>
+						<div id="s_6_4_6" class="note"></div>
+						<div id="s_6_4_7" class="note"></div>
+						<div id="s_6_4_8" class="note"></div>
+						<div id="s_6_4_9" class="note"></div>
+					</div>
+					<div id="s_4_5" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_5_n" class="square_number">5</div>
+						<div id="s_4_5_1" class="note"></div>
+						<div id="s_4_5_2" class="note"></div>
+						<div id="s_4_5_3" class="note"></div>
+						<div id="s_4_5_4" class="note"></div>
+						<div id="s_4_5_5" class="note"></div>
+						<div id="s_4_5_6" class="note"></div>
+						<div id="s_4_5_7" class="note"></div>
+						<div id="s_4_5_8" class="note"></div>
+						<div id="s_4_5_9" class="note"></div>
+					</div>
+					<div id="s_5_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_5_n" class="square_number"></div>
+						<div id="s_5_5_1" class="note"></div>
+						<div id="s_5_5_2" class="note"></div>
+						<div id="s_5_5_3" class="note"></div>
+						<div id="s_5_5_4" class="note"></div>
+						<div id="s_5_5_5" class="note"></div>
+						<div id="s_5_5_6" class="note"></div>
+						<div id="s_5_5_7" class="note"></div>
+						<div id="s_5_5_8" class="note"></div>
+						<div id="s_5_5_9" class="note"></div>
+					</div>
+					<div id="s_6_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_5_n" class="square_number"></div>
+						<div id="s_6_5_1" class="note"></div>
+						<div id="s_6_5_2" class="note"></div>
+						<div id="s_6_5_3" class="note"></div>
+						<div id="s_6_5_4" class="note"></div>
+						<div id="s_6_5_5" class="note"></div>
+						<div id="s_6_5_6" class="note"></div>
+						<div id="s_6_5_7" class="note"></div>
+						<div id="s_6_5_8" class="note"></div>
+						<div id="s_6_5_9" class="note"></div>
+					</div>
+					<div id="s_4_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_6_n" class="square_number"></div>
+						<div id="s_4_6_1" class="note"></div>
+						<div id="s_4_6_2" class="note"></div>
+						<div id="s_4_6_3" class="note"></div>
+						<div id="s_4_6_4" class="note"></div>
+						<div id="s_4_6_5" class="note"></div>
+						<div id="s_4_6_6" class="note"></div>
+						<div id="s_4_6_7" class="note"></div>
+						<div id="s_4_6_8" class="note"></div>
+						<div id="s_4_6_9" class="note"></div>
+					</div>
+					<div id="s_5_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_6_n" class="square_number"></div>
+						<div id="s_5_6_1" class="note"></div>
+						<div id="s_5_6_2" class="note"></div>
+						<div id="s_5_6_3" class="note"></div>
+						<div id="s_5_6_4" class="note"></div>
+						<div id="s_5_6_5" class="note"></div>
+						<div id="s_5_6_6" class="note"></div>
+						<div id="s_5_6_7" class="note"></div>
+						<div id="s_5_6_8" class="note"></div>
+						<div id="s_5_6_9" class="note"></div>
+					</div>
+					<div id="s_6_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_6_n" class="square_number"></div>
+						<div id="s_6_6_1" class="note"></div>
+						<div id="s_6_6_2" class="note"></div>
+						<div id="s_6_6_3" class="note"></div>
+						<div id="s_6_6_4" class="note"></div>
+						<div id="s_6_6_5" class="note"></div>
+						<div id="s_6_6_6" class="note"></div>
+						<div id="s_6_6_7" class="note"></div>
+						<div id="s_6_6_8" class="note"></div>
+						<div id="s_6_6_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_6" class="group">
+						<div id="s_7_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_4_n" class="square_number"></div>
+						<div id="s_7_4_1" class="note"></div>
+						<div id="s_7_4_2" class="note"></div>
+						<div id="s_7_4_3" class="note"></div>
+						<div id="s_7_4_4" class="note"></div>
+						<div id="s_7_4_5" class="note"></div>
+						<div id="s_7_4_6" class="note"></div>
+						<div id="s_7_4_7" class="note"></div>
+						<div id="s_7_4_8" class="note"></div>
+						<div id="s_7_4_9" class="note"></div>
+					</div>
+					<div id="s_8_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_4_n" class="square_number"></div>
+						<div id="s_8_4_1" class="note"></div>
+						<div id="s_8_4_2" class="note"></div>
+						<div id="s_8_4_3" class="note"></div>
+						<div id="s_8_4_4" class="note"></div>
+						<div id="s_8_4_5" class="note"></div>
+						<div id="s_8_4_6" class="note"></div>
+						<div id="s_8_4_7" class="note"></div>
+						<div id="s_8_4_8" class="note"></div>
+						<div id="s_8_4_9" class="note"></div>
+					</div>
+					<div id="s_9_4" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_4_n" class="square_number"></div>
+						<div id="s_9_4_1" class="note"></div>
+						<div id="s_9_4_2" class="note"></div>
+						<div id="s_9_4_3" class="note"></div>
+						<div id="s_9_4_4" class="note"></div>
+						<div id="s_9_4_5" class="note"></div>
+						<div id="s_9_4_6" class="note"></div>
+						<div id="s_9_4_7" class="note"></div>
+						<div id="s_9_4_8" class="note"></div>
+						<div id="s_9_4_9" class="note"></div>
+					</div>
+					<div id="s_7_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_5_n" class="square_number"></div>
+						<div id="s_7_5_1" class="note"></div>
+						<div id="s_7_5_2" class="note"></div>
+						<div id="s_7_5_3" class="note"></div>
+						<div id="s_7_5_4" class="note"></div>
+						<div id="s_7_5_5" class="note"></div>
+						<div id="s_7_5_6" class="note"></div>
+						<div id="s_7_5_7" class="note"></div>
+						<div id="s_7_5_8" class="note"></div>
+						<div id="s_7_5_9" class="note"></div>
+					</div>
+					<div id="s_8_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_5_n" class="square_number"></div>
+						<div id="s_8_5_1" class="note"></div>
+						<div id="s_8_5_2" class="note"></div>
+						<div id="s_8_5_3" class="note"></div>
+						<div id="s_8_5_4" class="note"></div>
+						<div id="s_8_5_5" class="note"></div>
+						<div id="s_8_5_6" class="note"></div>
+						<div id="s_8_5_7" class="note"></div>
+						<div id="s_8_5_8" class="note"></div>
+						<div id="s_8_5_9" class="note"></div>
+					</div>
+					<div id="s_9_5" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_5_n" class="square_number"></div>
+						<div id="s_9_5_1" class="note"></div>
+						<div id="s_9_5_2" class="note"></div>
+						<div id="s_9_5_3" class="note"></div>
+						<div id="s_9_5_4" class="note"></div>
+						<div id="s_9_5_5" class="note"></div>
+						<div id="s_9_5_6" class="note"></div>
+						<div id="s_9_5_7" class="note"></div>
+						<div id="s_9_5_8" class="note"></div>
+						<div id="s_9_5_9" class="note"></div>
+					</div>
+					<div id="s_7_6" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_6_n" class="square_number">3</div>
+						<div id="s_7_6_1" class="note"></div>
+						<div id="s_7_6_2" class="note"></div>
+						<div id="s_7_6_3" class="note"></div>
+						<div id="s_7_6_4" class="note"></div>
+						<div id="s_7_6_5" class="note"></div>
+						<div id="s_7_6_6" class="note"></div>
+						<div id="s_7_6_7" class="note"></div>
+						<div id="s_7_6_8" class="note"></div>
+						<div id="s_7_6_9" class="note"></div>
+					</div>
+					<div id="s_8_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_6_n" class="square_number"></div>
+						<div id="s_8_6_1" class="note"></div>
+						<div id="s_8_6_2" class="note"></div>
+						<div id="s_8_6_3" class="note"></div>
+						<div id="s_8_6_4" class="note"></div>
+						<div id="s_8_6_5" class="note"></div>
+						<div id="s_8_6_6" class="note"></div>
+						<div id="s_8_6_7" class="note"></div>
+						<div id="s_8_6_8" class="note"></div>
+						<div id="s_8_6_9" class="note"></div>
+					</div>
+					<div id="s_9_6" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_6_n" class="square_number"></div>
+						<div id="s_9_6_1" class="note"></div>
+						<div id="s_9_6_2" class="note"></div>
+						<div id="s_9_6_3" class="note"></div>
+						<div id="s_9_6_4" class="note"></div>
+						<div id="s_9_6_5" class="note"></div>
+						<div id="s_9_6_6" class="note"></div>
+						<div id="s_9_6_7" class="note"></div>
+						<div id="s_9_6_8" class="note"></div>
+						<div id="s_9_6_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_7" class="group">
+						<div id="s_1_7" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_7_n" class="square_number"></div>
+						<div id="s_1_7_1" class="note"></div>
+						<div id="s_1_7_2" class="note"></div>
+						<div id="s_1_7_3" class="note"></div>
+						<div id="s_1_7_4" class="note"></div>
+						<div id="s_1_7_5" class="note"></div>
+						<div id="s_1_7_6" class="note"></div>
+						<div id="s_1_7_7" class="note"></div>
+						<div id="s_1_7_8" class="note"></div>
+						<div id="s_1_7_9" class="note"></div>
+					</div>
+					<div id="s_2_7" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_7_n" class="square_number"></div>
+						<div id="s_2_7_1" class="note"></div>
+						<div id="s_2_7_2" class="note"></div>
+						<div id="s_2_7_3" class="note"></div>
+						<div id="s_2_7_4" class="note"></div>
+						<div id="s_2_7_5" class="note"></div>
+						<div id="s_2_7_6" class="note"></div>
+						<div id="s_2_7_7" class="note"></div>
+						<div id="s_2_7_8" class="note"></div>
+						<div id="s_2_7_9" class="note"></div>
+					</div>
+					<div id="s_3_7" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_7_n" class="square_number">3</div>
+						<div id="s_3_7_1" class="note"></div>
+						<div id="s_3_7_2" class="note"></div>
+						<div id="s_3_7_3" class="note"></div>
+						<div id="s_3_7_4" class="note"></div>
+						<div id="s_3_7_5" class="note"></div>
+						<div id="s_3_7_6" class="note"></div>
+						<div id="s_3_7_7" class="note"></div>
+						<div id="s_3_7_8" class="note"></div>
+						<div id="s_3_7_9" class="note"></div>
+					</div>
+					<div id="s_1_8" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_8_n" class="square_number"></div>
+						<div id="s_1_8_1" class="note"></div>
+						<div id="s_1_8_2" class="note"></div>
+						<div id="s_1_8_3" class="note"></div>
+						<div id="s_1_8_4" class="note"></div>
+						<div id="s_1_8_5" class="note"></div>
+						<div id="s_1_8_6" class="note"></div>
+						<div id="s_1_8_7" class="note"></div>
+						<div id="s_1_8_8" class="note"></div>
+						<div id="s_1_8_9" class="note"></div>
+					</div>
+					<div id="s_2_8" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_8_n" class="square_number">4</div>
+						<div id="s_2_8_1" class="note"></div>
+						<div id="s_2_8_2" class="note"></div>
+						<div id="s_2_8_3" class="note"></div>
+						<div id="s_2_8_4" class="note"></div>
+						<div id="s_2_8_5" class="note"></div>
+						<div id="s_2_8_6" class="note"></div>
+						<div id="s_2_8_7" class="note"></div>
+						<div id="s_2_8_8" class="note"></div>
+						<div id="s_2_8_9" class="note"></div>
+					</div>
+					<div id="s_3_8" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_8_n" class="square_number"></div>
+						<div id="s_3_8_1" class="note"></div>
+						<div id="s_3_8_2" class="note"></div>
+						<div id="s_3_8_3" class="note"></div>
+						<div id="s_3_8_4" class="note"></div>
+						<div id="s_3_8_5" class="note"></div>
+						<div id="s_3_8_6" class="note"></div>
+						<div id="s_3_8_7" class="note"></div>
+						<div id="s_3_8_8" class="note"></div>
+						<div id="s_3_8_9" class="note"></div>
+					</div>
+					<div id="s_1_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_1_9_n" class="square_number"></div>
+						<div id="s_1_9_1" class="note"></div>
+						<div id="s_1_9_2" class="note"></div>
+						<div id="s_1_9_3" class="note"></div>
+						<div id="s_1_9_4" class="note"></div>
+						<div id="s_1_9_5" class="note"></div>
+						<div id="s_1_9_6" class="note"></div>
+						<div id="s_1_9_7" class="note"></div>
+						<div id="s_1_9_8" class="note"></div>
+						<div id="s_1_9_9" class="note"></div>
+					</div>
+					<div id="s_2_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_2_9_n" class="square_number"></div>
+						<div id="s_2_9_1" class="note"></div>
+						<div id="s_2_9_2" class="note"></div>
+						<div id="s_2_9_3" class="note"></div>
+						<div id="s_2_9_4" class="note"></div>
+						<div id="s_2_9_5" class="note"></div>
+						<div id="s_2_9_6" class="note"></div>
+						<div id="s_2_9_7" class="note"></div>
+						<div id="s_2_9_8" class="note"></div>
+						<div id="s_2_9_9" class="note"></div>
+					</div>
+					<div id="s_3_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_3_9_n" class="square_number"></div>
+						<div id="s_3_9_1" class="note"></div>
+						<div id="s_3_9_2" class="note"></div>
+						<div id="s_3_9_3" class="note"></div>
+						<div id="s_3_9_4" class="note"></div>
+						<div id="s_3_9_5" class="note"></div>
+						<div id="s_3_9_6" class="note"></div>
+						<div id="s_3_9_7" class="note"></div>
+						<div id="s_3_9_8" class="note"></div>
+						<div id="s_3_9_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_8" class="group">
+						<div id="s_4_7" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_7_n" class="square_number"></div>
+						<div id="s_4_7_1" class="note"></div>
+						<div id="s_4_7_2" class="note"></div>
+						<div id="s_4_7_3" class="note"></div>
+						<div id="s_4_7_4" class="note"></div>
+						<div id="s_4_7_5" class="note"></div>
+						<div id="s_4_7_6" class="note"></div>
+						<div id="s_4_7_7" class="note"></div>
+						<div id="s_4_7_8" class="note"></div>
+						<div id="s_4_7_9" class="note"></div>
+					</div>
+					<div id="s_5_7" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_7_n" class="square_number">7</div>
+						<div id="s_5_7_1" class="note"></div>
+						<div id="s_5_7_2" class="note"></div>
+						<div id="s_5_7_3" class="note"></div>
+						<div id="s_5_7_4" class="note"></div>
+						<div id="s_5_7_5" class="note"></div>
+						<div id="s_5_7_6" class="note"></div>
+						<div id="s_5_7_7" class="note"></div>
+						<div id="s_5_7_8" class="note"></div>
+						<div id="s_5_7_9" class="note"></div>
+					</div>
+					<div id="s_6_7" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_7_n" class="square_number"></div>
+						<div id="s_6_7_1" class="note"></div>
+						<div id="s_6_7_2" class="note"></div>
+						<div id="s_6_7_3" class="note"></div>
+						<div id="s_6_7_4" class="note"></div>
+						<div id="s_6_7_5" class="note"></div>
+						<div id="s_6_7_6" class="note"></div>
+						<div id="s_6_7_7" class="note"></div>
+						<div id="s_6_7_8" class="note"></div>
+						<div id="s_6_7_9" class="note"></div>
+					</div>
+					<div id="s_4_8" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_8_n" class="square_number"></div>
+						<div id="s_4_8_1" class="note"></div>
+						<div id="s_4_8_2" class="note"></div>
+						<div id="s_4_8_3" class="note"></div>
+						<div id="s_4_8_4" class="note"></div>
+						<div id="s_4_8_5" class="note"></div>
+						<div id="s_4_8_6" class="note"></div>
+						<div id="s_4_8_7" class="note"></div>
+						<div id="s_4_8_8" class="note"></div>
+						<div id="s_4_8_9" class="note"></div>
+					</div>
+					<div id="s_5_8" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_8_n" class="square_number"></div>
+						<div id="s_5_8_1" class="note"></div>
+						<div id="s_5_8_2" class="note"></div>
+						<div id="s_5_8_3" class="note"></div>
+						<div id="s_5_8_4" class="note"></div>
+						<div id="s_5_8_5" class="note"></div>
+						<div id="s_5_8_6" class="note"></div>
+						<div id="s_5_8_7" class="note"></div>
+						<div id="s_5_8_8" class="note"></div>
+						<div id="s_5_8_9" class="note"></div>
+					</div>
+					<div id="s_6_8" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_8_n" class="square_number">1</div>
+						<div id="s_6_8_1" class="note"></div>
+						<div id="s_6_8_2" class="note"></div>
+						<div id="s_6_8_3" class="note"></div>
+						<div id="s_6_8_4" class="note"></div>
+						<div id="s_6_8_5" class="note"></div>
+						<div id="s_6_8_6" class="note"></div>
+						<div id="s_6_8_7" class="note"></div>
+						<div id="s_6_8_8" class="note"></div>
+						<div id="s_6_8_9" class="note"></div>
+					</div>
+					<div id="s_4_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_4_9_n" class="square_number"></div>
+						<div id="s_4_9_1" class="note"></div>
+						<div id="s_4_9_2" class="note"></div>
+						<div id="s_4_9_3" class="note"></div>
+						<div id="s_4_9_4" class="note"></div>
+						<div id="s_4_9_5" class="note"></div>
+						<div id="s_4_9_6" class="note"></div>
+						<div id="s_4_9_7" class="note"></div>
+						<div id="s_4_9_8" class="note"></div>
+						<div id="s_4_9_9" class="note"></div>
+					</div>
+					<div id="s_5_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_5_9_n" class="square_number"></div>
+						<div id="s_5_9_1" class="note"></div>
+						<div id="s_5_9_2" class="note"></div>
+						<div id="s_5_9_3" class="note"></div>
+						<div id="s_5_9_4" class="note"></div>
+						<div id="s_5_9_5" class="note"></div>
+						<div id="s_5_9_6" class="note"></div>
+						<div id="s_5_9_7" class="note"></div>
+						<div id="s_5_9_8" class="note"></div>
+						<div id="s_5_9_9" class="note"></div>
+					</div>
+					<div id="s_6_9" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_6_9_n" class="square_number">2</div>
+						<div id="s_6_9_1" class="note"></div>
+						<div id="s_6_9_2" class="note"></div>
+						<div id="s_6_9_3" class="note"></div>
+						<div id="s_6_9_4" class="note"></div>
+						<div id="s_6_9_5" class="note"></div>
+						<div id="s_6_9_6" class="note"></div>
+						<div id="s_6_9_7" class="note"></div>
+						<div id="s_6_9_8" class="note"></div>
+						<div id="s_6_9_9" class="note"></div>
+					</div>
+				</div>
+				<div id="g_9" class="group">
+						<div id="s_7_7" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_7_n" class="square_number"></div>
+						<div id="s_7_7_1" class="note"></div>
+						<div id="s_7_7_2" class="note"></div>
+						<div id="s_7_7_3" class="note"></div>
+						<div id="s_7_7_4" class="note"></div>
+						<div id="s_7_7_5" class="note"></div>
+						<div id="s_7_7_6" class="note"></div>
+						<div id="s_7_7_7" class="note"></div>
+						<div id="s_7_7_8" class="note"></div>
+						<div id="s_7_7_9" class="note"></div>
+					</div>
+					<div id="s_8_7" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_7_n" class="square_number">6</div>
+						<div id="s_8_7_1" class="note"></div>
+						<div id="s_8_7_2" class="note"></div>
+						<div id="s_8_7_3" class="note"></div>
+						<div id="s_8_7_4" class="note"></div>
+						<div id="s_8_7_5" class="note"></div>
+						<div id="s_8_7_6" class="note"></div>
+						<div id="s_8_7_7" class="note"></div>
+						<div id="s_8_7_8" class="note"></div>
+						<div id="s_8_7_9" class="note"></div>
+					</div>
+					<div id="s_9_7" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_7_n" class="square_number"></div>
+						<div id="s_9_7_1" class="note"></div>
+						<div id="s_9_7_2" class="note"></div>
+						<div id="s_9_7_3" class="note"></div>
+						<div id="s_9_7_4" class="note"></div>
+						<div id="s_9_7_5" class="note"></div>
+						<div id="s_9_7_6" class="note"></div>
+						<div id="s_9_7_7" class="note"></div>
+						<div id="s_9_7_8" class="note"></div>
+						<div id="s_9_7_9" class="note"></div>
+					</div>
+					<div id="s_7_8" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_8_n" class="square_number">7</div>
+						<div id="s_7_8_1" class="note"></div>
+						<div id="s_7_8_2" class="note"></div>
+						<div id="s_7_8_3" class="note"></div>
+						<div id="s_7_8_4" class="note"></div>
+						<div id="s_7_8_5" class="note"></div>
+						<div id="s_7_8_6" class="note"></div>
+						<div id="s_7_8_7" class="note"></div>
+						<div id="s_7_8_8" class="note"></div>
+						<div id="s_7_8_9" class="note"></div>
+					</div>
+					<div id="s_8_8" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_8_n" class="square_number"></div>
+						<div id="s_8_8_1" class="note"></div>
+						<div id="s_8_8_2" class="note"></div>
+						<div id="s_8_8_3" class="note"></div>
+						<div id="s_8_8_4" class="note"></div>
+						<div id="s_8_8_5" class="note"></div>
+						<div id="s_8_8_6" class="note"></div>
+						<div id="s_8_8_7" class="note"></div>
+						<div id="s_8_8_8" class="note"></div>
+						<div id="s_8_8_9" class="note"></div>
+					</div>
+					<div id="s_9_8" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_8_n" class="square_number">5</div>
+						<div id="s_9_8_1" class="note"></div>
+						<div id="s_9_8_2" class="note"></div>
+						<div id="s_9_8_3" class="note"></div>
+						<div id="s_9_8_4" class="note"></div>
+						<div id="s_9_8_5" class="note"></div>
+						<div id="s_9_8_6" class="note"></div>
+						<div id="s_9_8_7" class="note"></div>
+						<div id="s_9_8_8" class="note"></div>
+						<div id="s_9_8_9" class="note"></div>
+					</div>
+					<div id="s_7_9" class="square" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_7_9_n" class="square_number">4</div>
+						<div id="s_7_9_1" class="note"></div>
+						<div id="s_7_9_2" class="note"></div>
+						<div id="s_7_9_3" class="note"></div>
+						<div id="s_7_9_4" class="note"></div>
+						<div id="s_7_9_5" class="note"></div>
+						<div id="s_7_9_6" class="note"></div>
+						<div id="s_7_9_7" class="note"></div>
+						<div id="s_7_9_8" class="note"></div>
+						<div id="s_7_9_9" class="note"></div>
+					</div>
+					<div id="s_8_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_8_9_n" class="square_number"></div>
+						<div id="s_8_9_1" class="note"></div>
+						<div id="s_8_9_2" class="note"></div>
+						<div id="s_8_9_3" class="note"></div>
+						<div id="s_8_9_4" class="note"></div>
+						<div id="s_8_9_5" class="note"></div>
+						<div id="s_8_9_6" class="note"></div>
+						<div id="s_8_9_7" class="note"></div>
+						<div id="s_8_9_8" class="note"></div>
+						<div id="s_8_9_9" class="note"></div>
+					</div>
+					<div id="s_9_9" class="square editable" onmousedown="IVYSUDOKU.squareClick(this.id);">
+						<div id="s_9_9_n" class="square_number"></div>
+						<div id="s_9_9_1" class="note"></div>
+						<div id="s_9_9_2" class="note"></div>
+						<div id="s_9_9_3" class="note"></div>
+						<div id="s_9_9_4" class="note"></div>
+						<div id="s_9_9_5" class="note"></div>
+						<div id="s_9_9_6" class="note"></div>
+						<div id="s_9_9_7" class="note"></div>
+						<div id="s_9_9_8" class="note"></div>
+						<div id="s_9_9_9" class="note"></div>
+					</div>
+				</div>
+			</div>
+			
+				<div id="keyboard" class="clearfix inactive">
+					<div class="square_numbers">
+						<div id="k_s_1" class="square" onclick="IVYSUDOKU.keyboardClick(1);">
+							<div id="k_1_n" class="square_number">1</div>
+						</div>
+						<div id="k_s_2" class="square" onclick="IVYSUDOKU.keyboardClick(2);">
+							<div id="k_2_n" class="square_number">2</div>
+						</div>
+						<div id="k_s_3" class="square" onclick="IVYSUDOKU.keyboardClick(3);">
+							<div id="k_3_n" class="square_number">3</div>
+						</div>
+						<div id="k_s_4" class="square" onclick="IVYSUDOKU.keyboardClick(4);">
+							<div id="k_4_n" class="square_number">4</div>
+						</div>
+						<div id="k_s_5" class="square" onclick="IVYSUDOKU.keyboardClick(5);">
+							<div id="k_5_n" class="square_number">5</div>
+						</div>
+						<div id="k_s_6" class="square" onclick="IVYSUDOKU.keyboardClick(6);">
+							<div id="k_6_n" class="square_number">6</div>
+						</div>
+						<div id="k_s_7" class="square" onclick="IVYSUDOKU.keyboardClick(7);">
+							<div id="k_7_n" class="square_number">7</div>
+						</div>
+						<div id="k_s_8" class="square" onclick="IVYSUDOKU.keyboardClick(8);">
+							<div id="k_8_n" class="square_number">8</div>
+						</div>
+						<div id="k_s_9" class="square" onclick="IVYSUDOKU.keyboardClick(9);">
+							<div id="k_9_n" class="square_number">9</div>
+						</div>		
+					</div>
+					<div class="note_numbers">			
+						<div id="k_n_1" class="square" onclick="IVYSUDOKU.keyboardNoteClick(1);">
+							<div id="k_n_1_n" class="note_number">1</div>
+						</div>
+						<div id="k_n_2" class="square" onclick="IVYSUDOKU.keyboardNoteClick(2);">
+							<div id="k_n_2_n" class="note_number">2</div>
+						</div>
+						<div id="k_n_3" class="square" onclick="IVYSUDOKU.keyboardNoteClick(3);">
+							<div id="k_n_3_n" class="note_number">3</div>
+						</div>
+						<div id="k_n_4" class="square" onclick="IVYSUDOKU.keyboardNoteClick(4);">
+							<div id="k_n_4_n" class="note_number">4</div>
+						</div>
+						<div id="k_n_5" class="square" onclick="IVYSUDOKU.keyboardNoteClick(5);">
+							<div id="k_n_5_n" class="note_number">5</div>
+						</div>
+						<div id="k_n_6" class="square" onclick="IVYSUDOKU.keyboardNoteClick(6);">
+							<div id="k_n_6_n" class="note_number">6</div>
+						</div>
+						<div id="k_n_7" class="square" onclick="IVYSUDOKU.keyboardNoteClick(7);">
+							<div id="k_n_7_n" class="note_number">7</div>
+						</div>
+						<div id="k_n_8" class="square" onclick="IVYSUDOKU.keyboardNoteClick(8);">
+							<div id="k_n_8_n" class="note_number">8</div>
+						</div>
+						<div id="k_n_9" class="square" onclick="IVYSUDOKU.keyboardNoteClick(9);">
+							<div id="k_n_9_n" class="note_number">9</div>
+						</div>			
+					</div>
+				</div>
+				<p id="instruction" class="clear">Trykk i ønsket rute for å gjøre endringer!</p>
+			</div>
+			<button id="" onclick="IVYSUDOKU.clearSquare();">&#215;</button>
+			
+		</article>
+	</div>
+	<div class="alf-layer alf-layer-fullscreen alf-is-hidden" id="alf-layer-fullscreen"></div>
+</div>
+
+<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+<iframe width="0" height="0" frameborder="0" class="event-frame"></iframe>
+
+<script type="text/javascript" src="vendor/aptoma/alf/alf.min.js"></script>
+<script type="text/javascript" src="js/widget/disqus.js"></script>
+<script type="text/javascript" src="js/widget/banner.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/ivy.js"></script>
+<script type="text/javascript" src="js/handlebars-v1.3.0.js"></script>
+<script type="text/javascript" src="js/pusher.min.js"></script>
+<script type="text/javascript" src="vendor/agens/js/sudoku.js" charset="utf-8"></script>
+
+<script id="live-template" type="text/x-handlebars-template">
+  <div class="ivy-live">
+		<h1>{{title}}</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>
+
+					</th>
+					<th>
+						Time
+					</th>
+					<th>
+						Title
+					</th>
+					<th>
+						Message
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{#each posts}}
+				<tr>
+					<td>
+						<img src="{{icon}}" alt="" />
+					</td>
+					<td>
+						{{time}}
+					</td>
+					<td>
+						{{title}}
+					</td>
+					<td>
+						{{content}}
+					</td>
+				</tr>
+				{{/each}}
+			</tbody>
+		</table>
+  </div>
+</script>
+<script id="live-template-post" type="text/x-handlebars-template">
+	<tr>
+		<td>
+			<img src="{{icon}}" alt="" />
+		</td>
+		<td>
+			{{time}}
+		</td>
+		<td>
+			{{title}}
+		</td>
+		<td>
+			{{content}}
+		</td>
+	</tr>
+</script>
+
+<script type="text/javascript">
+	var sudokudate = "2014-05-10";
+</script>
+<script type="text/javascript">
+require(['main'], function(app){
+  "use strict";
+  //runs main(app) just by referencing it
+});
+</script>
+</body>
+</html>
