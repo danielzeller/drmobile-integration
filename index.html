@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest">
+<html>
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -7,10 +7,11 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="format-detection" content="telephone=no" />
         <title>Aftenposten integration</title>
+        <link rel="stylesheet" type="text/css" href="vendor/agens/css/reset.css">
         <link rel="stylesheet" type="text/css" href="vendor/aptoma/alf/alf.css">
         <link rel="stylesheet" type="text/css" href="vendor/agens/css/page-transitions.css">
         <link rel="stylesheet" type="text/css" href="vendor/agens/css/branding.css">
-        <link rel="stylesheet" type="text/css" href="vendor/agens/css/ads.css">
+        <link rel="stylesheet" type="text/css" href="vendor/agens/css/ivy-a.css">
         <link rel="apple-touch-icon-precomposed" href="gfx/appicon.png"/>
     </head>
     <body>
@@ -30,50 +31,100 @@
         <script type="text/javascript" src="js/widget/disqus.js"></script>
         <script type="text/javascript" src="js/widget/banner.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="vendor/agens/js/pusher.min.js"></script>
         <script type="text/javascript" src="vendor/agens/js/modernizr.js"></script>
         <script type="text/javascript" src="vendor/agens/js/hammer.js"></script>
         <script type="text/javascript" src="vendor/agens/js/page-transitions.js"></script>
-        <script type="text/javascript" src="vendor/agens/js/ivy.js"></script>
         <script type="text/javascript" src="vendor/agens/js/handlebars-v1.3.0.js"></script>
-        <script type="text/javascript" src="vendor/agens/js/pusher.min.js"></script>
+
         <script id="live-template" type="text/x-handlebars-template">
-            <div class="ivy-live">
-                <h1>{{title}}</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Time</th>
-                            <th>Title</th>
-                            <th>Message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each posts}}
-                        <tr>
-                            <td><img src="{{icon}}" alt="" /></td>
-                            <td>{{time}}</td>
-                            <td>{{title}}</td>
-                            <td>{{content}}</td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+          <div id="wrapper" class="ivy-live">
+
+        	<header id="header" class="grid_full clearfix">
+            <div class="grid_24 textaligncenter padding-top padding-bottom" id="{{id}}">
+              <h1>{{title}}</h1>
+            </div>
+        	</header>
+
+        	<section id="container" class="grid_22 center clearfix" role="main">
+
+        		<article class="grid_17">
+        		</article>
+        		<aside class="grid_6 alignright">
+              <p class="textaligncenter">
+                Sidebar
+              </p>
+        		</aside>
+        	</section>
+
+
+        </div>
+
+
+        </script>
+
+        <script id="post-template-text" type="text/x-handlebars-template">
+          {{#if highlighted}}
+            <div class="live-text-block clearfix highlighted"  id="{{id}}" style="display: none;">
+          {{else}}
+            <div class="live-text-block clearfix" id="{{id}}" style="display: none;">
+          {{/if}}
+              <div class="live-meta-info grid_3"><p><i>{{formattedTime}}</i></p></div>
+              <div class="live-content grid_21 alignright"><p>{{postContent}}</p></div>
             </div>
         </script>
-        <script id="live-template-post" type="text/x-handlebars-template">
-            <tr>
-                <td><img src="{{icon}}" alt="" /></td>
-                <td>{{time}}</td>
-                <td>{{title}}</td>
-                <td>{{content}}</td>
-            </tr>
+
+        <script id="post-template-image" type="text/x-handlebars-template">
+          <div class="live-image-block clearfix" id="{{id}}" style="display: none;">
+            {{#if preload }}
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            {{else}}
+              {{ivyLiveImage post.media}}
+            {{/if}}
+          </div>
+        </script>
+
+
+        <script id="post-template-video" type="text/x-handlebars-template">
+          <div class="live-video-block" id="{{id}}" style="display: none;">
+            {{#if preload }}
+              <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+              </div>
+            {{else}}
+              <video id="video-{{id}}" autoplay loop>
+                {{ivyLiveVideo post.media}}
+                Your browser does not support the video tag.
+              </video>
+            {{/if}}
+          </div>
+        </script>
+
+        <script id="post-template-tweet" type="text/x-handlebars-template">
+          <div class="live-post-tweet"  id="{{id}}" style="display: none;">
+            <div class="time">
+              {{formatted_time}}
+            </div>
+            <div class="image">
+              {{ivyLiveImage post.media}}
+            </div>
+          </div>
         </script>
         <script type="text/javascript">
             require(['main'], function(app) {
                 'use strict';
                 //runs main(app) just by referencing it
             });
+        </script>
+        <script type="text/javascript">
+          var sudokudate = "2014-05-10";
         </script>
     </body>
 </html>

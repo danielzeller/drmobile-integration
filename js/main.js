@@ -188,23 +188,39 @@ define('main',
                     assetsBaseUrl: assetsBaseUrl
                 });
 
-                page.on('loadComplete', function () {
-                    onDone();
-                });
+                $("link[class='ivy-asset-stylesheet']").remove();
+                $(".ivy-asset-script").remove();
 
-                if (deskedPage.docType == "ad") {
-                  console.log("Content is an ad");
-                  $(pageContentEl).append(deskedPage.html);
-                  page.decompiled = true;
-                  page.trigger('loadComplete');
-                } else if (deskedPage.docType == "livearticle") {
-                  console.log("Content is a live article");
+                page.on('loadComplete', onDone);
+
+                if (deskedPage.docType) {
+                  this.renderCutsomType(pageContentEl, deskedPage, onDone);
                 } else {
                   page.decompile(deskedPage, function () {
                       page.render(pageContentEl);
                   });
                 }
 
+            },
+
+            renderCutsomType: function (pageContentEl, deskedPage, onDone) {
+              this.clearPage(pageContentEl);
+              $("link[class='alf-asset-stylesheet']").remove();
+
+
+              if (deskedPage.docType == "ad") {
+                $(pageContentEl).append(deskedPage.html);
+              } else if (deskedPage.docType == "live_article") {
+                $("head").append('<link rel="stylesheet" type="text/css" href="vendor/agens/css/live-article.css" class="ivy-asset-stylesheet">')
+                $("body").append('<script type="text/javascript" src="vendor/agens/js/ivy-live.js" class="ivy-asset-script"></script>')
+                new Ivy(deskedPage, pageContentEl);
+              } else if (deskedPage.docType == "game") {
+                $("head").append('<link rel="stylesheet" type="text/css" href="vendor/agens/css/sudoku.css" class="ivy-asset-stylesheet">')
+                $(pageContentEl).append(deskedPage.html);
+                $("body").append('<script type="text/javascript" src="vendor/agens/js/sudoku.js" class="ivy-asset-script"></script>')
+              }
+
+              onDone();
             },
 
             /**

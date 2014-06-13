@@ -9,8 +9,8 @@ a, img, strong, var,
 b, u, i, center, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
 	margin: 0;
@@ -21,7 +21,7 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
@@ -57,7 +57,7 @@ body {
      -moz-user-select: -moz-none;
       -ms-user-select: none;
           user-select: none;
-         
+
 }
 
 .clear {
@@ -115,7 +115,7 @@ p {
 	/* background: #222; */
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box; 
+	box-sizing: border-box;
 }
 
 #main_menu {
@@ -141,7 +141,7 @@ p {
 	display: table;
 }
 .cheat_title {
-	
+
 }
 #main_menu .menu_content {
 	display: table-cell;
@@ -208,7 +208,7 @@ li {
 	line-height: 100%;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box; 
+	box-sizing: border-box;
 }
 .note {
 	pointer-events: none;
@@ -334,7 +334,7 @@ button {
 	display: block;
 	clear: both;
 	padding: 0;
-	
+
 }
 @media all and (min-width: 768px) and (max-width: 1024px)  {
 	#container {
@@ -394,7 +394,7 @@ button {
 		margin-bottom: 2%;
 		height: 30%;
 	}
-	
+
 	#board, #keyboard {
 		width: 300px;
 		height: 300px;
