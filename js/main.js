@@ -218,6 +218,7 @@ define('main',
                 $("head").append('<link rel="stylesheet" type="text/css" href="vendor/agens/css/sudoku.css" class="ivy-asset-stylesheet">')
                 $(pageContentEl).append(deskedPage.html);
                 $("body").append('<script type="text/javascript" src="vendor/agens/js/sudoku.js" class="ivy-asset-script"></script>')
+                $("body").append('<script type="text/javascript" src="vendor/agens/js/ivybridge.js" class="ivy-asset-script"></script>')
               }
 
               onDone();
