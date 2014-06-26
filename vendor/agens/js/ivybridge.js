@@ -106,7 +106,7 @@ IVYBRIDGE = (function () {
 
 
 var bridge;
-window.onload=function(){
+//window.onload=function(){
     bridge = document.createElement('iframe');
     bridge.style.width = 1+"px";
     bridge.style.height = 1+"px";
@@ -114,7 +114,7 @@ window.onload=function(){
     bridge.style.visibility = "hidden";
     document.body.appendChild(bridge);
     IVYBRIDGE.init(bridge,"ivySudokuTestStorage", bridgeReady, bridgeFailed);
-}
+//}
 function bridgeReady() {
 	console.log("bridgeReady");
 	console.log("lastTimeString test...");
