@@ -18,7 +18,7 @@ IVYBRIDGE = (function () {
 	function bridgeTest() {
 		console.log("bridgeTest()...");
 		bridgeTestTimeout = setTimeout(endBridgeTest,2000);
-		callBridge("storagePut","bridgeTest","1", "IVYBRIDGE.bridgeTestOK","test1","test2","test3");
+		callBridge("storagePut","bridgeTest","text to store in storage", "IVYBRIDGE.bridgeTestOK","test1","test2","test3");
 	}
 	function bridgeTestOK(event, params) {
 		console.log("bridgeTestOK");
