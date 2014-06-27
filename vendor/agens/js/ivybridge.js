@@ -51,7 +51,7 @@ IVYBRIDGE = (function () {
 	    doneFunctionEvent = doneFunctionEvent || "";
 	    failFunctionName = failFunctionName || "";
 	    failFunctionEvent = failFunctionEvent || "";
-	    var src = 'event://["'+action+'", {"storage":"'+storageName+'","key":"'+key+'","value":'+value+',"doneEvent":{"function":"'+doneFunctionName+'","event":"'+doneFunctionEvent+'"},"failEvent":{"function":"'+failFunctionName+'","event":"'+failFunctionEvent+'"}}]";
+	    var src = 'event://["'+action+'", {"storage":"'+storageName+'","key":"'+key+'","value":'+value+',"doneEvent":{"function":"'+doneFunctionName+'","event":"'+doneFunctionEvent+'"},"failEvent":{"function":"'+failFunctionName+'","event":"'+failFunctionEvent+'"}}]';
 	    console.log("callBridge: "+src);
 	    bridge.src = src;
 	}
