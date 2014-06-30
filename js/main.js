@@ -338,7 +338,7 @@ define('main',
 
                 //user-scalable=no
                 $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
-                $('#alf-layer-content').css('width', scaleWidth);
+                $('body').css('width', scaleWidth);
             }
         };
 
