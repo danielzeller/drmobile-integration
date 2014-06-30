@@ -338,7 +338,12 @@ define('main',
 
                 //user-scalable=no
                 $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
-                $('body').css('width', 1024);
+                $('body').css('width', scaleWidth);
+                /*$('#chrome').css(
+                {
+                    width: scaleWidth,
+                    height: height
+                });*/
             }
         };
 
