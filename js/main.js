@@ -340,7 +340,7 @@ define('main',
                 $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
                 $('#chrome').css(
                 {
-                    width: scaleWidth
+                    width: scaleWidth,
                     height: height
                 });
             }
