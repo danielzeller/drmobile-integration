@@ -336,7 +336,7 @@ define('main',
                 var scaleWidth = $(window).width() / $(window).height() * 768;
 
                 //user-scalable=no
-                $('head').find('meta[name="viewport"]').attr('content', 'target-densitydpi=device-dpi, width=' + scaleWidth);
+                $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
             }
         };
 
