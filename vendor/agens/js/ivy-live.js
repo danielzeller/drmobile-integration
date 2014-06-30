@@ -26,10 +26,10 @@ Ivy.prototype.init = function()
 
 Ivy.prototype.render = function(pageContentEl)
 {
-    var source   = $("#live-template").html();
+    var source   = jQuery("#live-template").html();
     var template = Handlebars.compile(source);
     var html     = template(this.json);
-    $(this.el).append(html);
+    jQuery(this.el).append(html);
 };
 
 Ivy.prototype.render_posts = function(posts)
@@ -44,19 +44,19 @@ Ivy.prototype.render_posts = function(posts)
 Ivy.prototype.render_post = function(post)
 {
   post.formattedTime = new Date(post.created).toLocaleTimeString();
-  var source   = $("#post-template-"+post.postType).html();
+  var source   = jQuery("#post-template-"+post.postType).html();
   var template = Handlebars.compile(source);
   var html     = template(post);
 
-  if ($("#" + post.id).length) {
-    var divWidth = $("#" + post.id).width();
+  if (jQuery("#" + post.id).length) {
+    var divWidth = jQuery("#" + post.id).width();
     var sizeKeys = Object.keys(post.media.sizes);
-    var preDivHeight = sizeKeys[0].height / (sizeKeys[0].width / $("#" + post.id).width());
-    $("#" + post.id).animate({ height: preDivHeight }, 1000);
-    $("#" + post.id)[0].innerHTML = $(html)[0].innerHTML;
+    var preDivHeight = sizeKeys[0].height / (sizeKeys[0].width / jQuery("#" + post.id).width());
+    jQuery("#" + post.id).animate({ height: preDivHeight }, 1000);
+    jQuery("#" + post.id)[0].innerHTML = jQuery(html)[0].innerHTML;
   } else {
-    $("article").prepend(html);
-    $("#" + post.id).show();
+    jQuery("article").prepend(html);
+    jQuery("#" + post.id).show();
   }
 
   if (post.postType == "video") {
@@ -66,7 +66,7 @@ Ivy.prototype.render_post = function(post)
 };
 
 Ivy.prototype.addVideoListener = function(id){
-  $('#video-' + id).on('click', function(){
+  jQuery('#video-' + id).on('click', function(){
     if (this.paused){
       this.play();
     } else {
