@@ -188,8 +188,8 @@ define('main',
                     assetsBaseUrl: assetsBaseUrl
                 });
 
-                $("link[class='ivy-asset-stylesheet']").remove();
-                $(".ivy-asset-script").remove();
+                $('link[class="ivy-asset-stylesheet"]').remove();
+                $('.ivy-asset-script').remove();
 
                 page.on('loadComplete', onDone);
 
