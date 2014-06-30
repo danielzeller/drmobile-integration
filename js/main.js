@@ -333,10 +333,12 @@ define('main',
             scalePage: function()
             {
                 // Scale webview to fit Android tablets
-                var scaleWidth = $(window).width() / $(window).height() * 768;
+                var height = 768;
+                var scaleWidth = $(window).width() / $(window).height() * height;
 
                 //user-scalable=no
                 $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
+                $('#chrome').width(scaleWidth).height(height);
             }
         };
 
