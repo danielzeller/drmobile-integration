@@ -323,10 +323,11 @@ define('main',
 
                 this.pages = [];
 
-                pageContentEl.html("");
+                pageContentEl.html('');
             },
 
-            exitFullscreen: function () {
+            exitFullscreen: function()
+            {
                 app.fullscreenLayer.exitFullscreen();
             },
 
@@ -338,12 +339,6 @@ define('main',
 
                 //user-scalable=no
                 $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
-                $('body, html').css('width', scaleWidth);
-                /*$('#chrome').css(
-                {
-                    width: scaleWidth,
-                    height: height
-                });*/
             }
         };
 
@@ -356,7 +351,6 @@ define('main',
                 "reason": error
             });
         };
-
 
         Alf.hub.on('fullscreenWillAppear', function () {
             app.bridge.trigger('displayState', {"event": 'fullscreenWillAppear'});
@@ -419,17 +413,9 @@ define('main',
             app.clearPage(pageContentEl);
         });
 
-        app.event.on('clientInfo', function (info) {
-            app.logToAll('Got clientInfo:');
-        });
-
-        app.event.on('networkReachability', function (state) {
-            app.logToAll('Got networkReachability:');
-        });
-
-        app.event.on('applicationState', function (state) {
-            app.logToAll('Got applicationState: ' + state);
-        });
+        app.event.on('clientInfo', function(info) { app.logToAll('Got clientInfo:'); });
+        app.event.on('networkReachability', function(state) { app.logToAll('Got networkReachability:'); });
+        app.event.on('applicationState', function(state) { app.logToAll('Got applicationState: ' + state); });
 
         $(document).ready(function () {
             app.bridge.trigger('integrationLoaded', {});
