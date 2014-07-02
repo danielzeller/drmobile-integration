@@ -33,7 +33,7 @@ define('main',
                 if('deviceOS' in this.context && this.context.deviceOS == 'android' &&
                    'deviceType' in this.context && this.context.deviceType == 'tablet')
                 {
-                    $('head').append($('<link rel="stylesheet" type="text/css" href="vendor/agens/css/android-tablet.css /">'));
+                    $('head').append($('<link rel="stylesheet" type="text/css" href="vendor/agens/css/android-tablet.css" />'));
                 }
             },
 
