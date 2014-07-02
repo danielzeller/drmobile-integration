@@ -29,6 +29,12 @@ define('main',
                 this.bridge = null;
                 this.initBridge();
                 this.initLayers();
+
+                if('deviceOS' in this.context && this.context.deviceOS == 'android' &&
+                   'deviceType' in this.context && this.context.deviceType == 'tablet')
+                {
+                    $('head').append($('<link rel="stylesheet" type="text/css" href="vendor/agens/css/android-tablet.css /">'));
+                }
             },
 
             objectifyUrlParams: function()
