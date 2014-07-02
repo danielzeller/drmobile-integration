@@ -1,5 +1,5 @@
 define('main',
-    ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/phonebanner', 'js/page-transitions'],
+    ['alf', 'js/widgets/disqus', 'js/widgets/banner', 'js/widgets/phonebanner'],
     function (Alf, disqus, banner, phonebanner)
     {
         'use strict';
@@ -29,18 +29,6 @@ define('main',
                 this.bridge = null;
                 this.initBridge();
                 this.initLayers();
-
-                if('deviceOS' in this.context && this.context.deviceOS == 'android' &&
-                   'deviceType' in this.context && this.context.deviceType == 'tablet')
-                {
-                    $('html').addClass('android-tablet');
-
-                    /*this.scalePage();
-                    $(window).on('resize orientationchange', function()
-                    {
-                        self.scalePage.call(self);
-                    });*/
-                }
             },
 
             objectifyUrlParams: function()
@@ -272,29 +260,7 @@ define('main',
 
                     page.on('loadComplete', function () {
                         if (++loadCompletes === deskedPages.length)
-                        {
                             onDone();
-
-                            // Setup page transitions
-                            var PageTransitions = require('js/page-transitions');
-                            var pageTransitions = new PageTransitions(
-                            {
-                                selector: {
-                                    chrome: '#chrome',
-                                    article: '.article',
-                                    page: '.page'
-                                },
-                                hammer: {
-                                    options: {
-                                        dragLockToAxis: true,
-                                        preventDefault: true,
-                                        swipeVelocityY: 0.1,
-                                        swipeMaxTouches: 2
-                                    },
-                                    events: 'release dragup dragdown swipeup swipedown'
-                                }
-                            });
-                        }
                     });
 
                     page.decompile(deskedPage, function () {
@@ -329,16 +295,6 @@ define('main',
             exitFullscreen: function()
             {
                 app.fullscreenLayer.exitFullscreen();
-            },
-
-            scalePage: function()
-            {
-                // Scale webview to fit Android tablets
-                var height = 768;
-                var scaleWidth = $(window).width() / $(window).height() * height;
-
-                //user-scalable=no
-                $('head').find('meta[name="viewport"]').attr('content', 'width=' + scaleWidth);
             }
         };
 
