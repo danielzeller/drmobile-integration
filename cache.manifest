@@ -4,15 +4,13 @@ CACHE MANIFEST
 CACHE:
 vendor/aptoma/alf/alf.css
 vendor/aptoma/alf/alf.min.js
-vendor/agens/css/page-transitions.css
+vendor/agens/css/android-tablet.css
 vendor/agens/css/branding.css
 js/widget/disqus.js
 js/widget/banner.js
 js/main.js
 js/pages.js
 vendor/agens/js/modernizr.js
-vendor/agens/js/hammer.js
-vendor/agens/js/page-transitions.js
 gfx/appicon.png
 gfx/issue-logo-black.png
 gfx/issue-logo-black@2x.png
